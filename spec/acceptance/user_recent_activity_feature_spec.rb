@@ -10,12 +10,10 @@ feature "User Recent Activity", %q{
   I want to be able to see the most recent activity
 } do
 
+  let (:a_user)                       { Factory.create(:normal_person)}
   let (:login_page)                   { LoginPage.new(page) }
   let (:user_profile_page)            { UserProfilePage.new(page) }
 
-  def given_a_new_user
-    @new_user = Factory.create(:normal_person)
-  end
 
   def given_logged_in_as_a_user
     @user = logged_in_user
@@ -23,25 +21,23 @@ feature "User Recent Activity", %q{
 
 
   scenario "Empty Recent Activity" do
-    # Given a new user
-    given_a_new_user
+    # given_a_user
+    # when_I_visit_the_users_profile
+    user_profile_page.visit_user(a_user)
 
-    # When I view their recent activity
-    user_profile_page.visit_user(@new_user)
-
-    # Then I will be notified they are just starting
-    user_profile_page.should contain("#{@new_user.name} is just getting started")
+    # then_I_should_see_they_are_just_getting_started_in_their_recent_activity_stream
+    within('.main-content') do
+      user_profile_page.should contain("#{a_user.name} is just getting started")
+    end
   end
 
   scenario "Conversation Recent Activity" do
     # Given a new user
-    given_a_new_user
-
     # and the user created a conversation
-    @conversation = Factory.create(:user_generated_conversation, :owner => @new_user, :title => "User Generated Title", :summary => "User Generated Summary")
+    @conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title", :summary => "User Generated Summary")
 
     # When I view their recent activity
-    user_profile_page.visit_user(@new_user)
+    user_profile_page.visit_user(a_user)
 
     # Then I will see a conversation in their recent activity
     user_profile_page.should contain("User Generated Title")
@@ -50,14 +46,12 @@ feature "User Recent Activity", %q{
 
   scenario "Conversation Recent Activity with a long Summary will be truncated" do
     # Given a new user
-    given_a_new_user
-
     # and the user created a conversation
-    @conversation = Factory.create(:user_generated_conversation, :owner => @new_user, :title => "User Generated Title", 
+    @conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title",
                                    :summary => "User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF 1234567890")
 
     # When I view their recent activity
-    user_profile_page.visit_user(@new_user)
+    user_profile_page.visit_user(a_user)
 
     # Then I will see a conversation in their recent activity
     user_profile_page.should contain("User Generated Title")
@@ -66,14 +60,12 @@ feature "User Recent Activity", %q{
 
   scenario "Contribution Recent Activity with a Parent Contribution" do
     # Given a new user
-    given_a_new_user
-
     # and they created a contribution
     @parent_contribution = Factory.create(:comment, :title => "Parent Contribution Title", :content => "Parent Contribution Content")
-    @contribution = Factory.create(:comment, :person => @new_user, :parent => @parent_contribution, :conversation => @parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
+    @contribution = Factory.create(:comment, :person => a_user, :parent => @parent_contribution, :conversation => @parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
 
     # When I view their recent activity
-    user_profile_page.visit_user(@new_user)
+    user_profile_page.visit_user(a_user)
 
     # Then I will see a contribution in their recent activity
     user_profile_page.should contain("#{@parent_contribution.item_title}")
