@@ -99,5 +99,23 @@ feature "User Recent Activity", %q{
     user_profile_page.should contain("User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF...")
   end
 
+  scenario "Contribution Recent Activity with a Parent Contribution" do
+    # Given a new user
+    given_a_new_user
+
+    # and they created a contribution
+    @parent_contribution = Factory.create(:comment, :title => "Parent Contribution Title", :content => "Parent Contribution Content")
+    @contribution = Factory.create(:comment, :person => @new_user, :parent => @parent_contribution, :conversation => @parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
+
+    # When I view their recent activity
+    user_profile_page.visit_user(@new_user)
+
+    # Then I will see a contribution in their recent activity
+    user_profile_page.should contain("#{@parent_contribution.item_title}")
+    user_profile_page.should contain("I responded to #{@parent_contribution.person_name}")
+    user_profile_page.should contain("User Generated Contribution Content")
+    user_profile_page.should contain("Parent Contribution Content")
+  end
+
 end
 
