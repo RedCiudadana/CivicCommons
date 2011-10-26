@@ -21,14 +21,8 @@ feature "User Recent Activity", %q{
 
 
   scenario "Empty Recent Activity" do
-    # given_a_user
-    # when_I_visit_the_users_profile
-    user_profile_page.visit_user(a_user)
-
-    # then_I_should_see_they_are_just_getting_started_in_their_recent_activity_stream
-    within('.main-content') do
-      user_profile_page.should contain("#{a_user.name} is just getting started")
-    end
+    visit_user_profile_for a_user
+    activity_stream.should have_content "#{a_user.name} is just getting started"
   end
 
   scenario "Conversation Recent Activity" do
