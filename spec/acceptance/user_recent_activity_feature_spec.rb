@@ -72,7 +72,7 @@ feature "User Recent Activity", %q{
     # Given a new user
     given_a_new_user
 
-    # and they created a conversation
+    # and the user created a conversation
     @conversation = Factory.create(:user_generated_conversation, :owner => @new_user, :title => "User Generated Title", :summary => "User Generated Summary")
 
     # When I view their recent activity
@@ -87,7 +87,7 @@ feature "User Recent Activity", %q{
     # Given a new user
     given_a_new_user
 
-    # and they created a conversation
+    # and the user created a conversation
     @conversation = Factory.create(:user_generated_conversation, :owner => @new_user, :title => "User Generated Title", 
                                    :summary => "User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF 1234567890")
 
