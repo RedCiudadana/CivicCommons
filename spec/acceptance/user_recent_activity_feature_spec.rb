@@ -83,5 +83,21 @@ feature "User Recent Activity", %q{
     user_profile_page.should contain("User Generated Summary")
   end
 
+  scenario "Conversation Recent Activity with a long Summary will be truncated" do
+    # Given a new user
+    given_a_new_user
+
+    # and they created a conversation
+    @conversation = Factory.create(:user_generated_conversation, :owner => @new_user, :title => "User Generated Title", 
+                                   :summary => "User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF 1234567890")
+
+    # When I view their recent activity
+    user_profile_page.visit_user(@new_user)
+
+    # Then I will see a conversation in their recent activity
+    user_profile_page.should contain("User Generated Title")
+    user_profile_page.should contain("User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF...")
+  end
+
 end
 
