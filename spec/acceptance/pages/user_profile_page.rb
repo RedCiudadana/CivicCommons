@@ -21,4 +21,11 @@ class UserProfilePage < PageObject
   end
 end
 
+class Person
+
+  def create_conversation(options)
+    Factory.create(:user_generated_conversation, :owner => self)
+  end
+
+end
 Rspec.configuration.include UserProfileDSL, :type => :acceptance
