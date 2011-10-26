@@ -34,7 +34,7 @@ feature "User Recent Activity", %q{
   scenario "Conversation Recent Activity" do
     # Given a new user
     # and the user created a conversation
-    @conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title", :summary => "User Generated Summary")
+    conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title", :summary => "User Generated Summary")
 
     # When I view their recent activity
     user_profile_page.visit_user(a_user)
@@ -47,7 +47,7 @@ feature "User Recent Activity", %q{
   scenario "Conversation Recent Activity with a long Summary will be truncated" do
     # Given a new user
     # and the user created a conversation
-    @conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title",
+    conversation = Factory.create(:user_generated_conversation, :owner => a_user, :title => "User Generated Title",
                                    :summary => "User Generated Summary 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 CHOPOFF 1234567890")
 
     # When I view their recent activity
@@ -61,15 +61,15 @@ feature "User Recent Activity", %q{
   scenario "Contribution Recent Activity with a Parent Contribution" do
     # Given a new user
     # and they created a contribution
-    @parent_contribution = Factory.create(:comment, :title => "Parent Contribution Title", :content => "Parent Contribution Content")
-    @contribution = Factory.create(:comment, :person => a_user, :parent => @parent_contribution, :conversation => @parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
+    parent_contribution = Factory.create(:comment, :title => "Parent Contribution Title", :content => "Parent Contribution Content")
+    contribution = Factory.create(:comment, :person => a_user, :parent => parent_contribution, :conversation => parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
 
     # When I view their recent activity
     user_profile_page.visit_user(a_user)
 
     # Then I will see a contribution in their recent activity
-    user_profile_page.should contain("#{@parent_contribution.item_title}")
-    user_profile_page.should contain("I responded to #{@parent_contribution.person_name}")
+    user_profile_page.should contain("#{parent_contribution.item_title}")
+    user_profile_page.should contain("I responded to #{parent_contribution.person_name}")
     user_profile_page.should contain("User Generated Contribution Content")
     user_profile_page.should contain("Parent Contribution Content")
   end
