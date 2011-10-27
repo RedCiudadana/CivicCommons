@@ -34,16 +34,14 @@ feature "User Recent Activity", %q{
   end
 
   scenario "Contribution Recent Activity with a Parent Contribution" do
-    parent_contribution = alex_flemming.create_comment :title => "Parent Contribution Title", :content => "Parent Contribution Content"
-    henry_ford.create_comment :parent => parent_contribution, :conversation => parent_contribution.conversation, :title => "User Generated Contribution Title", :content => "User Generated Contribution Content"
-    henry_ford.create_conversation :title => "User Generated Title", :summary => "User Generated Summary"
+    parent_comment, henrys_comment = henry_ford.responds_to_comment(:title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
     visit_user_profile_for henry_ford
 
-    # Then I will see a contribution in their recent activity
-    activity_stream.should have_content("#{parent_contribution.item_title}")
-    activity_stream.should have_content("I responded to #{parent_contribution.person_name}")
+    # The contribution will be in Henry Ford's recent activity as well as the parent comment
+    activity_stream.should have_content("#{parent_comment.item_title}")
+    activity_stream.should have_content("I responded to #{parent_comment.person_name}")
     activity_stream.should have_content("User Generated Contribution Content")
-    activity_stream.should have_content("Parent Contribution Content")
+    activity_stream.should have_content(parent_comment.content)
   end
 
 end
