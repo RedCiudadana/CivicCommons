@@ -31,5 +31,9 @@ class Person
     Factory.create(:comment, {:person => self}.merge(options))
   end
 
+  def responds_to_comment(options)
+
+  end
+
 end
 Rspec.configuration.include UserProfileDSL, :type => :acceptance
