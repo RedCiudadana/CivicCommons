@@ -24,7 +24,11 @@ end
 class Person
 
   def create_conversation(options)
-    Factory.create(:user_generated_conversation, :owner => self)
+    Factory.create(:user_generated_conversation, {:owner => self}.merge(options))
+  end
+
+  def create_comment(options)
+    Factory.create(:comment, {:person => self}.merge(options))
   end
 
 end
