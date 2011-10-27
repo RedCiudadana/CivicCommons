@@ -36,7 +36,18 @@ feature "User Recent Activity", %q{
     parent_comment, henrys_comment = henry_ford.responds_to_comment(:title => "User Generated Contribution Title", :content => "User Generated Contribution Content")
     visit_user_profile_for henry_ford
 
-    # The contribution will be in Henry Ford's recent activity as well as the parent comment
+
+    henrys_comment.instance_eval do
+      def locator
+        "div[data-contribution-id=\"#{id}\"]"
+      end
+    end 
+    
+    activity_stream.should have_css henrys_comment.locator
+    henrys_comment.should be_a_response_to parent_comment
+
+
+ 
     activity_stream.should have_content("#{parent_comment.item_title}")
     activity_stream.should have_content("I responded to #{parent_comment.person_name}")
     activity_stream.should have_content("User Generated Contribution Content")
@@ -44,4 +55,3 @@ feature "User Recent Activity", %q{
   end
 
 end
-

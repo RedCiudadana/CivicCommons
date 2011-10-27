@@ -9,11 +9,20 @@ module UserProfileDSL
   end
 
   def activity_stream
-    page.find '.activity-stream'
+    ActivityStream.new page 
   end
 
 end
+class ActivityStream < PageObject
+  def response_to?
 
+    within ".activity-stream .recent-item #{locator}" do
+          has_css ".call-out"
+    end
+
+  end
+
+end
 class UserProfilePage < PageObject
 
   def visit_user(user)

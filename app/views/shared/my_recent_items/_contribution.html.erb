@@ -2,7 +2,7 @@
   parent_contribution = contribution.parent
 %>
 <div class="divided">
-  <div class="recent-item contribution">
+  <div class="recent-item contribution" data-contribution-id="<%=contribution.id%>">
     <h4><%= link_to( contribution.item_title, contribution_item_url(contribution)) %></h4>
     <p>
     <strong>I <%= link_to("responded to #{parent_contribution ? parent_contribution.person.name : contribution.item_title }", url_to_contribution(contribution)) %></strong>:
