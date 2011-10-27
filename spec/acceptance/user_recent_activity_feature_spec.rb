@@ -11,7 +11,6 @@ feature "User Recent Activity", %q{
 } do
 
   let (:henry_ford)                   { Factory.create(:normal_person, :first_name => "Henry", :last_name => "Ford")}
-  let (:alex_flemming)                { Factory.create(:normal_person)}
   let (:login_page)                   { LoginPage.new(page) }
   let (:user_profile_page)            { UserProfilePage.new(page) }
 
