@@ -1299,9 +1299,9 @@ display: block;
 padding-left: 23px;
 }
 ul#main-nav li.projects {
-background: url(../images/nav_build.png) no-repeat 0 17px;
+background: url(../images/nav_project.png) no-repeat 0 18px;
 display: block;
-padding-left: 23px;
+padding-left: 28px;
 }
 ul#main-nav li.community {
 background: url(../images/nav_comm.png) no-repeat 0 17px;
