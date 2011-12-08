@@ -1,7 +1,7 @@
 <%
   parent_contribution = contribution.parent
 %>
-<div class="divided">
+<div class="">
   <div class="recent-item contribution">
     <h4><%= link_to( contribution.item_title, contribution_item_url(contribution)) %></h4>
     <p>
@@ -9,8 +9,8 @@
       <%= truncate( Sanitize.clean( contribution.content, :remove_contents => ['script'] ).strip, :length => 100, :separator => ' ' ) %>
     </p>
     <% if parent_contribution && parent_contribution.content && !Sanitize.clean(parent_contribution.content).blank?  %>
-      <div class="related-article call-out">
-        <div class="offset-2">
+      <div class="related-article">
+        <div class="offset-2 call-out">
           <%= avatar_profile(parent_contribution.person, 40) %>
           <p>
           <%= truncate( Sanitize.clean( parent_contribution.content, :remove_contents => ['script'] ).strip, :length => 225, :separator => ' ' ) unless parent_contribution.blank? || Sanitize.clean(parent_contribution.content).blank? %>

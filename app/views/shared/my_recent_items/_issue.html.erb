@@ -1,4 +1,4 @@
-<div class="divided">
+<div class="">
   <div class="recent-item issue">
     <h4><%= link_to( issue.name, issue_path( issue.id ) ) %></h4>
     <p><%= simple_format( truncate( Sanitize.clean( issue.summary, :remove_contents => ['script'] ).strip, :length => 225, :separator => ' ' ) ) %></p>
