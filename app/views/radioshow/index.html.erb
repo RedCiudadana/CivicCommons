@@ -12,7 +12,7 @@
         <%- @radioshows.each do |radioshow| %>
           <div class="entry-container">
             <div class="entry-details rounded">
-              <img src="http://placehold.it/198x130" />
+              <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198 %>
               <h4><%= link_to radioshow.title, radioshow_path(radioshow) %></h4>
               <p class="entry-tags"><%= radioshow.published.strftime('%B %d, %Y') %>, Topic: Transportation</p>
               <div> 

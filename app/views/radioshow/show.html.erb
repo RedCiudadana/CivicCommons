@@ -1,38 +1,30 @@
 <% content_for :header do %>
   <%= auto_discovery_link_tag(:rss, "http://feeds.theciviccommons.com/civiccommonsradio", { :title => "The Civic Commons Radio Show" } ) %>
 <% end %>
-
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
-      <h1><%= link_to 'The Civic Commons Radio Show', radioshow_index_path %></h1>
-      <div class="in-the-news-post"></div>
-
+      <div class="media">
+        <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198, :class => 'img' %>
+        <div class="bd">
+          <h1><%= @radioshow.title %></h1>
+          <p class="subtitle">Topic: Entrepreneurship</p>
+        </div>
+      </div>
       <div class="main-content">
-
-        <%= render partial: 'radioshow/description' %>
-
+        <p><%= raw @radioshow.body %></p>
         <div class="radioshow" id="outer_block_1"> 
-          <h2><%= @radioshow.title %></h2>
           <div class='radioshow_inner'> 
             <p class="convo-meta"><%= render :partial => 'shared/facebook_like' %></p>
             <p class="convo-meta"><%= render :partial => 'shared/twitter_share', locals: { title: @radioshow.title} %></p>
-            <div class="body"><%= raw @radioshow.body %></div>
-            <p>&nbsp;</p>
             <h4>Aired on <%= @radioshow.published.strftime('%B %d, %Y') %></h4>
           </div>
-
           <%= render partial: 'radioshow/embed', radioshow: @radioshow %>
-
-          <p style="font-style:italic; margin-top:20px;">
+          <p>
             Copyright &copy; <%= @radioshow.published.strftime('%Y') %> The Civic Commons; available under the
             <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>.
           </p>
-
         </div>
-
-        <div>&nbsp;</div>
-
         <% if @radioshow.conversation %>
           <h2>Join the conversation about this radioshow</h2>
           <div class="three-col-sm">
@@ -47,32 +39,10 @@
             <%= link_to "Start a Conversation from this Radio Show", start_conversation_from_radioshow_path(@radioshow), :class => 'convo-create-btn', 'data-remote' => true, 'data-method' => :post %>
           </div>
         <% end %>
-
       </div>
-
       <div class="aside supplementary">
-
-        <%= render :partial => '/search/search', locals: { filter_type: 'radioshows' } %>
-
-        <div class="mod" id="TwitterProfileModule">
-          <%= render :partial => 'shared/twitter_profile_widget' %>
-        </div>
-
-        <div>&nbsp;</div>
-        <% if @radioshow.conversation %>
-          <% @recent_items = Activity.most_recent_activity_items_for_conversation(@radioshow.conversation, 5) %>
-          <%= render_recent_items_sidebar %>
-        <% end %>
-
-        <div class="mod" id="FacebookActivityModule">
-          <%= render :partial => 'shared/facebook_activity_widget' %>
-        </div>
-
-        <div>&nbsp;</div>
-        <style type='text/css'>a.soundcloud-badge:hover {background-position: bottom left !important;} *html a.soundcloud-badge {background-image: none !important; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='(http://a1.sndcdn.com/images/badges/imonsc/square/white.png?0ce1d7f)', sizingMethod='crop') !important;}</style><!-- if you want to have valid HTML, please be so kind and put the style part in the head of your page --><a href='http://soundcloud.com/theciviccommons' style='text-align: left; display: block; margin: 0 auto; width: 160px; height: 92px; font-size: 11px; padding: 68px 0 0 0; background: transparent url(http://a1.sndcdn.com/images/badges/imonsc/square/white.png?0ce1d7f) top left no-repeat; color: #2681C5; text-decoration: none; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; line-height: 1.3em; text-align: center; outline: 0;' class='soundcloud-badge'>http://soundcloud.com<span style="display: block; width: 137px; height: 20px; margin: 0px 0 0 12px; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis">The Civic Commons</span></a>
-
+        
       </div>
-
     </div>
   </div>
 <% end %>
