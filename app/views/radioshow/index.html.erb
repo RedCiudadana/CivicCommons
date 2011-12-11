@@ -1,50 +1,46 @@
 <% content_for :header do %>
   <%= auto_discovery_link_tag(:rss, "http://feeds.theciviccommons.com/civiccommonsradio", { :title => "The Civic Commons Radio Show" } ) %>
 <% end %>
-
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
       <h1>The Civic Commons Radio Show</h1>
-
+      <%= render partial: 'description' %>
+    </div>
+    <div class="content-container">
       <div class="main-content">
-
-        <%= render partial: 'description' %>
-
         <%- @radioshows.each do |radioshow| %>
-
-          <div class="blog" id="outer_block_1"> 
-            <h2><%= link_to radioshow.title, radioshow_path(radioshow) %></h2> 
-            <div class='blog_inner'> 
-              <%= raw radioshow.summary %>
-              <p><%= link_to "Listen to the podcast...", radioshow_path(radioshow), html: { title: radioshow.title } %></p>
-              <p>Aired on <%= radioshow.published.strftime('%B %d, %Y') %></p> 
+          <div class="entry-container">
+            <div class="entry-details rounded">
+              <img src="http://placehold.it/198x130" />
+              <h4><%= link_to radioshow.title, radioshow_path(radioshow) %></h4>
+              <p class="entry-tags"><%= radioshow.published.strftime('%B %d, %Y') %>, Topic: Transportation</p>
+              <div> 
+                <%= raw radioshow.summary %>
+                <p><%= link_to "Listen to the podcast...", radioshow_path(radioshow), html: { title: radioshow.title } %></p> 
+              </div>
             </div>
           </div>
           <p>&nbsp;</p>
-
         <%- end %>
         <%= will_paginate @radioshows, :inner_window => 3, :previous_label => "Previous", :next_label => "Next" %>
-
       </div>
-
       <div class="aside supplementary">
-      
-        <%= render :partial => '/search/search', locals: { filter_type: 'radioshows' } %>
-
-        <div class="mod" id="TwitterProfileModule">
-          <%= render :partial => 'shared/twitter_profile_widget' %>
+        <div class="mod">
+          <h3>Only show radio shows about:</h3>
+          <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
+          <ul class="simple-list block-link-list">
+              <li><a href="/issues?topic=1" class=""><span>Education</span> <em>2</em></a></li>
+              <li><a href="/issues?topic=2" class=""><span>Environment</span> <em>1</em></a></li>
+              <li><a href="/issues?topic=4" class=""><span>Economy</span> <em>9</em></a></li>
+              <li><a href="/issues?topic=5" class=""><span>Crime &amp; Safety</span> <em>4</em></a></li>
+              <li><a href="/issues?topic=6" class=""><span>Community</span> <em>6</em></a></li>
+              <li><a href="/issues?topic=7" class=""><span>Government</span> <em>9</em></a></li>
+          </ul>
         </div>
-
-        <div class="mod" id="FacebookActivityModule">
-          <%= render :partial => 'shared/facebook_activity_widget' %>
-        </div>
-
-        <div>&nbsp;</div>
-        <style type='text/css'>a.soundcloud-badge:hover {background-position: bottom left !important;} *html a.soundcloud-badge {background-image: none !important; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='(http://a1.sndcdn.com/images/badges/imonsc/square/white.png?0ce1d7f)', sizingMethod='crop') !important;}</style><!-- if you want to have valid HTML, please be so kind and put the style part in the head of your page --><a href='http://soundcloud.com/theciviccommons' style='text-align: left; display: block; margin: 0 auto; width: 160px; height: 92px; font-size: 11px; padding: 68px 0 0 0; background: transparent url(http://a1.sndcdn.com/images/badges/imonsc/square/white.png?0ce1d7f) top left no-repeat; color: #2681C5; text-decoration: none; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; line-height: 1.3em; text-align: center; outline: 0;' class='soundcloud-badge'>http://soundcloud.com<span style="display: block; width: 137px; height: 20px; margin: 0px 0 0 12px; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis">The Civic Commons</span></a>
-
+        <% blog_posts = ContentItem.where(content_type: 'BlogPost').order('published DESC').limit(3) %>
+        <%= render partial: 'blog/recent_blog_posts_sidebar', locals: { blog_posts: blog_posts } %>        
       </div>
-
     </div>
   </div>
 <% end %>

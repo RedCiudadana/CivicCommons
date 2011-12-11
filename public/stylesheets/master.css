@@ -814,10 +814,13 @@ text-decoration: none;
 .t-img.med img { width: 220px; height: 145px; }
 .t-img.lrg img { width: 300px; height: 200px; }
 
-/*- ISSUE STYLES
+/*- ENTRY STYLES
+    Adding the class of entry to the these containers to eventually
+    replace 'issue' and 'project' specific containers. Need to
+    modularize.
 ----------------------------------------------------------------------*/
 
-.issue-container, .project-container {
+.entry-container {
 margin-bottom: 25px;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
@@ -828,7 +831,7 @@ border-radius: 4px;
 -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
-.issue-details, .project-details {
+.entry-details {
 background: #fff;
 border: 1px solid #ccc;
 overflow: hidden;
@@ -838,21 +841,27 @@ padding: 15px 15px 10px;
 -o-border-radius: 4px 4px 0 0;
 border-radius: 4px 4px 0 0;
 }
-.issue-details h4, .project-details h4{
+.entry-details.rounded {
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+}
+.entry-details h4 {
 font-size: 1.8em;
 font-weight: normal;
 margin-bottom: .2em;
 }
-.issue-tags {
+.entry-tags {
 color: #999;
 font-size: .95em;
 font-weight: bold;
 text-transform: uppercase;
 }
-.issue-details .issue-tags a {color: #999;}
-.issue-details .issue-tags a:hover {color: #2c87b7;}
-.issue-details h4, .issue-details p, .project-details h4, .project-details p {padding-left: 210px;}
-.issue-details img, .project-details img {
+.entry-tags a {color: #999;}
+.entry-tags a:hover {color: #2c87b7;}
+.entry-details h4, .entry-details p {padding-left: 210px;}
+.entry-details img {
 float: left;
 margin-bottom: 10px;
 -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -860,7 +869,7 @@ margin-bottom: 10px;
 -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
-.issue-meta, .project-meta {
+.entry-meta {
 background: #e6e6e6;
 border: 1px solid #ccc;
 border-top: none;
@@ -872,7 +881,7 @@ text-align: right;
 -o-border-radius: 0 0 4px 4px;
 border-radius: 0 0 4px 4px;
 }
-.issue-meta p, .project-meta p {
+.entry-meta p {
 color: #666;
 float: right;
 font-weight: bold;
@@ -880,18 +889,19 @@ margin-left: 20px;
 text-shadow: 0 1px 1px rgba(255,255,255,.9);
 text-transform: uppercase;
 }
-.issue-contrib, .project-contrib {
+.entry-contrib {
 background: url(/images/people-i.png) no-repeat 0 2px;
 padding: 2px 0 2px 31px;
 }
-.issue-conv, .project-conv {
+.entry-conv {
 background: url(/images/conv-i.png) no-repeat 0 2px;
 padding: 2px 0 2px 24px;
 }
-.issue-res {
+.entry-res {
 background: url(/images/doc-i.png) no-repeat 0 2px;
 padding: 2px 0 2px 21px;
 }
+
 
 /*- PAGINATION STYLES
 ----------------------------------------------------------------------*/
@@ -2510,7 +2520,8 @@ padding: 0 10px;
 div.blog {margin-bottom: 20px;}
 div.blog img.callout {float: left; width: 32px; height: 32px; padding-right: 5px;}
 .blog_inner, .post_info {padding-left: 40px;}
-.blog_inner a, .post_info a {color: #0099FF;}
+.blog_inner a, .post_info a {color: #2C87B7;}
+.blog_inner a:hover, .post_info a:hover {color: #0099FF;}
 .post_info {padding-top: 20px;}
 .region-filter select {
 border: 1px solid #CCC;

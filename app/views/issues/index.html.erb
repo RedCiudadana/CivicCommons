@@ -7,21 +7,21 @@
     <div class="main-content">
       <% svc = ParticipationService.new %>
       <% @issues.each do |issue| %>
-        <div class="issue-container">
-          <div class="issue-details" <%=issue.container_attribute%>>
+        <div class="entry-container">
+          <div class="entry-details" <%=issue.container_attribute%>>
             <%= image_tag issue.image.url(:panel) %>
             <h4><%= link_to issue.name, issue_path(issue) %></h4>
 
-            <p class="issue-tags">
+            <p class="entry-tags">
               <%= pluralize_without_count issue.topics.size, "Topic" %>:
               <%= raw(topics_list_for issue) %>
             </p>
             <p><%= raw(truncate(issue.index_summary, length: 255)) %></p>
           </div>
-          <div class="issue-meta">
-            <p class="issue-res"><%= pluralize(issue.contributions.size, "Resource") %></p>
-            <p class="issue-contrib"><%= pluralize(svc.participants_by_issue(issue.id), "Participant") %></p>
-            <p class="issue-conv"><%= pluralize(svc.conversations_by_issue(issue.id), "Conversation") %></p>
+          <div class="entry-meta">
+            <p class="entry-res"><%= pluralize(issue.contributions.size, "Resource") %></p>
+            <p class="entry-contrib"><%= pluralize(svc.participants_by_issue(issue.id), "Participant") %></p>
+            <p class="entry-conv"><%= pluralize(svc.conversations_by_issue(issue.id), "Conversation") %></p>
           </div>
         </div>
       <% end %>

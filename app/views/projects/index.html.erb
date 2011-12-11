@@ -4,15 +4,15 @@
     <div class="main-content">
       <% svc = ParticipationService.new %>
       <% @projects.each do |project| %>
-        <div class="project-container">
-          <div class="project-details">
+        <div class="entry-container">
+          <div class="entry-details">
             <%= image_tag project.image.url(:panel) %>
             <h4><%= link_to project.name, issue_path(project) %></h4>
             <p><%= raw(truncate(project.index_summary, length: 255)) %></p>
           </div>
-          <div class="project-meta">
-            <p class="project-contrib"><%= pluralize(svc.participants_by_issue(project.id), "Participant") %></p>
-            <p class="project-conv"><%= pluralize(svc.conversations_by_issue(project.id), "Conversation") %></p>
+          <div class="entry-meta">
+            <p class="entry-contrib"><%= pluralize(svc.participants_by_issue(project.id), "Participant") %></p>
+            <p class="entry-conv"><%= pluralize(svc.conversations_by_issue(project.id), "Conversation") %></p>
           </div>
         </div>
       <% end %>
