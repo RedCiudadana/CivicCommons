@@ -11,10 +11,12 @@
           <p class="subtitle">Topic: Entrepreneurship</p>
         </div>
       </div>
+    </div>
+    <div class="content-container">
       <div class="main-content">
         <p><%= raw @radioshow.body %></p>
         <div class="radioshow" id="outer_block_1"> 
-          <div class='radioshow_inner'> 
+          <div class="radioshow_inner"> 
             <p class="convo-meta"><%= render :partial => 'shared/facebook_like' %></p>
             <p class="convo-meta"><%= render :partial => 'shared/twitter_share', locals: { title: @radioshow.title} %></p>
             <h4>Aired on <%= @radioshow.published.strftime('%B %d, %Y') %></h4>
@@ -40,7 +42,15 @@
           </div>
         <% end %>
       </div>
-      <div class="aside supplementary">
+      <div class="aside">
+        
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="main-content">
+        
+      </div>
+      <div class="aside">
         
       </div>
     </div>

@@ -78,7 +78,7 @@ font-weight:bold;
 margin-bottom:0.5em;
 font-size:1.2em;
 }
-dl dd {margin-bottom:1em;}
+dl dd {margin-bottom: 1em;}
 h1, h2, h3, h4, h5, h6 {font-weight: bold;}
 h1 {
 color: #555;
@@ -212,11 +212,11 @@ padding: 5px;
 width: 448px;
 }
 .form-no-label {
-  display: block;
-  float: left;
-  height: 20;
-  margin-left: 160px;
-  outline: none;
+display: block;
+float: left;
+height: 20;
+margin-left: 160px;
+outline: none;
 }
 input.textbox#contribution_url {width: 80% !important;}
 input[type="file"] {border: none;}
