@@ -14,8 +14,8 @@
     </div>
     <div class="content-container">
       <div class="main-content">
-        <p><%= raw @radioshow.body %></p>
-        <div class="radioshow" id="outer_block_1"> 
+        <%= raw @radioshow.body %>
+        <div class="radioshow mod" id="outer_block_1"> 
           <div class="radioshow_inner"> 
             <p class="convo-meta"><%= render :partial => 'shared/facebook_like' %></p>
             <p class="convo-meta"><%= render :partial => 'shared/twitter_share', locals: { title: @radioshow.title} %></p>
@@ -27,31 +27,91 @@
             <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>.
           </p>
         </div>
-        <% if @radioshow.conversation %>
-          <h2>Join the conversation about this radioshow</h2>
-          <div class="three-col-sm">
-            <%= render :partial => 'conversations/conversation_band', locals: { conversations: [@radioshow.conversation] } %>
-          </div>
-        <% elsif current_person %>
-          <h2>Start a conversation about this radio show</h2>
-          <%= render partial: 'conversations/short_form', locals: { url: start_conversation_from_radioshow_path(@radioshow) } %>
-        <% else %>
-          <div class="convo-create">
-            <p>It's your <strong>Civic Commons</strong>, so you get to start a conversation about <em><%= @radioshow.title %></em></p>
-            <%= link_to "Start a Conversation from this Radio Show", start_conversation_from_radioshow_path(@radioshow), :class => 'convo-create-btn', 'data-remote' => true, 'data-method' => :post %>
-          </div>
-        <% end %>
       </div>
       <div class="aside">
-        
+        <div class="mod">
+          <p><strong>Hosted by:</strong> <a href="#">Dan Moulthrop</a> and <a href="#">Noelle Celeste</a></p>
+          <p><strong>Special Guest:</strong> <a href="#">Rick Perry</a></p>
+        </div>
+        <div class="mod">
+          <h3>The Civic Commons Radio Show:</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a href="http://itunes.apple.com/us/podcast/the-civic-commons-podcast/id436134274" class="button"><span class="itunes">iTunes</span></a> <a href="#" class="button"><span class="rss">RSS</span></a> <a href="http://stitcher.com" class="button"><span class="stitcher">Sticher</span></a>
+        </div>
       </div>
     </div>
     <div class="content-container">
       <div class="main-content">
+        <div class="mod">
+          <h3>Respond to the show</h3>
+          <% if @radioshow.conversation %>
+            <h2>Join the conversation about this radioshow</h2>
+          <% elsif current_person %>
+            <h2>Start a conversation about this radio show</h2>
+            <%= render partial: 'conversations/short_form', locals: { url: start_conversation_from_radioshow_path(@radioshow) } %>
+          <% else %>
+            <div class="convo-create">
+              <p>It's your <strong>Civic Commons</strong>, so you get to start a conversation about <em><%= @radioshow.title %></em></p>
+              <%= link_to "Start a Conversation from this Radio Show", start_conversation_from_radioshow_path(@radioshow), :class => 'convo-create-btn', 'data-remote' => true, 'data-method' => :post %>
+            </div>
+          <% end %>
         
+          <!-- TODO: Remove this static content, only here as a placeholder -->
+        
+          <div class="three-col-sm">
+            <div class="cols call-out">
+              <a href="/conversations/neo-adaptive-para-community-economic-cluster-studied-by-georgetown-university-students--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/346/panel/Georgetown.jpeg" alt="NEO &quot;Adaptive Para Community&quot; Economic Cluster Studied by Georgetown University Students" width="180" height="120">
+                <h4>NEO "Adaptive Para Community" Economic...</h4>
+                <p>Learn more about how students at the Georgetown University School of Continuing Studies (SCS) are helping northeast Ohio...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/kelly-holdcraft" title="Kelly Holdcraft"><img alt="Kelly Holdcraft" class="callout" height="40" src="https://graph.facebook.com/1042788407/picture" title="Kelly Holdcraft" width="40"></a>
+                  <a href="http://localhost:3000/user/stuart-w-cordell" title="Stuart W. Cordell"><img alt="Stuart W. Cordell" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/669/standard/GRC12205-Cordell, Stuart W5x7.jpg?1299853289" title="Stuart W. Cordell" width="40"></a>
+              </div>
+            </div>
+            <div class="cols call-out">
+              <a href="/conversations/the-urban-suburban-divide-and-what-we-can-do-about-it--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/345/panel/photo.JPG" alt="The urban-suburban divide and what we can do about it" width="180" height="120">
+                <h4>The urban-suburban divide and what we can...</h4>
+                <p>The Community Development and Urban Renewal course at the Hawken School is grappling with this question: What, exactly, is...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="40"></a>
+                  <a href="http://localhost:3000/user/maddy-pesec" title="Maddy Pesec"><img alt="Maddy Pesec" class="callout" height="40" src="https://graph.facebook.com/1479012580/picture" title="Maddy Pesec" width="40"></a>
+                  <a href="http://localhost:3000/user/kathleen-graham" title="Kathleen Graham"><img alt="Kathleen Graham" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/1812/standard/IMG_0461.JPG?1322508707" title="Kathleen Graham" width="40"></a>
+                  <a href="http://localhost:3000/user/chelsea-bonner" title="Chelsea Bonner"><img alt="Chelsea Bonner" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/1818/standard/Bday1.jpg?1322519014" title="Chelsea Bonner" width="40"></a>
+              </div>
+            </div>
+            <div class="cols call-out">
+              <a href="/conversations/on-equal-terms--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/344/panel/On Equal Terms 2 .jpeg" alt="On Equal Terms" width="180" height="120">
+                <h4>On Equal Terms</h4>
+                <p>Generate discussion and interest in an art exhibit by Susan Eisenberg, one of the first women to achieve journey level...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/terri-burgess-sandu" title="Terri Burgess Sandu"><img alt="Terri Burgess Sandu" class="callout" height="40" src="/images/avatar_70.gif?1303596124" title="Terri Burgess Sandu" width="40"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="aside">
-        
+        <h3>Show Links</h3>
+        <div class="recent-item">
+          <h4>Title of Page Being Linked To</h4>
+          <div class="bd">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc.</p>
+          </div>
+        </div>
+        <div class="recent-item">
+          <h4>Title of Page Being Linked To</h4>
+          <div class="bd">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc.</p>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   </div>
