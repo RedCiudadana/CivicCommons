@@ -4,16 +4,12 @@
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
-      <div class="media">
-        <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198, :class => 'img' %>
-        <div class="bd">
-          <h1><%= @radioshow.title %></h1>
-          <p class="subtitle">Topic: Entrepreneurship</p>
-        </div>
-      </div>
+      <h1><%= @radioshow.title %></h1>
+      <p class="subtitle">Topic: Entrepreneurship</p>
     </div>
     <div class="content-container">
       <div class="main-content">
+        <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198, :class => 'float' %>
         <%= raw @radioshow.body %>
         <div class="radioshow mod" id="outer_block_1"> 
           <div class="radioshow_inner"> 

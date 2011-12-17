@@ -897,6 +897,7 @@ margin-bottom: 10px;
 -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+.entry-details.full h4, .entry-details.full p {padding-left: 0;}
 .entry-meta {
 background: #e6e6e6;
 border: 1px solid #ccc;
@@ -2199,9 +2200,6 @@ padding-top: 5px;
 line-height:1.4em;
 }
 .recent-item .posted a {color: #2c87b7;}
-.recent-item a {text-decoration: none;}
-.recent-item strong a {text-decoration: underline;}
-.recent-item a:hover {text-decoration: underline;}
 .recent-item .offset-2, .recent-item .bd {
 background: #fff;
 border: 1px solid #e3e3e3;
