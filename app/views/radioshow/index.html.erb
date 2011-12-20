@@ -17,7 +17,7 @@
               <div>
                 <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198, :class => 'float' %>
                 <%= raw radioshow.summary %>
-                <p><%= link_to "Listen to the podcast...", radioshow_path(radioshow), html: { title: radioshow.title } %></p> 
+                <p><%= link_to "Listen to the podcast...", radioshow_path(radioshow), html: { title: radioshow.title } %></p>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
           </ul>
         </div>
         <% blog_posts = ContentItem.where(content_type: 'BlogPost').order('published DESC').limit(3) %>
-        <%= render partial: 'blog/recent_blog_posts_sidebar', locals: { blog_posts: blog_posts } %>        
+        <%= render partial: 'blog/recent_blog_posts_sidebar', locals: { blog_posts: blog_posts } %>
       </div>
     </div>
   </div>

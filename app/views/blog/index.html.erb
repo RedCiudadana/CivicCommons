@@ -5,22 +5,32 @@
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
-      <h1>Common Blog</h1>
-
+      <h1>The Civic Commons Blog</h1>
+      <div class="feature-group">
+        <img src="http://placehold.it/300x193" class="float featured main-img" />
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis. Pellentesque vestibulum dapibus est. Morbi iaculis. Morbi molestie molestie libero.</p>
+          <a href="#" class="button"><span class="rss">RSS</span></a>
+      </div>
+    </div>
+    <div class="content-container">
       <div class="main-content">
 
         <%- @blog_posts.each do |blog_post| %>
 
-          <div class="blog" id="outer_block_1"> 
-            <h2><%= link_to blog_post.title, blog_path(blog_post) %></h2> 
-            <p><%= user_profile(blog_post.author) %><%= link_to blog_post.author.name, user_path(blog_post.author) %></p>
-            <div class='blog_inner'> 
-              <%= raw blog_post.summary %>
-              <p><%= link_to "Read more...", blog_path(blog_post), :title => blog_post.title %></p>
-              <p>Posted by <%= link_to blog_post.author.name, user_path(blog_post.author) %> on <%= format_publish_date(blog_post) %></p> 
+          <div class="entry-container">
+            <div class="entry-details full rounded">
+              <div class="media">
+                <span class="img"><%= user_profile(blog_post.author) %></span>
+                <div class="bd">
+                  <h4><%= link_to blog_post.title, blog_path(blog_post) %></h4>
+                  <p class="entry-tags"><%= format_publish_date(blog_post) %>, Topic: Transportation</p>
+                  <p><strong>By: <%= link_to blog_post.author.name, user_path(blog_post.author) %></strong></p>
+                  <%= raw blog_post.summary %>
+                  <p><%= link_to "Continue reading...", blog_path(blog_post), :title => blog_post.title %></p>
+                </div>
+              </div>
             </div>
           </div>
-          <p>&nbsp;</p>
 
         <%- end %>
         <%= will_paginate @blog_posts, :inner_window => 3, :previous_label => "Previous", :next_label => "Next" %>
@@ -29,15 +39,30 @@
 
       <div class="aside supplementary">
         <%= render :partial => '/search/search', locals: { filter_type: 'blogs' } %>
-
-        <div class="mod" id="TwitterProfileModule">
-          <%= render :partial => 'shared/twitter_profile_widget' %>
+        <div class="mod">
+          <h3>Only show blog posts about:</h3>
+          <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
+          <ul class="simple-list block-link-list">
+              <li><a href="/issues?topic=1" class=""><span>Education</span> <em>2</em></a></li>
+              <li><a href="/issues?topic=2" class=""><span>Environment</span> <em>1</em></a></li>
+              <li><a href="/issues?topic=4" class=""><span>Economy</span> <em>9</em></a></li>
+              <li><a href="/issues?topic=5" class=""><span>Crime &amp; Safety</span> <em>4</em></a></li>
+              <li><a href="/issues?topic=6" class=""><span>Community</span> <em>6</em></a></li>
+              <li><a href="/issues?topic=7" class=""><span>Government</span> <em>9</em></a></li>
+          </ul>
         </div>
-
-        <div class="mod" id="FacebookActivityModule">
-          <%= render :partial => 'shared/facebook_activity_widget' %>
+        <div class="mod">
+          <h3>Filter posts by author:</h3>
+          <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
+          <ul class="simple-list block-link-list">
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+          </ul>
         </div>
-
       </div>
 
     </div>
