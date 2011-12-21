@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Civic Commons</title>
+      <meta name="title" content="The Civic Commons" />
+      <meta name="description" content="The Civic Commons is a new way to bring communities together with conversation and emerging technology. We’re focused on building conversations and connections that have the power to become informed, productive collective civic action." />
+        <link rel="image_src" href="/images/cc_podcast_small.jpg" />
+      <meta name="medium" content="blog" />
+      <meta name="medium" content="blog" />
+    <script src="/javascripts/vendor/jquery/jquery-1.4.4.min.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery-ui-1.8.16.custom.min.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery-ui-timepicker-addon-0.5.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/placeholder-1.0.1.min.js?1303596125" type="text/javascript"></script>
+    <script src="/javascripts/vendor/modernizr-1.5.min.js?1303596125" type="text/javascript"></script>
+    <script src="/javascripts/vendor/underscore.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/vendor/backbone-0.5.3.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/jquery_ujs.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.colorbox-min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.form.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.remotipart.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.loadmask.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.hashchange.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.easytabs.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/lib/authentication.js?1313540911" type="text/javascript"></script>
+    <script src="/javascripts/lib/conversations/rating_button.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/lib/master.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/lib/chosen_issues.js?1303596125" type="text/javascript"></script>
+    <script src="/javascripts/lib/jquery-plugins/mask-me.js?1317525737" type="text/javascript"></script>
+    <!--[if gte IE 7]><!-->
+    <link href="/stylesheets/reset.css?1303596137" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/master.css?1317525737" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/ie.css?1317525737" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/ui-lightness/jquery-ui-1.8.16.custom.css?1317525718" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/jquery.loadmask.css?1303596137" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/colorbox.css?1313540911" media="screen, projection" rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <script type='text/javascript'>
+      //<![CDATA[
+        $(document).ready(function(){
+        
+          $("input.datetime").datetimepicker({
+            ampm: true,
+            stepMinute: 15
+          });
+        
+          
+        
+        });
+        
+        /* Google Analytics */
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19685339-1']);
+        _gaq.push(['_setDomainName', '.theciviccommons.com']);
+        _gaq.push(['_trackPageview']);
+        
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+    
+    <link href="http://feeds.theciviccommons.com/civiccommons_new_conversations" rel="alternate" title="The Civic Commons: Conversations" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsblog" rel="alternate" title="The Civic Commons: Common Blog" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsradio" rel="alternate" title="The Civic Commons Radio Show" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsnews" rel="alternate" title="The Civic Commons In The News" type="application/rss+xml" />
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token" content="GLjeV6f0fZDyeZjS82efM0HXC11PLyqhm97kDg9PFX0="/>
+  </head>
+  <body>
+    <!--[if lte IE 6]>
+      <div class="global-warning">You are using a browser which isn't supported.  Try using <a href="http://www.firefox.com">Firefox</a>, <a href="http://www.apple.com/safari">Safari</a> or <a href="http://www.google.com/chrome">Chrome</a>.</div>
+    <![endif]-->
+    <div id='header-wrapper'>
+      <div id='header'>
+        <a href="http://localhost:3000/" id="logo" title="The Civic Commons">The Civic Commons</a>
+        <ul id='main-nav'>
+          <li class='conversations'>
+            <a href="/conversations" title="Explore Conversations"><span>Explore </span> Conversations</a>
+          </li>
+          <li class='issues'>
+            <a href="/issues" title="Find an Issue"><span>Find an </span> Issue</a>
+          </li>
+          <li class='community'>
+            <a href="/community" title="Meet the Community"><span>Meet the </span>Community</a>
+          </li>
+          <li class='commons'>
+            <a href="/build_the_commons" title="Build the Commons"><span>Build the </span>Commons</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="content-container">
+        <div class="media mod">
+          <a href="#"><img alt="Dan Moulthrop" class="img frame" height="70" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="70" /></a>
+          <div class="bd">
+            <h1>Blog Posts by Dan Moulthrop</h1>
+            <p>I'm Curator of Conversation here at the Civic Commons and one of the co-founders, as well. From 2005 to 2010, I was a program host for ideastream (90.3 WCPN and WVIZ-PBS). I am co-author (with Dave Eggers and Ninive Calegari) of "Teachers Have it Easy: The Big Sacrifices and Small Salaries of America's Teachers." (The New Press, 2005). Once upon a time, I taught high school English in California. My wife and I have three children, and we live in Shaker Heights, Ohio.</p>
+            <strong><a href="#">View Dan's Profile</a></strong>
+          </div>
+        </div>
+      </div>
+      <div class="content-container">
+        <div class="main-content">
+          <div class="entry-container">
+            <div class="entry-details full rounded">
+              <div class="media">
+                <span class="img"><a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="40"></a></span>
+                <div class="bd">
+                  <h4><a href="/blog/wait-so-who-exactly-are-the-job-creators">Wait, so who exactly are the job creators? </a></h4>
+                  <p class="entry-tags">Monday, December 12, 2011, Topic: Transportation</p>
+                  <p><strong>By: <a href="/user/dan-moulthrop">Dan Moulthrop</a></strong></p>
+                  <p>Blame it on Guy Raz. I had planned on another look-back installment, but ever since I heard a piece he did Saturday night on All Things Considered, I haven't been able to stop thinking about the current debate over taxation--you know, the one that has been framed as class warfare and an impingement on job creation. This is one of those beautiful, George Lakoff moments, where the frame has become more important that the issue. Though what's truly great about what's happening right now is that the coverage seems to be catching up to the frame and totally undermining it.&nbsp;</p>
+                  <p><a href="/blog/wait-so-who-exactly-are-the-job-creators" title="Wait, so who exactly are the job creators? ">Continue reading...</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="entry-container">
+            <div class="entry-details full rounded">
+              <div class="media">
+                <span class="img"><a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="40"></a></span>
+                <div class="bd">
+                  <h4><a href="/blog/wait-so-who-exactly-are-the-job-creators">Wait, so who exactly are the job creators? </a></h4>
+                  <p class="entry-tags">Monday, December 12, 2011, Topic: Transportation</p>
+                  <p><strong>By: <a href="/user/dan-moulthrop">Dan Moulthrop</a></strong></p>
+                  <p>Blame it on Guy Raz. I had planned on another look-back installment, but ever since I heard a piece he did Saturday night on All Things Considered, I haven't been able to stop thinking about the current debate over taxation--you know, the one that has been framed as class warfare and an impingement on job creation. This is one of those beautiful, George Lakoff moments, where the frame has become more important that the issue. Though what's truly great about what's happening right now is that the coverage seems to be catching up to the frame and totally undermining it.&nbsp;</p>
+                  <p><a href="/blog/wait-so-who-exactly-are-the-job-creators" title="Wait, so who exactly are the job creators? ">Continue reading...</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="entry-container">
+            <div class="entry-details full rounded">
+              <div class="media">
+                <span class="img"><a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="40"></a></span>
+                <div class="bd">
+                  <h4><a href="/blog/wait-so-who-exactly-are-the-job-creators">Wait, so who exactly are the job creators? </a></h4>
+                  <p class="entry-tags">Monday, December 12, 2011, Topic: Transportation</p>
+                  <p><strong>By: <a href="/user/dan-moulthrop">Dan Moulthrop</a></strong></p>
+                  <p>Blame it on Guy Raz. I had planned on another look-back installment, but ever since I heard a piece he did Saturday night on All Things Considered, I haven't been able to stop thinking about the current debate over taxation--you know, the one that has been framed as class warfare and an impingement on job creation. This is one of those beautiful, George Lakoff moments, where the frame has become more important that the issue. Though what's truly great about what's happening right now is that the coverage seems to be catching up to the frame and totally undermining it.&nbsp;</p>
+                  <p><a href="/blog/wait-so-who-exactly-are-the-job-creators" title="Wait, so who exactly are the job creators? ">Continue reading...</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.main-content -->
+        <div class="aside">
+          <div id="search" class="">
+            <form accept-charset="UTF-8" action="/search/results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+              <input class="textbox" id="q" name="q" placeholder="What are you looking for?" type="text">
+              <input id="filter" name="filter" type="hidden" value="blogs">
+              <input class="submit" id="Search" type="submit" value="Search">
+            </form>
+          </div>
+          <div class="mod">
+            <h3>Only show blog posts about:</h3>
+            <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
+            <ul class="simple-list block-link-list">
+                <li><a href="/issues?topic=1" class=""><span>Education</span> <em>2</em></a></li>
+                <li><a href="/issues?topic=2" class=""><span>Environment</span> <em>1</em></a></li>
+                <li><a href="/issues?topic=4" class=""><span>Economy</span> <em>9</em></a></li>
+                <li><a href="/issues?topic=5" class=""><span>Crime &amp; Safety</span> <em>4</em></a></li>
+                <li><a href="/issues?topic=6" class=""><span>Community</span> <em>6</em></a></li>
+                <li><a href="/issues?topic=7" class=""><span>Government</span> <em>9</em></a></li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h3>Filter posts by author:</h3>
+            <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
+            <ul class="site-filter full">
+              <li><a href="#" class="active"><img src="http://placehold.it/16x16" class="mem-img" /><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Josh Walsh</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Robin Byers</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Winston Tsang</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Jonathan Knapp</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Lisa Canter</span></a></li>
+            </ul>
+            <a href="" class="remove-filter" title="Remove this filter">Remove Filter</a>
+          </div>
+        </div><!-- /.aside -->
+      </div><!-- /.content-container -->
+    </div><!-- /.wrapper -->
+    <div class='footer' id='footer'>
+      <div id='footer-inner'>
+        <div class='four-col'>
+          <div class='cols'>
+            <h3>About the Commons</h3>
+            <ul class='sub-nav'>
+              <li>
+                <a href="http://localhost:3000/about">About Us</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/team">Team</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/principles">Mission &amp; Principles</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/faq">FAQ</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/jobs">Careers</a>
+              </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>Keep Up with the Commons</h3>
+            <ul class='sub-nav'>
+              <li>
+                <a href="http://localhost:3000/blog">Blog</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/press">In The News</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/radioshow">Radio Show</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/feeds">RSS Feeds</a>
+              </li>
+              <li>
+                <a href="http://status.theciviccommons.com/">Server Status</a>
+              </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>Work with the Commons</h3>
+            <ul class='sub-nav'>
+              <li>
+                <a href="http://getsatisfaction.com/theciviccommons">Help and Support</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/contact_us">Contact Us</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/partners">Partners</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/terms">Terms of Use</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/privacy">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>The Civic Commons Elsewhere</h3>
+            <ul class='social-media'>
+              <li>
+                <a href='http://www.facebook.com/pages/Civic-Commons/143930632284131' id='facebook'>Facebook</a>
+              </li>
+              <li>
+                <a href='http://twitter.com/civiccommons' id='twitter'>Twitter</a>
+              </li>
+              <li>
+                <a href='http://www.youtube.com/user/neociviccommons' id='youtube'>YouTube</a>
+              </li>
+              <li>
+                <a href='http://localhost:3000/feeds' id='rss'>RSS</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="cc-footer">
+        	<p>
+        	<img alt="Cc_by-nc-sa" src="/images/cc_by-nc-sa.png?1303596124" style="float: left; margin-right: 10px;" />
+        	Conversation text and related responses copyright &copy; The Civic Commons and are available under the
+        	<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>;
+        	additional terms may apply.
+        	</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";  
+  feedback_widget_options.company = "theciviccommons";
+  feedback_widget_options.placement = "left";
+  feedback_widget_options.color = "#51778E";
+  feedback_widget_options.style = "question";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>

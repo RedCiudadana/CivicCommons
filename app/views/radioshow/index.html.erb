@@ -17,11 +17,10 @@
               <div>
                 <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :height => 130, :width => 198, :class => 'float' %>
                 <%= raw radioshow.summary %>
-                <p><%= link_to "Listen to the podcast...", radioshow_path(radioshow), html: { title: radioshow.title } %></p>
+                <p><%= link_to 'Listen to the podcast...', radioshow_path(radioshow), html: { title: radioshow.title } %></p>
               </div>
             </div>
           </div>
-          <p>&nbsp;</p>
         <%- end %>
         <%= will_paginate @radioshows, :inner_window => 3, :previous_label => "Previous", :next_label => "Next" %>
       </div>

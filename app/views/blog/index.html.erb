@@ -6,10 +6,12 @@
   <div class="wrapper">
     <div class="content-container">
       <h1>The Civic Commons Blog</h1>
-      <div class="feature-group">
-        <img src="http://placehold.it/300x193" class="float featured main-img" />
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis. Pellentesque vestibulum dapibus est. Morbi iaculis. Morbi molestie molestie libero.</p>
+      <div class="media mod">
+        <img src="http://placehold.it/300x193" class="img" />
+        <div class="bd">
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis. Pellentesque vestibulum dapibus est. Morbi iaculis. Morbi molestie molestie libero.</p>
           <a href="#" class="button"><span class="rss">RSS</span></a>
+        </div>
       </div>
     </div>
     <div class="content-container">
@@ -37,7 +39,7 @@
 
       </div>
 
-      <div class="aside supplementary">
+      <div class="aside">
         <%= render :partial => '/search/search', locals: { filter_type: 'blogs' } %>
         <div class="mod">
           <h3>Only show blog posts about:</h3>
@@ -54,14 +56,15 @@
         <div class="mod">
           <h3>Filter posts by author:</h3>
           <!-- TODO: This will need to be replaced with the actual filters for the radio shows -->
-          <ul class="simple-list block-link-list">
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
-              <li><a href="#" class=""><span>Dan Moulthrop</span></a></li>
+          <ul class="site-filter full">
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Dan Moulthrop</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Josh Walsh</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Robin Byers</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Winston Tsang</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Jonathan Knapp</span></a></li>
+              <li><a href="#" class=""><img src="http://placehold.it/16x16" class="mem-img" /><span>Lisa Canter</span></a></li>
           </ul>
+          <a href="" class="remove-filter" title="Remove this filter">Remove Filter</a>
         </div>
       </div>
 
