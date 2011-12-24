@@ -5,30 +5,23 @@
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
-      <h1><%= link_to 'Common Blog', blog_index_path %></h1>
-
+      <h1><%= @blog_post.title %></h1>
+      <p class="subtitle mbn">Topic: Transportation</p>
+      <p><strong>By: <%= link_to @blog_post.author.name, user_path(@blog_post.author) %> on <%= format_publish_date(@blog_post) %></strong></p>
+    </div>
+    <div class="content-container">
       <div class="main-content">
-
-        <div class="blog" id="outer_block_1"> 
-          <h2><%= @blog_post.title %></h2>
-          <h3><%= link_to @blog_post.author.name, user_path(@blog_post.author) %><%= user_profile(@blog_post.author) %></h3>
-          <div class='blog_inner'> 
-            <p class="convo-meta"><%= render :partial => 'shared/facebook_like' %></p>
-            <p class="convo-meta"><%= render :partial => 'shared/twitter_share', locals: { title: @blog_post.title} %></p>
-            <div class="body"><%= raw @blog_post.body %></div>
-            <p>&nbsp;</p>
-            <h4>Posted by <%= link_to @blog_post.author.name, user_path(@blog_post.author) %> on <%= format_publish_date(@blog_post) %></h4>
-            <% unless @blog_post.embed_code.blank? %>
-              <p>&nbsp;</p>
-              <p style="text-align: center"><%= raw @blog_post.embed_code %></p>
-            <% end %>
-            <p style="font-style:italic; margin-top:20px;">
-              Copyright &copy; <%= @blog_post.published.strftime('%Y') %> <%= @blog_post.author.name %>; available under the
-              <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>.
-	        </p>
-          </div>
+        <div class="mod">
+          <%= raw @blog_post.body %>
+          <p class="convo-meta"><%= render :partial => 'shared/facebook_like' %></p>
+          <p class="convo-meta"><%= render :partial => 'shared/twitter_share', locals: { title: @blog_post.title} %></p>
+          <% unless @blog_post.embed_code.blank? %>
+            <p><%= raw @blog_post.embed_code %></p>
+          <% end %>
+          <p>Copyright &copy; <%= @blog_post.published.strftime('%Y') %> <%= @blog_post.author.name %>; available under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>.</p>
         </div>
-
+        <h3>Related to the post:</h3>
+          
         <% if @blog_post.conversation %>
           <h2>Join the conversation about this blog post</h2>
           <%= render :partial => 'conversations/conversation_band', locals: { conversations: [@blog_post.conversation] } %>
@@ -41,27 +34,63 @@
             <%= link_to "Start a Conversation from this Blog Post", start_conversation_from_blog_post_path(@blog_post), :class => 'convo-create-btn', 'data-remote' => true, 'data-method' => :post %>
           </div>
         <% end %>
-
+        
+          <!-- TODO: Remove this static content, only here as a placeholder -->
+        
+          <div class="three-col-sm">
+            <div class="cols call-out">
+              <a href="/conversations/neo-adaptive-para-community-economic-cluster-studied-by-georgetown-university-students--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/346/panel/Georgetown.jpeg" alt="NEO &quot;Adaptive Para Community&quot; Economic Cluster Studied by Georgetown University Students" width="180" height="120">
+                <h4>NEO "Adaptive Para Community" Economic...</h4>
+                <p>Learn more about how students at the Georgetown University School of Continuing Studies (SCS) are helping northeast Ohio...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/kelly-holdcraft" title="Kelly Holdcraft"><img alt="Kelly Holdcraft" class="callout" height="40" src="https://graph.facebook.com/1042788407/picture" title="Kelly Holdcraft" width="40"></a>
+                  <a href="http://localhost:3000/user/stuart-w-cordell" title="Stuart W. Cordell"><img alt="Stuart W. Cordell" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/669/standard/GRC12205-Cordell, Stuart W5x7.jpg?1299853289" title="Stuart W. Cordell" width="40"></a>
+              </div>
+            </div>
+            <div class="cols call-out">
+              <a href="/conversations/the-urban-suburban-divide-and-what-we-can-do-about-it--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/345/panel/photo.JPG" alt="The urban-suburban divide and what we can do about it" width="180" height="120">
+                <h4>The urban-suburban divide and what we can...</h4>
+                <p>The Community Development and Urban Renewal course at the Hawken School is grappling with this question: What, exactly, is...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="https://graph.facebook.com/1060895638/picture" title="Dan Moulthrop" width="40"></a>
+                  <a href="http://localhost:3000/user/maddy-pesec" title="Maddy Pesec"><img alt="Maddy Pesec" class="callout" height="40" src="https://graph.facebook.com/1479012580/picture" title="Maddy Pesec" width="40"></a>
+                  <a href="http://localhost:3000/user/kathleen-graham" title="Kathleen Graham"><img alt="Kathleen Graham" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/1812/standard/IMG_0461.JPG?1322508707" title="Kathleen Graham" width="40"></a>
+                  <a href="http://localhost:3000/user/chelsea-bonner" title="Chelsea Bonner"><img alt="Chelsea Bonner" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/1818/standard/Bday1.jpg?1322519014" title="Chelsea Bonner" width="40"></a>
+              </div>
+            </div>
+            <div class="cols call-out">
+              <a href="/conversations/on-equal-terms--2">
+                <img class="main-img" src="http://s3.amazonaws.com/com.theciviccommons.int/images/344/panel/On Equal Terms 2 .jpeg" alt="On Equal Terms" width="180" height="120">
+                <h4>On Equal Terms</h4>
+                <p>Generate discussion and interest in an art exhibit by Susan Eisenberg, one of the first women to achieve journey level...</p>
+              </a>
+              <div class="photobank">
+                  <a href="http://localhost:3000/user/terri-burgess-sandu" title="Terri Burgess Sandu"><img alt="Terri Burgess Sandu" class="callout" height="40" src="/images/avatar_70.gif?1303596124" title="Terri Burgess Sandu" width="40"></a>
+              </div>
+            </div>
+          </div>
+                  
       </div>
-
-      <div class="aside supplementary">
-      
-        <%= render :partial => '/search/search', locals: { filter_type: 'blogs' } %>
-
-        <div class="mod" id="TwitterProfileModule">
-          <%= render :partial => 'shared/twitter_profile_widget', :locals => { :twitter_username => @blog_post.author.twitter_username } %>
+      <div class="aside">
+        <div class="mod">
+          <div class="media">
+            <span class="img"><%= user_profile(@blog_post.author) %></span>
+            <div class="bd">
+              <h4><%= link_to @blog_post.author.name, user_path(@blog_post.author) %></h4>
+              <p>User bio goes here - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus.</p>
+              <p><a href="#">View Dan's Profile</a></p>
+            </div>
+          </div>
         </div>
-
-        <div>&nbsp;</div>
         <% blog_posts = ContentItem.where(content_type: 'BlogPost', person_id: @blog_post.author).order('published DESC').limit(3) %>
         <%= render partial: 'blog/recent_blog_posts_sidebar', locals: { author: @blog_post.author, blog_posts: blog_posts } %>
-
-        <div>&nbsp;</div>
         <% recent_items = Activity.most_recent_activity_items_for_person(@blog_post.author, 3) %>
         <%= render partial: 'shared/recent_items_sidebar', locals: { recent_items: recent_items, person: @blog_post.author } %>
-
       </div>
-
     </div>
   </div>
 <% end %>
