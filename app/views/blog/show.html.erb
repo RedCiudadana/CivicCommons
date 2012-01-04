@@ -5,9 +5,14 @@
 <% content_for :main_body do %>
   <div class="wrapper">
     <div class="content-container">
-      <h1><%= @blog_post.title %></h1>
-      <p class="subtitle mbn">Topic: Transportation</p>
-      <p><strong>By: <%= link_to @blog_post.author.name, user_path(@blog_post.author) %> on <%= format_publish_date(@blog_post) %></strong></p>
+      <div class="media mod">
+        <img src="http://placehold.it/198x130" class="img" />
+        <div class="bd">
+          <h1><%= @blog_post.title %></h1>
+          <p class="subtitle mbn">Topic: Transportation</p>
+          <p><strong>By: <%= link_to @blog_post.author.name, user_path(@blog_post.author) %> on <%= format_publish_date(@blog_post) %></strong></p>
+        </div>
+      </div>
     </div>
     <div class="content-container">
       <div class="main-content">
