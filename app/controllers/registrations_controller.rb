@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   before_filter :require_ssl
-
+  skip_before_filter :require_no_ssl
   helper_method :form_presenter
 
   def create

@@ -3,6 +3,7 @@ class SessionsController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, :only => [:new, :create, :ajax_new, :ajax_create]
   prepend_before_filter :allow_params_authentication!, :only => [:create, :ajax_create]
   before_filter :require_ssl, :only => [:new, :create]
+  skip_before_filter :require_no_ssl
 
   def new
     super

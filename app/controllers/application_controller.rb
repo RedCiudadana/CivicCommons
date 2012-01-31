@@ -7,9 +7,10 @@ class ApplicationController < ActionController::Base
   include AvatarHelper
 
   layout 'application'
+  
+  before_filter :require_no_ssl
 
-protected
-
+protected  
   def verify_admin
 
     if require_user and not current_person.admin?
@@ -35,6 +36,15 @@ protected
       return false
     else
       return true
+    end
+  end
+  
+  # This by default redirects everything https to http
+  # need to pass in :except whenever there is a 'require_ssl' before filter
+  def require_no_ssl
+    if request.ssl? && SecureUrlHelper.https?
+      redirect_to request.url.gsub(/^https:\/\//i, 'http://')
+      return false
     end
   end
 

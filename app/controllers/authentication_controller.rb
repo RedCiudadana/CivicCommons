@@ -1,4 +1,5 @@
 class AuthenticationController < ApplicationController
+  skip_before_filter :require_no_ssl
   before_filter :require_user, :except => [:registering_email_taken]
   before_filter :require_facebook_authenticated, :only => [:before_facebook_unlinking,:confirm_facebook_unlinking, :process_facebook_unlinking]
   layout :set_layout, :only => [:before_facebook_unlinking, :confirm_facebook_unlinking, :process_facebook_unlinking]

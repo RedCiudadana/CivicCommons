@@ -1,7 +1,8 @@
 class UserController < ApplicationController
   include OrganizationsHelper
   before_filter :require_user, :only => [:join_as_member, :remove_membership]
-  before_filter :require_ssl, :only => [:update]
+  before_filter :require_ssl, :only => [:update,:edit]
+  skip_before_filter :require_no_ssl, :only => [:update, :edit, :destroy_avatar]
   before_filter :verify_ownership?, :only => [:edit, :update, :destroy_avatar]
 
   def verify_ownership?

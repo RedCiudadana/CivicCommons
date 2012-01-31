@@ -1,4 +1,4 @@
-<%= form_for Contribution.new, :url => create_contribution_issue_url(@issue),
+<%= form_for Contribution.new, :url => create_contribution_issue_path(@issue),
     :remote => true, :html => {:class => "general-aside contribution-form", :style => "display:none",
                                 :multipart => true,
                                 :id => "new-url-contribution"} do |f| %>

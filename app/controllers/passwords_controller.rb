@@ -1,6 +1,7 @@
 class PasswordsController < Devise::PasswordsController
   
   before_filter :require_ssl, :only => [:new, :create]
+  skip_before_filter :require_no_ssl
 
   # POST /resource/password
   def create
