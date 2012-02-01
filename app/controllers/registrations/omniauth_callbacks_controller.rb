@@ -1,5 +1,6 @@
 class Registrations::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
+  skip_before_filter :require_no_ssl
+  
   def facebook
     if signed_in? && !current_person.facebook_authenticated?
       link_with_facebook
