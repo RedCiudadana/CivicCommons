@@ -4,11 +4,11 @@ module AuthenticationHelper
   end
 
   def link_with_facebook_link
-    link_to("Connect with Facebook", person_omniauth_authorize_path_or_url(:facebook), :class => 'connectacct-link facebook-auth', :id => 'facebook-connect' )
+    link_to("Connect with Facebook", person_omniauth_authorize_path(:facebook), :class => 'connectacct-link facebook-auth', :id => 'facebook-connect' )
   end
 
   def facebook_sign_in_link
-    link_to "Sign in with Facebook", person_omniauth_authorize_path_or_url(:facebook), :class => 'createacct-link facebook-auth fb-login-btn'
+    link_to "Sign in with Facebook", person_omniauth_authorize_path(:facebook), :class => 'createacct-link facebook-auth fb-login-btn'
   end
 
   # uses url instead of path if https
