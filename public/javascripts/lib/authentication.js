@@ -8,20 +8,8 @@ jQuery(function ($) {
   }
 
   $(document).ready(function() {
-
-    $("a.createacct-link.facebook-auth").live('click', function(e) {
-      if(window.location.href.indexOf('/people/login') != -1)
-      {
-        popupCenter($(this).attr("href"), $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
-      }
-      else
-      {
-        window.location = '/people/login';
-      }
-      e.stopPropagation(); return false;
-    });
-
-    $("a.connectacct-link.facebook-auth:not(.disconnect-fb)").live('click', function(e) {
+    
+    $("a.createacct-link.facebook-auth, a.connectacct-link.facebook-auth:not(.disconnect-fb)").live('click', function(e) {
       popupCenter($(this).attr("href"), $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
       e.stopPropagation(); return false;
     });
