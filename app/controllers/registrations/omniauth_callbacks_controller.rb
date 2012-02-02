@@ -94,32 +94,50 @@ private
   def render_js_colorbox(options={})
     @text = options.delete(:text) || 'Redirecting back to CivicCommons....'
     @path = options.delete(:path)
-    @script = "if(window.opener) {
-        if(window.opener.location.protocol == window.location.protocol){
+    @script = "
+      #{isUnsafeJSPopup}
+      if(window.opener) {
+        if(isUnsafeJSPopup() != true){
           window.opener.$.colorbox({href:'#{@path}',opacity:0.5, onComplete: function(){
             window.close();
           }});
         }else{
           window.close();
         }
-        }"
+      }"
     render_popup(@text, @script)
   end
 
   def render_js_redirect_to(path = '', options={})
     @text = options.delete(:text) || 'Redirecting back to CivicCommons....'
-    @script = "if(window.opener) {
-            if(window.opener.location.protocol == window.location.protocol){
-              window.opener.onunload = function(){
-                  window.close();
-              };
-              window.opener.location = '#{path}';
-            }else{
-              window.opener.location = '#{path}';
+    @script = isUnsafeJSPopup
+    @script += "
+      #{isUnsafeJSPopup}
+      if(window.opener) {
+        if(isUnsafeJSPopup() != true){
+          window.opener.onunload = function(){
               window.close();
-            }
-          }"
+          };
+          window.opener.location = '#{path}';
+        }else{
+          window.opener.location = '#{path}';
+          window.close();
+        }
+      }"
    render_popup(@text, @script)
+  end
+  
+  def isUnsafeJSPopup
+    #used to see if it's cross domain or not
+    "isUnsafeJSPopup = function(){
+      var cross_domain = false;
+      try{
+        cross_domain = window.opener.location.protocol != window.location.protocol;
+      } catch(e){
+        cross_domain = true;
+      }
+      return cross_domain;
+    }"
   end
 
   def render_popup(text,script = nil)
