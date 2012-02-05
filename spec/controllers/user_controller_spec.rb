@@ -12,6 +12,21 @@ describe UserController do
   def stub_organization(stubs ={})
     stub_model(Organization,stubs).as_null_object
   end
+  
+  context "before_filters" do
+    it "should skip require_no_ssl filter on update" do
+      controller.should_not_receive(:require_no_ssl)
+      put :update, :id => 123
+    end
+    it "should skip require_no_ssl filter on edit" do
+      controller.should_not_receive(:require_no_ssl)
+      get :edit, :id => 123
+    end
+    it "should skip require_no_ssl filter on destroy_avatar" do
+      controller.should_not_receive(:require_no_ssl)
+      delete :destroy_avatar, :id => 123
+    end
+  end
 
   context "GET 'show'" do
     it "puts the user in a ProfilePresenter" do

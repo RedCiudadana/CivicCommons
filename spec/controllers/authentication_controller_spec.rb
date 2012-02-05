@@ -4,6 +4,13 @@ describe AuthenticationController do
   def mock_person(stubs={})
     @mock_person ||= mock_model(Person, stubs).as_null_object
   end
+  
+  context "before_filters" do
+    it "should skip require_no_ssl filter " do
+      controller.should_not_receive(:require_no_ssl)
+      get :decline_fb_auth
+    end
+  end
 
   context "POST decline_fb_auth" do
 

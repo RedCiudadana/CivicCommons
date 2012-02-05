@@ -9,6 +9,18 @@ describe PasswordsController do
     request.env["devise.mapping"] = Devise.mappings[:person]
   end
   
+  context "before_filters" do
+    before(:each) do
+      @person = mock_person
+      @person.stub(:facebook_authenticated?).and_return(true)
+      controller.stub(:resource_class, :send_reset_password_instructions).and_return(@person)
+    end
+    it "should skip require_no_ssl filter " do
+      controller.should_not_receive(:require_no_ssl)
+      post :create
+    end
+  end
+  
   context "POST create" do
     context "facebook authenticated" do
       before(:each) do

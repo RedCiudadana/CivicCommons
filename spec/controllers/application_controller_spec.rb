@@ -32,6 +32,43 @@ describe ApplicationControllerRequireSSL do
 end
 
 #####################################################################
+# require_ssl
+
+class ApplicationControllerRequireNoSSL < ApplicationController
+  before_filter :require_no_ssl
+end
+
+describe ApplicationControllerRequireNoSSL do
+  controller(ApplicationControllerRequireNoSSL) do
+    def index
+      render :nothing => true
+    end
+  end
+
+  before(:all) do
+    @ssl_login = Civiccommons::Config.security['ssl_login']
+    Civiccommons::Config.security['ssl_login'] = true
+  end
+
+  after(:all) do
+    Civiccommons::Config.security['ssl_login'] = @ssl_login
+  end
+
+  it "should redirect to an SSL URL when SSL is not used" do
+    request.env['HTTPS'] = 'on'
+    get :index
+    response.should be_redirect
+    response.should redirect_to('http://test.host/stub_resources')
+  end
+  
+  it "should call the require_no_ssl filter" do
+    controller.should_receive(:require_no_ssl)
+    get :index
+  end
+
+end
+
+#####################################################################
 # require_user
 
 class ApplicationControllerRequireUser < ApplicationController

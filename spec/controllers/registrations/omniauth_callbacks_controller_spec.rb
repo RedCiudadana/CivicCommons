@@ -3,6 +3,7 @@ require 'acceptance/support/facebookable'
 
 describe Registrations::OmniauthCallbacksController, "handle facebook authentication callback" do
   include Facebookable
+  
   def response_should_js_redirect_to(path)
     assigns(:script).should contain "window.opener.location = '#{path}'"
   end
@@ -41,9 +42,21 @@ describe Registrations::OmniauthCallbacksController, "handle facebook authentica
     env = { "omniauth.auth" => {} }
     @controller.stub!(:env).and_return(env)
   end
+  
+  let(:registered_user) { Factory :registered_user, email: 'johnd@test.com' }
+  
+  context "before_filters" do
+    it "should skip require_no_ssl filter " do
+      stub_successful_auth
+      stub_facebook_auth_with_email_for registered_user
+      sign_in registered_user
+      
+      controller.should_not_receive(:require_no_ssl)
+      get :facebook
+    end
+  end
 
   describe "facebook" do
-    let(:registered_user) { Factory :registered_user, email: 'johnd@test.com' }
     def mock_authentication(stubs={})
       @mock_authentication ||= mock_model(Authentication, stubs).as_null_object
     end

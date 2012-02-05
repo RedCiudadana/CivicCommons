@@ -11,6 +11,14 @@ describe SessionsController do
     request.env["devise.mapping"] = Devise.mappings[:person]
   end
   
+  context "before_filters" do
+    it "should skip require_no_ssl filter " do
+      controller.should_not_receive(:require_no_ssl)
+      get :new
+    end
+  end
+  
+  
   context "POST create" do
     
     context "redirection after signing in" do
