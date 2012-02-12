@@ -5,7 +5,7 @@ gem 'devise', '1.5.2'
 gem 'omniauth', '1.0.1'
 gem 'omniauth-facebook'
 
-gem 'rails', "3.0.3"
+gem 'rails', :git => 'git@github.com:paramaw/rails.git', :branch => "3.0.3-patched"
 gem 'jquery-rails', '>= 1.0.3'
 
 gem 'haml', "<3.1"
