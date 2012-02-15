@@ -4,7 +4,7 @@
   link_text << '"'
 %>
 <div class="recent-item conversation">
-  <h4><%= link_to( conversation.title, conversation_path(conversation.id)) %></h4>
+  <h4><%= link_to( conversation.title, conversation_path(conversation)) %></h4>
   <div class="offset-2">
     <%= avatar_profile(conversation.person, 40) %>
     <p>

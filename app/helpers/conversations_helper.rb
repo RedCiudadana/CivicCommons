@@ -101,7 +101,7 @@ module ConversationsHelper
   end
 
   def conversation_node_path(contribution)
-    conversation_path(contribution.conversation.id, anchor: "node-#{contribution.id}")
+    conversation_path(contribution.conversation, anchor: "node-#{contribution.id}")
   end
 
   def conversation_node_url(contribution, options = {})

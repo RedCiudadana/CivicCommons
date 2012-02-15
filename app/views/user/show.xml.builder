@@ -26,8 +26,8 @@ xml.rss :version => "2.0", 'xmlns:atom' => "http://www.w3.org/2005/Atom" do
       xml.item do
         if recent_item.kind_of? Conversation
           xml.title recent_item.title
-          xml.link conversation_url(recent_item.id)
-          xml.guid conversation_url(recent_item.id)
+          xml.link conversation_url(recent_item)
+          xml.guid conversation_url(recent_item)
           xml.description recent_item.summary
 
         elsif recent_item.kind_of? RatingGroup

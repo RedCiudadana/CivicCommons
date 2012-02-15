@@ -1,6 +1,6 @@
 <div class="">
   <div class="recent-item conversation">
-    <h4><%= link_to( conversation.title, conversation_path(conversation.id)) %></h4>
+    <h4><%= link_to( conversation.title, conversation_path(conversation)) %></h4>
     <p>
       <%= simple_format( truncate( Sanitize.clean( conversation.summary, :remove_contents => ['script'] ).strip, :length => 225, :separator => ' ' ) ) %>
     </p>

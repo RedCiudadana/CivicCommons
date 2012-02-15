@@ -25,6 +25,36 @@ describe ConversationsController do
       end
     end
   end
+  
+  describe "before_filters" do
+    describe "force_friendly_id" do
+      describe "on :show" do
+        def given_conversation
+          @conversation = mock_conversation(:id => 1234, :cached_slug => 'friendly-id-here')
+        end
+        it "should redirect to the same url but using the correct friendly id if numerical id is passed" do
+          given_conversation
+          Conversation.stub!(:find_by_id).and_return(@conversation)
+          get :show, :id => @conversation.id
+          response.should redirect_to '/conversations/friendly-id-here'
+        end
+        it "should allow the parameters to be passed on redirect" do
+          given_conversation
+          Conversation.stub!(:find_by_id).and_return(@conversation)
+          get :show, :id => @conversation.id, :hello => 'hi'
+          response.should redirect_to '/conversations/friendly-id-here?hello=hi'
+        end
+        it "should not redirect if friendly id is passed" do
+          given_conversation
+          Conversation.stub_chain(:includes, :find).and_return(@conversation)
+          RatingGroup.stub!(:ratings_for_conversation_by_contribution_with_count).and_return(nil)
+          get :show, :id => @conversation.cached_slug
+          response.should render_template :show
+          response.should_not redirect_to '/conversations/friendly-id-here'
+        end
+      end
+    end
+  end
 
   describe "GET index" do
 

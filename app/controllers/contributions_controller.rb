@@ -27,11 +27,11 @@ class ContributionsController < ApplicationController
       format.html do
         # NOTE: this path does poor error handling - Jerry
         if @contribution.save
-          redirect_to conversations_node_show_path(@conversation.id, @contribution.id)
+          redirect_to conversations_node_show_path(@conversation, @contribution.id)
         elsif @contribution.parent
-          redirect_to conversations_node_show_path(@conversation.id, @contribution.parent.id)
+          redirect_to conversations_node_show_path(@conversation, @contribution.parent.id)
         else
-          redirect_to conversations_path(@conversation.id)
+          redirect_to conversations_path(@conversation)
         end
       end
     end

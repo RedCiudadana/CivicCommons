@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
   layout 'category_index'
+  
+  before_filter :force_friendly_id, :only => :show
   before_filter :require_user, :only => [
     :new,
     :create,
@@ -240,6 +242,13 @@ class ConversationsController < ApplicationController
   end
 
   private
+  
+  def force_friendly_id
+    if params[:id].to_s =~ /^\d+$/i
+      conversation = Conversation.find_by_id(params[:id])
+      redirect_to request.parameters.merge({:id => conversation.cached_slug, :status => :moved_permanently})
+    end
+  end
 
   def prep_convo(params)
     @conversation = Conversation.new(params[:conversation])
