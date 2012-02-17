@@ -61,7 +61,7 @@ describe IssuesController do
 
     it "uses issues on a particular topic if there is a current topic" do
       get :index, :topic => Topic.first.id
-      assigns(:issues).should == Topic.first.issues.type_is_issue.published.order(:position).all
+      assigns(:issues).should == Topic.first.issues.standard_issue.published.order(:position).all
     end
 
   end

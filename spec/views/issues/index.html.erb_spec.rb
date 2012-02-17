@@ -11,7 +11,7 @@ describe '/issues/index.html.erb' do
   it "should show the Issue's index summaries" do
     @recent_items = []
     @topics = []
-    @issues = Issue.type_is_issue.published.paginate(:page => params[:page], :per_page => 20)
+    @issues = Issue.standard_issue.published.paginate(:page => params[:page], :per_page => 20)
     @issues.map! { |i| IssuePresenter.new(i) }
     render
     rendered.should contain 'custom index summary'

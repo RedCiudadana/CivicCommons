@@ -169,7 +169,7 @@ describe Issue do
         @issue.votes.count.should == 2
       end
     end
-    
+
     context "has_and_belongs_to_many topics" do
       def given_an_issue_with_topics
         @issue = Factory.create(:issue)
@@ -185,20 +185,20 @@ describe Issue do
         @issue.topics.count.should == 2
       end
     end
-    
+
   end
-  
+
   context "scopes" do
     describe "published" do
       it "should query based on exclude_from_result = false" do
         Issue.published.to_sql.include?('`exclude_from_result` = 0').should be_true
       end
     end
-    describe "type_is_issue" do
+    describe "standard_issue" do
       it "should query based on type is Issue" do
-        Issue.type_is_issue.to_sql.include?('`type` = \'Issue\'').should be_true
+        Issue.standard_issue.to_sql.include?('`type` = \'Issue\'').should be_true
       end
-    end    
+    end
   end
 
   context "Top Issues" do
@@ -364,7 +364,7 @@ describe Issue do
       @issue.conversation_creators_ids.include?(@person2.id).should be_true
     end
   end
-  
+
   context "community_user_ids" do
     before(:each) do
       @issue = Factory.create(:issue)
@@ -380,7 +380,7 @@ describe Issue do
       community_user_ids.length.should == Person.find_confirmed_order_by_most_active(community_user_ids).length
     end
   end
-  
+
   context "most_newest_users" do
     before(:each) do
       @issue = Factory.create(:issue)
@@ -392,7 +392,7 @@ describe Issue do
       @issue.most_newest_users
     end
   end
-  
+
   context "order_by_alpha_users" do
     before(:each) do
       @issue = Factory.create(:issue)
@@ -404,7 +404,7 @@ describe Issue do
       @issue.order_by_alpha_users
     end
   end
-  
+
   context "most active users" do
     it "returns an ActiveRecord:Relation object" do
       issue = Factory.build(:issue)

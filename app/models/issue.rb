@@ -57,6 +57,9 @@ class Issue < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_attachment_presence :image
 
+  scope :standard_issue, where(:type => 'Issue')
+  scope :managed_issue, where(:type => 'ManagedIssue')
+
   scope(:most_active, :select =>
         'count(1) as contribution_count, issues.*',
         :joins => [:contributions],
@@ -66,7 +69,6 @@ class Issue < ActiveRecord::Base
   scope :most_recent, {:order => 'created_at DESC'}
   scope :most_recent_update, {:order => 'updated_at DESC'}
   scope :published, where(:exclude_from_result => false)
-  scope :type_is_issue, where(:type => 'Issue')
   scope :alphabetical, {:order => 'name ASC'}
   scope :sort, lambda { |sort_type|
       case sort_type

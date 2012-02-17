@@ -1,7 +1,7 @@
-<fieldset class="form-group issues">
-  <%= form.label :issues, "Issue(s)" %>
+<fieldset class="form-group <%= issue_type.downcase %>">
+  <%= form.label :issues, "#{issue_type}(s)" %>
   <table>
-    <% Issue.alphabetical.each_slice(2) do |slice| %>
+    <% issues.alphabetical.each_slice(2) do |slice| %>
       <tr>
         <% slice.each do |issue| %>
           <td>

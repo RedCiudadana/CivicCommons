@@ -11,13 +11,17 @@
         <br class="clear" />
 
         <p>Which issues is this conversation related to?</p>
-        <%= render :partial => 'contributions/issue_selection_fields', :locals => { :form => conversation, :conversation => @conversation } %>
+        <%= render :partial => 'contributions/issue_selection_fields', :locals => { :form => conversation, :conversation => @conversation, :issues => Issue.standard_issue, :issue_type => "Issue" } %>
+        <br class="clear" />
+
+        <p>Which projects is this conversation related to?</p>
+        <%= render :partial => 'contributions/issue_selection_fields', :locals => { :form => conversation, :conversation => @conversation, :issues => Issue.managed_issue, :issue_type => "Project" } %>
         <br class="clear" />
 
         <p>Get the ball rolling with a comment, question, or maybe a thought-provoking video you’ve already uploaded to YouTube.</p>
         <%= render :partial => 'contributions/contribution_fields', :locals => { :form => conversation, :contributions => @conversation.contributions } %>
         <br class="clear" />
-        
+
         <fieldset class="footer">
           <%= conversation.submit 'Start My Conversation', :class => 'submit' %>
           <%= link_to "Cancel", root_url %>

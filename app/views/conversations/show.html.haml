@@ -77,12 +77,20 @@
                 %li.issue-list
                   =link_to(content_item.title, path_to_content_item(content_item))
 
-      - if @conversation.issues.size > 0
+      - if @conversation.issues.standard_issue.size > 0
         .mod
           %h3 Issues
           .mod-content
             %ul.link-list
-              -@conversation.issues.each do |issue|
+              -@conversation.issues.standard_issue.each do |issue|
+                %li.issue-list
+                  =link_to(issue.name, issue_path(issue))
+      - if @conversation.issues.managed_issue.size > 0
+        .mod
+          %h3 Projects
+          .mod-content
+            %ul.link-list
+              -@conversation.issues.managed_issue.each do |issue|
                 %li.issue-list
                   =link_to(issue.name, issue_path(issue))
       .mod

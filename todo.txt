@@ -1,0 +1,81 @@
+  1) User Creates a User-Conversation As a normal user,
+  I want to start a converastion and invite others to join starting a
+conversation
+     Failure/Error: submit_conversation
+     Capybara::ElementNotFound:
+       Unable to find css "fieldset.issues"
+     # (eval):2:in `find'
+     # ./spec/acceptance/pages/conversation.rb:48:in `select_issue'
+     # ./spec/acceptance/pages/conversation.rb:33:in
+     # `fill_in_conversation'
+     # ./spec/acceptance/pages/conversation.rb:53:in
+     # `submit_conversation'
+     # ./spec/acceptance/support/app.rb:108:in `method_missing'
+     # ./spec/acceptance/create_conversation_feature_spec.rb:16:in
+# `block (2 levels) in <top (required)>'
+
+  2) User Creates a User-Conversation As a normal user,
+  I want to start a converastion and invite others to join inviting a
+friend when starting a conversation
+     Failure/Error: submit_conversation
+     Capybara::ElementNotFound:
+       Unable to find css "fieldset.issues"
+     # (eval):2:in `find'
+     # ./spec/acceptance/pages/conversation.rb:48:in `select_issue'
+     # ./spec/acceptance/pages/conversation.rb:33:in
+     # `fill_in_conversation'
+     # ./spec/acceptance/pages/conversation.rb:53:in
+     # `submit_conversation'
+     # ./spec/acceptance/support/app.rb:108:in `method_missing'
+     # ./spec/acceptance/create_conversation_feature_spec.rb:26:in
+# `block (2 levels) in <top (required)>'
+
+  3) User Creates a User-Conversation As a normal user,
+  I want to start a converastion and invite others to join starting an
+invalid conversation
+     Failure/Error: submit_invalid_conversation :link_to_related_website
+=> "this_isnt_a_good_link"
+     Capybara::ElementNotFound:
+       Unable to find css "fieldset.issues"
+     # (eval):2:in `find'
+     # ./spec/acceptance/pages/conversation.rb:48:in `select_issue'
+     # ./spec/acceptance/pages/conversation.rb:33:in
+     # `fill_in_conversation'
+     # ./spec/acceptance/pages/conversation.rb:57:in
+     # `submit_invalid_conversation'
+     # ./spec/acceptance/support/app.rb:108:in `method_missing'
+     # ./spec/acceptance/create_conversation_feature_spec.rb:35:in
+# `block (2 levels) in <top (required)>'
+
+  4) User Creates a User-Conversation As a normal user,
+  I want to start a converastion and invite others to join on Blog posts
+starting an invalid conversation with an attachment that needs a comment
+     Failure/Error: submit_conversation
+     Capybara::ElementNotFound:
+       Unable to find css "fieldset.issues"
+     # (eval):2:in `find'
+     # ./spec/acceptance/pages/conversation.rb:48:in `select_issue'
+     # ./spec/acceptance/pages/conversation.rb:33:in
+     # `fill_in_conversation'
+     # ./spec/acceptance/pages/conversation.rb:53:in
+     # `submit_conversation'
+     # ./spec/acceptance/support/app.rb:108:in `method_missing'
+     # ./spec/acceptance/create_conversation_feature_spec.rb:59:in
+# `block (3 levels) in <top (required)>'
+
+  5) User Creates a User-Conversation As a normal user,
+  I want to start a converastion and invite others to join on Radio
+Shows starting an invalid conversation with an attachment that needs a
+comment
+     Failure/Error: submit_conversation
+     Capybara::ElementNotFound:
+       Unable to find css "fieldset.issues"
+     # (eval):2:in `find'
+     # ./spec/acceptance/pages/conversation.rb:48:in `select_issue'
+     # ./spec/acceptance/pages/conversation.rb:33:in
+     # `fill_in_conversation'
+     # ./spec/acceptance/pages/conversation.rb:53:in
+     # `submit_conversation'
+     # ./spec/acceptance/support/app.rb:108:in `method_missing'
+     # ./spec/acceptance/create_conversation_feature_spec.rb:76:in
+     # `block (3 levels) in <top (required)>''

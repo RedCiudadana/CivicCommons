@@ -9,7 +9,7 @@ class IssuesController < ApplicationController
     @subtitle = @current_topic.name if @current_topic
 
     @search = @current_topic ? @current_topic.issues : Issue
-    @issues = @search.type_is_issue.published.custom_order.paginate(:page => params[:page], :per_page => 20)
+    @issues = @search.standard_issue.published.custom_order.paginate(:page => params[:page], :per_page => 20)
     @issues.map! { |i| IssuePresenter.new(i) }
 
     @recent_items = Activity.most_recent_activity_items(3)
