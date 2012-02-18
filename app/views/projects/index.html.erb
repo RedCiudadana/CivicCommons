@@ -6,7 +6,7 @@
       <% @projects.each do |project| %>
         <div class="entry-container">
           <div class="entry-details">
-            <%= image_tag project.image.url(:panel) %>
+            <a href="<%= issue_path(project) %>"><%= image_tag project.image.url(:panel) %></a>
             <h4><%= link_to project.name, issue_path(project) %></h4>
             <p><%= raw(truncate(project.index_summary, length: 255)) %></p>
           </div>

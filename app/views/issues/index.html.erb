@@ -9,7 +9,7 @@
       <% @issues.each do |issue| %>
         <div class="entry-container">
           <div class="entry-details" <%=issue.container_attribute%>>
-            <%= image_tag issue.image.url(:panel) %>
+            <a href="<%= issue_path(issue) %>"><%= image_tag issue.image.url(:panel) %></a>
             <h4><%= link_to issue.name, issue_path(issue) %></h4>
 
             <p class="entry-tags">
