@@ -5,7 +5,7 @@
 %>
 <div class="recent-item blog-post">
 
-  <h4><%= link_to blog_post.title, blog_path(blog_post) %></h4>
+  <h4><%= link_to blog_post.title, blog_url(blog_post) %></h4>
 
   <div class="offset-2">
     <%= avatar_profile(blog_post.author, 40) %>
@@ -13,7 +13,7 @@
       <strong><%= link_to(blog_post.author_name, user_url(blog_post.author)) %></strong> -
       <%= link_text %>
     </p>
-    <p><%= link_to("Continue Reading", blog_path(blog_post), :class => "read-more") %></p>
+    <p><%= link_to("Continue Reading", blog_url(blog_post), :class => "read-more") %></p>
   </div>
 
 </div>

@@ -1,0 +1,81 @@
+(function() {
+
+// Localize jQuery variable
+var jQuery;
+
+/******** Load jQuery if not present *********/
+if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
+    loadScript("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", scriptLoadHandler);
+} else {
+    // The jQuery version on the window is the one we want to use
+    jQuery = window.jQuery;
+    main();
+}
+
+/******** Load a JavaScript file and setup a handler to run when it is loaded ******/
+function loadScript(url, handler) {
+  var script_tag = document.createElement('script');
+  script_tag.setAttribute("type", "text/javascript");
+  script_tag.setAttribute("src", url);
+  if (script_tag.readyState) {
+    script_tag.onreadystatechange = function () { // For old versions of IE
+        if (this.readyState == 'complete' || this.readyState == 'loaded') {
+            handler();
+        }
+    };
+  } else {
+    script_tag.onload = handler;
+  }
+  // Try to find the head, otherwise default to the documentElement
+  (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+}
+
+/******** Called once jQuery has loaded ******/
+function scriptLoadHandler() {
+    // Restore $ and window.jQuery to their previous values and store the
+    // new jQuery in our local jQuery variable
+    jQuery = window.jQuery.noConflict(true);
+
+    //pass this jQuery to CivicCommonsLoadedJquery to be used by our other js
+    window.CivicCommonsLoadedJquery = jQuery;
+
+    // Call our main function
+    main();
+}
+
+
+/******** Our main function ********/
+function main() {
+    jQuery(document).ready(function($) {
+
+        /******* Load HTML *******/
+        var base_url = '<%= request.protocol + request.host_with_port %>';
+        var jsonp_url = base_url + "<%= @data_source %>.embed?callback=?";
+        $.getJSON(jsonp_url, function(data) {
+          // load css
+          if(data.css != null){
+            for(var i = 0; i < data.css.length; i++) {
+              var css_link = $('<link>', {
+                  rel: "stylesheet",
+                  type: "text/css",
+                  href: base_url + data.css[i]
+              });
+              css_link.appendTo('head');
+            }
+          }
+
+
+          //load content
+          $('#<%= @dom_id %>').html(data.html);
+
+          // load js
+          if(data.js != null){
+            for(var i = 0; i < data.js.length; i++) {
+              loadScript(base_url + data.js[i], function(){});
+            }
+          }
+        });
+    });
+}
+
+})(); // We call our anonymous function immediately

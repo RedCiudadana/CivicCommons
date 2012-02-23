@@ -7,10 +7,11 @@ class ApplicationController < ActionController::Base
   include AvatarHelper
 
   layout 'application'
-  
-  before_filter :require_no_ssl
 
-protected  
+  before_filter :require_no_ssl
+  helper_method :with_format
+
+protected
   def verify_admin
 
     if require_user and not current_person.admin?
@@ -18,6 +19,18 @@ protected
       redirect_to secure_session_url(current_person)
     end
 
+  end
+
+  def render_widget(results)
+    if results[:css].present?
+      results[:css] << '/stylesheets/widget.css'
+    else
+      results[:css] = ['/stylesheets/widget.css']
+    end
+    json = results.to_json
+    callback = params[:callback]
+    jsonp = callback + "(" + json + ")" #REQUIRED
+    render :text => jsonp,  :content_type => "text/javascript"
   end
 
   def require_user
@@ -38,7 +51,7 @@ protected
       return true
     end
   end
-  
+
   # This by default redirects everything https to http
   # need to pass in :except whenever there is a 'require_ssl' before filter
   def require_no_ssl
@@ -70,6 +83,14 @@ protected
     @meta_info[:meta_description] = meta_data.meta_description if meta_data.meta_description
     @meta_info[:meta_tags] = meta_data.meta_tags if meta_data.meta_tags
     @meta_info[:image_url] = meta_data.image.url(:panel) if meta_data.respond_to?(:image)
+  end
+
+  def with_format(format, &block)
+    old_formats = formats
+    self.formats = [format]
+    block.call
+    self.formats = old_formats
+    nil
   end
 
 end

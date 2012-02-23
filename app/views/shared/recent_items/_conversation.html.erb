@@ -4,13 +4,13 @@
   link_text << '"'
 %>
 <div class="recent-item conversation">
-  <h4><%= link_to( conversation.title, conversation_path(conversation)) %></h4>
+  <h4><%= link_to( conversation.title, conversation_url(conversation)) %></h4>
   <div class="offset-2">
     <%= avatar_profile(conversation.person, 40) %>
     <p>
       <strong><%= link_to(conversation.person_name, user_url(conversation.person)) %></strong> -
       <%= link_text %>
     </p>
-    <p><%= link_to("Continue Reading", conversation_path(conversation), :class => "read-more") %></p>
+    <p><%= link_to("Continue Reading", conversation_url(conversation), :class => "read-more") %></p>
   </div>
 </div>

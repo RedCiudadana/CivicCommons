@@ -2,7 +2,7 @@
   <h4><%= survey_response.survey.title %></h4>
   <div class="bd">
     <p><%= survey_response.person.name %> has participated in this <%= survey_response.survey.type %></p>
-    <p><%= link_to( "View the results", send("#{survey_response.survey.type.underscore}_path".to_sym,survey_response.survey.id), :class => "read-more") %></p>
+    <p><%= link_to( "View the results", send("#{survey_response.survey.type.underscore}_url".to_sym,survey_response.survey.id), :class => "read-more") %></p>
   </div>
 </div>
 

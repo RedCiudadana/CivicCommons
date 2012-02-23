@@ -50,9 +50,9 @@ module ApplicationHelper
 
   def contribution_item_url(contribution)
     if contribution.issue
-      issue_path( contribution.item )
+      issue_url( contribution.item )
     elsif contribution.conversation
-      conversation_path( contribution.item )
+      conversation_url( contribution.item )
     end
   end
 

@@ -66,9 +66,9 @@ module UserHelper
 
   def url_to_contribution(contribution)
     if contribution.issue && ! ( controller.controller_name == 'issues' && controller.action_name == 'show' )
-      issue_node_path( contribution )
+      issue_node_url( contribution )
     elsif contribution.conversation
-      conversation_node_path( contribution )
+      conversation_node_url( contribution )
     end
   end
 

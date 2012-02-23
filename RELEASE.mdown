@@ -4,6 +4,7 @@
   * [Add RadioShow Links](https://agilezen.com/project/18091/story/407)
   * [Member of Org wording changes](https://agilezen.com/project/18091/story/432)
   * [Group Projects and Issues Separately when Starting a New Conversation](https://agilezen.com/project/18091/story/401)
+  * [JS conversation Widget](https://agilezen.com/project/18091/story/430)
 
 #### Miscellaneous
   * [Automate Newsletter Subscription to MailChimp](https://agilezen.com/project/18091/story/405)

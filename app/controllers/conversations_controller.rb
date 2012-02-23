@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   layout 'category_index'
-  
+
   before_filter :force_friendly_id, :only => :show
   before_filter :require_user, :only => [
     :new,
@@ -53,6 +53,7 @@ class ConversationsController < ApplicationController
     @conversation.visit!((current_person.nil? ? nil : current_person.id))
     @contributions = Contribution.includes(:rating_groups, :person).for_conversation(@conversation)
     @ratings = RatingGroup.ratings_for_conversation_by_contribution_with_count(@conversation, current_person)
+
     # Build rating totals into contribution
     # @contributions.each do |c|
     #   c.ratings       #=> {'some-descriptor' => {:total => 5, :person => true}, 'some-other' => 0, 'and-again' => 1}
@@ -70,7 +71,46 @@ class ConversationsController < ApplicationController
 
     setup_meta_info(@conversation)
 
-    render :show
+    respond_to do |format|
+      format.any{ render :show }
+      format.embed do
+        html = render_to_string
+        json = {
+          :html => html,
+          :js => ['/javascripts/lib/conversations/show_embed.js']
+          }
+        render_widget(json)
+      end
+    end
+  end
+
+  def activities
+    @page = params[:page].present? ? params[:page].to_i : 1
+    @hide_container = params[:hide_container]
+    @per_page = 5
+    @offset = @per_page * (@page - 1)
+
+    @conversation = Conversation.find(params[:id])
+    
+    # Added 1 to @per_page to see if there is a next page
+    @recent_items = Activity.most_recent_activity_items_for_conversation(@conversation, @per_page + 1, @offset)
+    @next_page = @recent_items.length > @per_page
+    
+    # pop the last item, because it was temporarily used to see if there is a next page.
+    @recent_items.pop 
+
+    respond_to do |format|
+      format.embed do
+        html = render_to_string
+        json = {
+          :html => html,
+          :page => @page,
+          :next_page => @next_page,
+          :js => ['/javascripts/lib/conversations/activities.embed.js']
+          }
+        render_widget(json)
+      end
+    end
   end
 
  def node_conversation
@@ -242,7 +282,7 @@ class ConversationsController < ApplicationController
   end
 
   private
-  
+
   def force_friendly_id
     if params[:id].to_s =~ /^\d+$/i
       conversation = Conversation.find_by_id(params[:id])

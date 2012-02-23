@@ -11,12 +11,12 @@
 
   <div class="bd">
     <p>
-    <%= link_to( "\"#{truncate( Sanitize.clean( contribution.content, :remove_contents => ['script'] ).strip, :length => 100, :separator => ' ' )}\"", conversation_node_path(contribution) ) %>
+    <%= link_to( "\"#{truncate( Sanitize.clean( contribution.content, :remove_contents => ['script'] ).strip, :length => 100, :separator => ' ' )}\"", conversation_node_url(contribution) ) %>
     </p>
 
     <% unless controller.controller_name == 'conversations' && controller.action_name == 'show' %>
       <p class="posted">
-        Posted on: <%= link_to( conversation.title, conversation_path(contribution.conversation) ) %>
+        Posted on: <%= link_to( conversation.title, conversation_url(contribution.conversation) ) %>
       </p>
     <% end %>
   </div>

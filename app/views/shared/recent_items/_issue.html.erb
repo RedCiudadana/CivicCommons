@@ -1,5 +1,5 @@
 <div class="recent-item issue">
   <p class="create-title"><strong>Issue created:</strong></p>
-  <h4><%= link_to( issue.name, issue_path( issue.id ) ) %></h4>
+  <h4><%= link_to( issue.name, issue_url( issue.id ) ) %></h4>
   <%= simple_format( truncate( Sanitize.clean( issue.summary, :remove_contents => ['script'] ).strip, :length => 100, :separator => ' ' ) ) %>
 </div>
