@@ -1,0 +1,3 @@
+<strong><%= pluralize(@conversation.participants.size, 'person') %></strong>
+<%= (@conversation.participants.size == 1) ? ' is ' : ' are ' %> engaged, last activity
+<strong><%= time_ago_in_words(@conversation.last_activity) %> ago</strong>

@@ -2,6 +2,19 @@ require 'spec_helper'
 
 
 describe Conversation do
+  context "Factories" do
+    it "should be valid" do
+      Factory.build(:conversation).should be_valid
+      Factory.create(:conversation).should be_valid
+      Factory.build(:user_generated_conversation).should be_valid
+      Factory.create(:user_generated_conversation).should be_valid
+      Factory.build(:conversation_with_contribution).should be_valid
+      Factory.create(:conversation_with_contribution).should be_valid
+      Factory.build(:conversation_with_contributions).should be_valid
+      Factory.create(:conversation_with_contributions).should be_valid
+    end
+  end
+
   context "Associations" do
     it { should have_many :contributions  }
     it { should have_attached_file :image }
@@ -28,6 +41,9 @@ describe Conversation do
         given_a_radio_show_with_conversations
         @conversation1.content_items.should == [@radioshow]
       end
+    end
+    context "belongs_to opportunity" do
+      Conversation.reflect_on_association(:opportunity).macro == :belongs_to
     end
   end
   describe "a valid conversation" do
@@ -77,6 +93,20 @@ describe Conversation do
     end
 
   end
+
+  context "last_activity" do
+    it "should return conversation created_at when there are no valid contributions" do
+      conversation = Factory.build(:conversation)
+      conversation.last_activity.to_s.should == conversation.created_at.to_s
+    end
+
+    it "should return latest contribution created_at when there are valid contributions" do
+      conversation = Factory.create(:conversation, created_at: Time.now - 5.second)
+      contribution = Factory.create(:contribution, conversation: conversation)
+      conversation.last_activity.to_s.should == contribution.created_at.to_s
+    end
+  end
+
   context "about an issue" do
 
     it "should sort by the latest updated conversations" do

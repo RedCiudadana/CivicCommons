@@ -1,0 +1,55 @@
+<% content_for :main_body do %>
+	<div class="feature-mast">
+  	<div class="wrapper">
+    	<div class="content-container">
+
+      	<div class="main-content">
+          <div class="main-content-left">
+          	<%= image_tag @conversation.image.url(:panel), class: "main-img featured", alt: @conversation.title, width: "120", height: "80" %>
+          </div>
+
+          <div class="main-content-right">
+          	<h1><%= @conversation.title %></h1>
+          	<p class="convo-meta">
+          		<%= render :partial => 'conversation_meta' %>
+          	</p>
+          	<p class="convo-meta">
+            	<%= render :partial => 'shared/facebook_like' %>
+            </p>
+          	<p class="convo-meta">
+            	<%= render :partial => 'shared/twitter_share', locals: { title: @conversation.title} %>
+            </p>
+          </div>
+
+        	<div class="convo-summary">
+          	<strong><%= format_date @conversation.created_at %></strong>
+          	<%= raw(@conversation.summary) %>
+					</div>
+				</div>
+
+        <div class="aside supplementary convo-mast-buttons">
+          <p>
+            <span id="subscription">
+              <%= render :partial => '/subscriptions/subscription', :locals => {:subscribable => @conversation} %>
+            </span>
+          </p>
+          <p>
+            <% if current_person %>
+              <%= link_to("Post to this Conversation", '#', :class => "text button post_to_conversation", :id => 'post_to_conversation', :title => 'Post to this conversation') %>
+              <script type="text/javascript">
+                enable_post_to_conversation($('#post_to_conversation'));
+              </script>
+            <% else %>
+              <%= link_to("Post to this Conversation", { :controller => :sessions, :action => :ajax_new }, 
+              :class => "text button", 'data-colorbox' => true ) %>
+            <% end %>
+          </p>
+          <p>
+            <%= render :partial => '/invites/invite_to_conversation', :locals => {:conversation => @conversation} %>
+          </p>
+        </div>
+
+			</div>
+		</div>
+	</div>
+<% end %>

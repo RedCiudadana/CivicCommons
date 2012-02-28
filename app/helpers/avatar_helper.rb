@@ -24,14 +24,9 @@ module AvatarHelper
   def member_profile(person, css_class='callout')
     avatar_profile(person, 40, css_class)
   end
-
-  def conversation_profile(person, css_class='callout')
-    avatar_profile(person, 40, css_class)
-  end
-
-  def contribution_profile(person, css_class='callout')
-    avatar_profile(person, 40, css_class)
-  end
+  alias_method :conversation_profile, :member_profile
+  alias_method :contribution_profile, :member_profile
+  alias_method :opportunity_profile, :member_profile
 
   def featured_profile(person, css_class='callout')
     avatar_profile(person, 50, css_class)
@@ -70,7 +65,7 @@ module AvatarHelper
   # Creates an image_tag for a particular person
   # options includes options passed along to image_tag along with
   # :style_name which is a directive for paperclip which determines the
-  # ':style' paperclip should use for the image. 
+  # ':style' paperclip should use for the image.
   #
   def avatar_tag(person, options={})
     style_name = options.delete(:style_name) || :small

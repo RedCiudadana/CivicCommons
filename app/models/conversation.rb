@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
       Sanitize.clean(summary, :remove_contents => ['style','script'])
     end
   end
+  belongs_to :opportunity
   has_many :contributions, :dependent => :destroy
   has_many :confirmed_contributions, :class_name => 'Contribution',
            :conditions => ['confirmed = ?', true]
@@ -158,6 +159,14 @@ class Conversation < ActiveRecord::Base
     end
   end
 
+  def last_activity
+    most_recent_contribution = self.confirmed_contributions.most_recent.first
+    if most_recent_contribution
+      most_recent_contribution.created_at
+    else
+      self.created_at
+    end
+  end
 
   # Original plan: single Moderator per Conversation.
   # New plan: Zero or more Guides per Conversation.

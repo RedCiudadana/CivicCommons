@@ -1,0 +1,20 @@
+<% if opportunities %>
+  <% opportunities.each_slice(3) do |opportunity_mini_array|%>
+    <div class="three-col-sm">
+      <% opportunity_mini_array.each do |opportunity| %>
+        <div class="cols call-out">
+          <a href="<%= opportunity_path(opportunity)%>">
+            <img class="main-img" src="<%= opportunity.image.url(:panel) %>" alt="<%= opportunity.title %>" width="180" height="120" />
+            <h4><%= truncate(opportunity.title, {:length => 45, :separator => ' '}) %></h4>
+            <%= simple_format(truncate(Sanitize.clean(opportunity.summary, :remove_contents => ['script']).strip, {:length => 125, :separator => ' '})) %>
+          </a>
+          <div class="photobank">
+            <% opportunity.participants[0...4].each do |participant| %>
+              <%= opportunity_profile(participant).html_safe %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

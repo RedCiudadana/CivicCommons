@@ -1,0 +1,51 @@
+<% content_for :main_body do %>
+<div class="wrapper">
+  <div class="content-container">
+    <h1>Opportunities</h1>
+
+    <div class="main-content">
+
+      <%= render :partial => 'layouts/create_conversation' %>
+
+      <% if @recommended.size > 0 %>
+        <div class="conversation-tile-group group">
+          <h3>Recommended Opportunities</h3>
+          <%= render :partial => 'opportunities_band', :locals => {:opportunities => @recommended} %>
+          <%= link_to "See more recommended opportunities", conversations_filter_url(:recommended), :class => 'see-more' %>
+        </div>
+      <% end %>
+
+      <div class="conversation-tile-group group">
+        <h3>Most Active Opportunities</h3>
+        <%= render :partial => 'opportunities_band', :locals => {:opportunities => @active} %>
+        <%= link_to "See more active opportunities", conversations_filter_url(:active), :class => 'see-more' %>
+      </div>
+
+      <div class="conversation-tile-group group">
+        <h3>Most Popular Opportunities</h3>
+        <%= render :partial => 'opportunities_band', :locals => {:opportunities => @popular} %>
+        <%= link_to "See more popular opportunities", conversations_filter_url(:popular), :class => 'see-more' %>
+      </div>
+
+      <div class="conversation-tile-group group">
+        <h3>Newest Opportunities</h3>
+        <%= render :partial => 'opportunities_band', :locals => {:opportunities => @recent} %>
+        <%= link_to "See more of the newest opportunities", conversations_filter_url(:recent), :class => 'see-more' %>
+      </div>
+
+    </div><!-- /.main-content -->
+
+    <div class="aside supplementary">
+      <%= render :partial => '/search/search', :locals => {:filter_type => 'conversations'} %>
+      <div class="f-conv mod">
+        <div class="mod-content">
+          <%= render :partial => '/conversations/filters' %>
+        </div>
+      </div>
+
+      <%= render_recent_items_sidebar %>
+      <%= render :partial => '/regions/index' %>
+    </div><!-- /.aside -->
+  </div>
+</div>
+<% end %>

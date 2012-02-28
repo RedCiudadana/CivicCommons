@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219165240) do
+ActiveRecord::Schema.define(:version => 20120223190326) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20120219165240) do
     t.string   "page_title"
     t.text     "meta_description"
     t.text     "meta_tags"
+    t.integer  "opportunity_id"
   end
 
   add_index "conversations", ["cached_slug"], :name => "index_conversations_on_cached_slug", :unique => true
@@ -334,6 +335,11 @@ ActiveRecord::Schema.define(:version => 20120219165240) do
   add_index "managed_issue_pages", ["cached_slug"], :name => "index_managed_issue_pages_on_cached_slug", :unique => true
   add_index "managed_issue_pages", ["issue_id"], :name => "index_managed_issue_pages_on_issue_id"
   add_index "managed_issue_pages", ["person_id"], :name => "index_managed_issue_pages_on_person_id"
+
+  create_table "opportunities", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organization_details", :force => true do |t|
     t.integer  "person_id"

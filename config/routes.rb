@@ -141,6 +141,8 @@ Civiccommons::Application.routes.draw do
 
   resources :projects, only: [:index]
 
+  resources :opportunities, only: [:index, :show]
+
   resources :conversations, only: [:index, :show, :new, :create] do
     get :activities, on: :member
     resources :contributions, only: [:create, :edit, :show, :update, :destroy] do
@@ -168,7 +170,7 @@ Civiccommons::Application.routes.draw do
     resources :conversations do
       get '/responsibilities', to: 'conversations#responsibilities', on: :collection
     end
-  end  
+  end
   resources :content, only: [:index, :show]
   resources :news, only: [:index]
 
@@ -177,8 +179,8 @@ Civiccommons::Application.routes.draw do
     root      to: "dashboard#show"
     resources :articles
     resources :content_items do#, only: [:index, :show, :new, :create, :update, :destroy]
-      resources :content_items_people, :only => [:index, :new, :create, :destroy], :path => 'people' 
-      resources :content_item_links, :path => 'links' 
+      resources :content_items_people, :only => [:index, :new, :create, :destroy], :path => 'people'
+      resources :content_item_links, :path => 'links'
     end
     get '/content_items/type/:type', to: 'content_items#index', as: 'content_items_type'
     post '/content_items/type/:type/description/create', to: 'content_items#create_description'
