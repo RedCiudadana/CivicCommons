@@ -141,7 +141,13 @@ Civiccommons::Application.routes.draw do
 
   resources :projects, only: [:index]
 
-  resources :opportunities, only: [:index, :show]
+  resources :opportunities, only: [:index, :show] do
+    get '/:filter',
+      to: 'opportunities#filter',
+      as: 'filter',
+      on: :collection,
+      constraints: { filter: /active|popular|recent|recommended/i }
+  end
 
   resources :conversations, only: [:index, :show, :new, :create] do
     get :activities, on: :member

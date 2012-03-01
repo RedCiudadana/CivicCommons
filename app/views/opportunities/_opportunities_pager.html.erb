@@ -1,0 +1,2 @@
+<%= render partial: 'opportunities_band', locals: { opportunities: @opportunities } %>
+<%= will_paginate @opportunities, :inner_window => 3, :previous_label => "Previous", :next_label => "Next" %>

@@ -3,6 +3,12 @@ require 'spec_helper'
 describe OpportunitiesController do
 
   describe "GET index" do
+    it "renders 'category_index' template" do
+      get :index
+      response.should be_successful
+      response.should render_template('category_index')
+    end
+
     it "assigns active opportunities as @active" do
       conversation = Factory.create(:conversation)
       opportunity = Factory.create(:opportunity, conversation: conversation)
@@ -53,6 +59,31 @@ describe OpportunitiesController do
       opportunity = Factory.create(:opportunity)
       get :show, :id => opportunity.to_param
       assigns[:conversation].should == opportunity.conversation
+    end
+  end
+
+  describe "GET filter" do
+    it "assigns specified filter as @filter" do
+      filter = 'recommended'
+      get :filter, :filter => filter
+      assigns[:filter].should == filter
+    end
+
+    it "assigns a page or results that match the specified filter as @opportunities" do
+      conversation = Factory.create(:conversation, staff_pick: true)
+      opportunity = Factory.create(:opportunity, conversation: conversation)
+      get :filter, :filter => 'recommended'
+      assigns[:opportunities].should == opportunity
+    end
+
+    it "assigns site regions as @regions" do
+      get :index
+      assigns[:active].should == Region.all
+    end
+
+    it "assigns recent site activity as @recent_items" do
+      get :index
+      assigns[:active].should == Activity.most_recent_activity_items(3)
     end
   end
 

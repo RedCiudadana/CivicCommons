@@ -35,6 +35,23 @@ describe Opportunity do
     end
   end
 
+  describe "self.available_filters" do
+    it "has dictionary values that point to methods Opportunity responds to" do
+      Opportunity.available_filters.each do |filter, method|
+        Opportunity.respond_to?(method).should be_true
+      end
+    end
+  end
+
+  describe "self.filtered" do
+    it "sends the available_filters dictionary value to Opportunity" do
+      Opportunity.available_filters.each do |filter, method|
+        Opportunity.should_receive(method)
+        Opportunity.filtered(filter.to_s)
+      end
+    end
+  end
+
   describe "scopes" do
     it "return ActiveRecord::Relation objects" do
       Opportunity.latest_created.class.should == ActiveRecord::Relation

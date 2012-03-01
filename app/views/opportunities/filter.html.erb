@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="content-container">
+    <h1><%= filter_title params[:filter] %> Opportunities</h1>
+    <h3><%= filter_description params[:filter] %></h3>
+
+    <div class="main-content">
+      <%= render :partial => 'layouts/create_conversation' %>
+      <%= render :partial => 'opportunities_pager' %>
+    </div><!-- /.main-content -->
+
+    <div class='aside supplementary'>
+      <%= render :partial => '/search/search' %>
+      <div class="f-conv">
+        <div class="mod-content">
+          <%= render :partial => '/conversations/filters' %>
+        </div>
+      </div>
+
+      <div>&nbsp;</div>
+
+      <%= render_recent_items_sidebar %>
+      <%= render :partial => '/regions/index' %>
+    </div><!-- /.aside -->
+  </div>
+</div>

@@ -8,6 +8,19 @@ class Opportunity < ActiveRecord::Base
   delegate :summary, to: :conversation
   delegate :title, to: :conversation
 
+  def self.available_filters
+    {
+      :recommended => :recommended,
+      :active => :most_active,
+      :popular => :top_visited,
+      :recent => :latest_created
+    }
+  end
+
+  def self.filtered(filter)
+    self.send(available_filters[filter.to_sym])
+  end
+
   def self.latest_created
     Opportunity.joins(:conversation).
       where('conversations.exclude_from_most_recent = false').
