@@ -1,0 +1,6 @@
+<ul class='feat-list'>
+  <% Opportunity.available_filters.each do |filter, method| %>
+    <% cls = (@filter == filter.to_s ? 'active' : '') %>
+    <li><%= link_to filter_title(filter, ' Conversations'), filter_opportunities_path(filter), :id => filter.to_s + '-f', :class => cls %></li>
+  <% end %>
+</ul>
