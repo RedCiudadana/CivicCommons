@@ -1,5 +1,3 @@
-<%= render :partial => 'layouts/opportunities' %>
-
 <div class="wrapper">
   <div class="content-container">
 
@@ -60,3 +58,25 @@
   </div>
 </div>
 
+
+
+
+<div class='content-container'>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @reflection.title %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @reflection.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_conversation_reflection_path(@conversation, @reflection) %> |
+<%= link_to 'Back', conversation_reflections_path %>
+
+</div>

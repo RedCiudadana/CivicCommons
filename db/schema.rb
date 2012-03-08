@@ -490,6 +490,13 @@ ActiveRecord::Schema.define(:version => 20120316020745) do
   add_index "ratings", ["rating_descriptor_id"], :name => "index_ratings_on_rating_descriptor_id"
   add_index "ratings", ["rating_group_id"], :name => "index_ratings_on_rating_group_id"
 
+  create_table "reflections", :force => true do |t|
+    t.string   "title",      :null => false
+    t.text     "details",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "regions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
