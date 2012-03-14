@@ -1,8 +1,6 @@
 class ReflectionsController < ApplicationController
   layout 'opportunity'
 
-  # GET /reflections
-  # GET /reflections.xml
   def index
     @conversation = Conversation.find(params[:conversation_id])
     @reflections = Reflection.all
@@ -13,8 +11,6 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  # GET /reflections/1
-  # GET /reflections/1.xml
   def show
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
@@ -25,8 +21,6 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  # GET /reflections/new
-  # GET /reflections/new.xml
   def new
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.new
@@ -37,17 +31,15 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  # GET /reflections/1/edit
   def edit
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
   end
 
-  # POST /reflections
-  # POST /reflections.xml
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.new(params[:reflection])
+    @reflection.owner = current_person.id if @reflection.owner.blank? && current_person
 
     respond_to do |format|
       if @reflection.save
@@ -60,8 +52,6 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  # PUT /reflections/1
-  # PUT /reflections/1.xml
   def update
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
@@ -77,8 +67,6 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  # DELETE /reflections/1
-  # DELETE /reflections/1.xml
   def destroy
     @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])

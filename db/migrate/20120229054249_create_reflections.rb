@@ -4,6 +4,8 @@ class CreateReflections < ActiveRecord::Migration
       t.string :title, :null => false
       t.text :details, :null => false
 
+      t.integer :owner, :null => false
+
       t.timestamps
     end
   end

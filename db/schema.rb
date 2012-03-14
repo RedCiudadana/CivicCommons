@@ -493,6 +493,7 @@ ActiveRecord::Schema.define(:version => 20120316020745) do
   create_table "reflections", :force => true do |t|
     t.string   "title",      :null => false
     t.text     "details",    :null => false
+    t.integer  "owner",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

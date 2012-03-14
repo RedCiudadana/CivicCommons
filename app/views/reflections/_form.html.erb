@@ -1,25 +1,20 @@
 <%= form_for([@conversation, @reflection]) do |f| %>
   <% if @reflection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reflection.errors.count, "error") %> prohibited this reflection from being saved:</h2>
-
-      <ul>
-      <% @reflection.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <div class="alert alert-error mbl">There were errors saving this petition.</div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset class="form-group top-align">
+    <div class="form-block">
+      <%= f.label :'title:' %><br />
+      <%= f.text_field :title, :class => 'textbox', :size => '30' %>
+    </div>
+    <div class="form-block">
+      <label for="conversation_title">Your Reflection:</label>
+      <%= f.text_area :details, :class => 'short textbox', :cols => '40', :rows => '20' %>
+    </div>
+    <div class="form-block">
+      <%= f.submit :class => 'submit', :value => 'Publish' %> or &nbsp;
+      <%= link_to 'Cancel', [@conversation, @reflection], :id => 'cancel-reflection' %>
+    </div>
+  </fieldset>
 <% end %>
