@@ -286,6 +286,15 @@
 }
 
 /* Layout */
+.civic-commons-widget-container .convo-header {
+	background: #E3E3E3 !important;
+	border-bottom: 1px solid #CCC !important;
+	padding: 30px 30px 10px !important;
+	margin: -20px -20px 0 !important;
+}
+.civic-commons-widget-container .convo-header .img {
+	margin-bottom: 10px !important;
+}
 .civic-commons-widget-container .mod-content {
 	background: #eee !important;
 	border: 1px solid #ccc !important;
