@@ -6,14 +6,23 @@ require 'spec_helper'
 
 describe ReflectionsController do
 
+  def mock_conversation(stubs={})
+    @mock_conversation ||= mock_model(Conversation, stubs).as_null_object
+  end
+
   def mock_reflection(stubs={})
     @mock_reflection ||= mock_model(Reflection, stubs).as_null_object
+  end
+
+  before(:each) do
+    Conversation.stub(:find).with(7) { mock_conversation }
   end
 
   describe "GET index" do
     it "assigns all reflections as @reflections" do
       Reflection.stub(:all) { [mock_reflection] }
-      get :index
+      get :index, :conversation_id => 7
+      assigns(:conversation).should eq(mock_conversation)
       assigns(:reflections).should eq([mock_reflection])
     end
   end
@@ -21,7 +30,7 @@ describe ReflectionsController do
   describe "GET show" do
     it "assigns the requested reflection as @reflection" do
       Reflection.stub(:find).with("37") { mock_reflection }
-      get :show, :id => "37"
+      get :show, :id => "37", :conversation_id => 7
       assigns(:reflection).should be(mock_reflection)
     end
   end
@@ -29,7 +38,7 @@ describe ReflectionsController do
   describe "GET new" do
     it "assigns a new reflection as @reflection" do
       Reflection.stub(:new) { mock_reflection }
-      get :new
+      get :new, :conversation_id => 7
       assigns(:reflection).should be(mock_reflection)
     end
   end
@@ -37,7 +46,7 @@ describe ReflectionsController do
   describe "GET edit" do
     it "assigns the requested reflection as @reflection" do
       Reflection.stub(:find).with("37") { mock_reflection }
-      get :edit, :id => "37"
+      get :edit, :id => "37", :conversation_id => 7
       assigns(:reflection).should be(mock_reflection)
     end
   end
@@ -46,27 +55,27 @@ describe ReflectionsController do
     describe "with valid params" do
       it "assigns a newly created reflection as @reflection" do
         Reflection.stub(:new).with({'these' => 'params'}) { mock_reflection(:save => true) }
-        post :create, :reflection => {'these' => 'params'}
+        post :create, :reflection => {'these' => 'params'}, :conversation_id => 7
         assigns(:reflection).should be(mock_reflection)
       end
 
       it "redirects to the created reflection" do
         Reflection.stub(:new) { mock_reflection(:save => true) }
-        post :create, :reflection => {}
-        response.should redirect_to(reflection_url(mock_reflection))
+        post :create, :reflection => {}, :conversation_id => 7
+        response.should redirect_to(conversation_reflection_path(mock_conversation, mock_reflection))
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved reflection as @reflection" do
         Reflection.stub(:new).with({'these' => 'params'}) { mock_reflection(:save => false) }
-        post :create, :reflection => {'these' => 'params'}
+        post :create, :reflection => {'these' => 'params'}, :conversation_id => 7
         assigns(:reflection).should be(mock_reflection)
       end
 
       it "re-renders the 'new' template" do
         Reflection.stub(:new) { mock_reflection(:save => false) }
-        post :create, :reflection => {}
+        post :create, :reflection => {}, :conversation_id => 7
         response.should render_template("new")
       end
     end
@@ -77,32 +86,32 @@ describe ReflectionsController do
       it "updates the requested reflection" do
         Reflection.stub(:find).with("37") { mock_reflection }
         mock_reflection.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :reflection => {'these' => 'params'}
+        put :update, :id => "37", :reflection => {'these' => 'params'}, :conversation_id => 7
       end
 
       it "assigns the requested reflection as @reflection" do
         Reflection.stub(:find) { mock_reflection(:update_attributes => true) }
-        put :update, :id => "1"
+        put :update, :id => "1", :conversation_id => 7
         assigns(:reflection).should be(mock_reflection)
       end
 
       it "redirects to the reflection" do
         Reflection.stub(:find) { mock_reflection(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(reflection_url(mock_reflection))
+        put :update, :id => "1", :conversation_id => 7
+        response.should redirect_to(conversation_reflection_path(mock_conversation, mock_reflection))
       end
     end
 
     describe "with invalid params" do
       it "assigns the reflection as @reflection" do
         Reflection.stub(:find) { mock_reflection(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :conversation_id => 7
         assigns(:reflection).should be(mock_reflection)
       end
 
       it "re-renders the 'edit' template" do
         Reflection.stub(:find) { mock_reflection(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :conversation_id => 7
         response.should render_template("edit")
       end
     end
@@ -112,13 +121,13 @@ describe ReflectionsController do
     it "destroys the requested reflection" do
       Reflection.stub(:find).with("37") { mock_reflection }
       mock_reflection.should_receive(:destroy)
-      delete :destroy, :id => "37"
+      delete :destroy, :id => "37", :conversation_id => 7
     end
 
     it "redirects to the reflections list" do
       Reflection.stub(:find) { mock_reflection }
-      delete :destroy, :id => "1"
-      response.should redirect_to(reflections_url)
+      delete :destroy, :id => "1", :conversation_id => 7
+      response.should redirect_to(conversation_reflections_path(mock_conversation))
     end
   end
 

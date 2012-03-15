@@ -43,7 +43,7 @@ class ReflectionsController < ApplicationController
 
     respond_to do |format|
       if @reflection.save
-        format.html { redirect_to conversation_reflection_path @conversation, @reflection, :notice => 'Reflection was successfully created.' }
+        format.html { redirect_to conversation_reflection_path @conversation, @reflection }
         format.xml  { render :xml => @reflection, :status => :created, :location => @reflection }
       else
         format.html { render :controller => [@conversation, @reflection], :action => "new" }
@@ -58,7 +58,7 @@ class ReflectionsController < ApplicationController
 
     respond_to do |format|
       if @reflection.update_attributes(params[:reflection])
-        format.html { redirect_to(@reflection, :notice => 'Reflection was successfully updated.') }
+        format.html { redirect_to([@conversation, @reflection], :notice => 'Reflection was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,7 +73,7 @@ class ReflectionsController < ApplicationController
     @reflection.destroy
 
     respond_to do |format|
-      format.html { redirect_to(reflections_url) }
+      format.html { redirect_to(conversation_reflections_url @conversation) }
       format.xml  { head :ok }
     end
   end
