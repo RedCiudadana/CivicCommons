@@ -1,4 +1,5 @@
 class Reflection < ActiveRecord::Base
+  belongs_to :conversation
   belongs_to :person, :foreign_key => "owner"
 
   validates_presence_of :title

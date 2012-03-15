@@ -1,9 +1,11 @@
 class ReflectionsController < ApplicationController
   layout 'opportunity'
 
+  before_filter :require_user, :except => [:index, :show]
+  before_filter :find_conversation
+
   def index
-    @conversation = Conversation.find(params[:conversation_id])
-    @reflections = Reflection.all
+    @reflections = Reflection.where(:conversation_id => @conversation).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +14,6 @@ class ReflectionsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
 
     respond_to do |format|
@@ -22,7 +23,6 @@ class ReflectionsController < ApplicationController
   end
 
   def new
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.new
 
     respond_to do |format|
@@ -32,12 +32,10 @@ class ReflectionsController < ApplicationController
   end
 
   def edit
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
   end
 
   def create
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.new(params[:reflection])
     @reflection.owner = current_person.id if @reflection.owner.blank? && current_person
 
@@ -53,7 +51,6 @@ class ReflectionsController < ApplicationController
   end
 
   def update
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
 
     respond_to do |format|
@@ -68,7 +65,6 @@ class ReflectionsController < ApplicationController
   end
 
   def destroy
-    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
     @reflection.destroy
 
@@ -76,5 +72,10 @@ class ReflectionsController < ApplicationController
       format.html { redirect_to(conversation_reflections_url @conversation) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+  def find_conversation
+    @conversation = Conversation.find(params[:conversation_id])
   end
 end

@@ -5,6 +5,7 @@ class CreateReflections < ActiveRecord::Migration
       t.text :details, :null => false
 
       t.integer :owner, :null => false
+      t.integer :conversation_id, :null => false
 
       t.timestamps
     end
