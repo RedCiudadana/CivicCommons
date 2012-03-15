@@ -101,7 +101,6 @@ class Person < ActiveRecord::Base
   validates_attachment_content_type :avatar,
                                     :content_type => /image\/*/,
                                     :message => "Not a valid image file."
-  process_in_background :avatar
 
   scope :participants_of_issue, lambda{ |issue|
       joins(:conversations => :issues).where(['issue_id = ?',issue.id]).select('DISTINCT(people.id),people.*') if issue

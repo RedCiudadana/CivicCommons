@@ -6,6 +6,30 @@ describe Contribution do
     it 'should be valid' do
       Factory.build(:contribution).should be_valid
       Factory.create(:contribution).should be_valid
+      Factory.build(:top_level_contribution).should be_valid
+      Factory.create(:top_level_contribution).should be_valid
+      Factory.build(:unconfirmed_contribution).should be_valid
+      Factory.create(:unconfirmed_contribution).should be_valid
+      Factory.build(:contribution_without_parent).should be_valid
+      Factory.create(:contribution_without_parent).should be_valid
+      Factory.build(:issue_contribution).should be_valid
+      Factory.create(:issue_contribution).should be_valid
+      Factory.build(:comment_with_unique_content).should be_valid
+      Factory.create(:comment_with_unique_content).should be_valid
+      Factory.build(:question).should be_valid
+      Factory.create(:question).should be_valid
+      #Factory.build(:question_without_parent).should be_valid
+      #Factory.create(:question_without_parent).should be_valid
+      Factory.build(:answer).should be_valid
+      Factory.create(:answer).should be_valid
+      Factory.build(:attached_image).should be_valid
+      Factory.create(:attached_image).should be_valid
+      Factory.build(:attached_file).should be_valid
+      Factory.create(:attached_file).should be_valid
+      Factory.build(:link).should be_valid
+      Factory.create(:link).should be_valid
+      Factory.build(:embedded_snippet).should be_valid
+      Factory.create(:embedded_snippet).should be_valid
       Factory.build(:comment).should be_valid
       Factory.create(:comment).should be_valid
       Factory.build(:embedly_contribution).should be_valid

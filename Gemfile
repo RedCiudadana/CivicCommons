@@ -1,55 +1,33 @@
 source 'http://rubygems.org'
 
-gem 'mysql2', '< 0.3'
-gem 'devise', '1.5.2'
-gem 'omniauth', '1.0.1'
-gem 'omniauth-facebook'
-
-gem 'rails', "3.0.3"
-gem 'jquery-rails', '>= 1.0.3'
-
-gem 'haml', "<3.1"
-gem 'date_validator'
-gem "will_paginate", "~> 3.0.3"
-
-gem 'httparty'
-
-gem 'geokit'
-
-gem "friendly_id", "~> 4.0.1"
 gem 'acts_as_revisionable'
 gem 'awesome_nested_set'
-gem 'embedly', '<0.4'
-
-gem 'gibbon'
-gem 'hominid', "~>3.0.2"
-gem 'delayed_job', ">= 2.1.2"
-
-gem 'hoptoad_notifier'
-
-gem 'remotipart'
-
-gem 'shoulda'
-# gem 'paperclip', "~>2.5.0"
-gem 'paperclip', "2.3.8"
-gem 'delayed_paperclip', '<0.7'
-gem 'aws-s3'
-# gem 'aws-sdk'
-gem 'nokogiri'
-gem 'sanitize'
+gem 'aws-sdk'
+gem 'delayed_job_active_record'
+gem 'devise', '~> 1.5.2'
+gem 'embedly'
+gem 'fitter-happier'
+gem 'friendly_id'
+gem 'gchart'
+gem 'haml', '< 3.1' # WARNING: updating to 3.1 seems to break our HAML templates
 gem 'highline'
-
-gem "gchart", "~> 1.0.0"
-
+gem 'hominid'
+gem 'hoptoad_notifier'
+gem 'mysql2', '~> 0.2.7' # needs this requirement for ActiveRecord < 3.1
+gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'paperclip'
+gem 'profanity_filter'
+gem 'progress_bar'
+gem 'rails', '3.0.3'
+gem 'remotipart'
+gem 'sanitize'
+gem 'shoulda'
+gem 'sixarm_ruby_email_address_validation'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'progress_bar'
-
-gem 'fitter-happier', '= 0.0.1'
-
-gem 'sixarm_ruby_email_address_validation'
-
-gem 'profanity_filter'
+gem 'will_paginate'
 
 group :development do
   gem "rails3-generators"
@@ -60,27 +38,23 @@ group :development do
 end
 
 group :test do
-  gem "rack-test"
-  gem "factory_girl_rails", '~>1.3'
+  gem 'factory_girl_rails'
   gem 'no_peeping_toms'
-  gem 'webmock', '1.6.2' #, :git => 'git://github.com/CivicCommons/webmock.git', :branch => '1.6.2'
-  # Required by WebMock but breaks everything at 2.2.5
-  # Can use latest addressable when pull request is accepted: https://github.com/sporkmonger/addressable/pull/33
-  gem 'addressable', :git => 'git://github.com/gkellogg/addressable.git', :branch => 'frozen-uri'
+  gem 'webmock', '~> 1.8.2'
   gem 'linguistics'
-  gem 'fuubar', '~>0.0.3'
-  gem "database_cleaner", "~> 0.6.0"
+  gem 'fuubar'
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'simplecov'
   gem 'timecop'
   gem 'rspec-spies'
   gem 'spork'
-  gem "rspec-rails", "~> 2.5.0"
-  gem "jasmine"
+  gem 'rspec-rails'
+  gem 'jasmine'
   gem 'steak'
-  gem "capybara", '1.1.2'
-  gem 'webrat', "~> 0.7.3"
-  gem "jasmine-headless-webkit"
+  gem 'capybara'#, '1.1.2'
+  gem 'webrat'#, "~> 0.7.3"
+  gem 'jasmine-headless-webkit'
 end
 
 

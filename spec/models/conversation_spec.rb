@@ -2,6 +2,15 @@ require 'spec_helper'
 
 
 describe Conversation do
+  context "factories" do
+    it 'should be valid' do
+      Factory.build(:conversation).should be_valid
+      Factory.create(:conversation).should be_valid
+      Factory.build(:user_generated_conversation).should be_valid
+      Factory.create(:user_generated_conversation).should be_valid
+    end
+  end
+
   context "Associations" do
     it { should have_many :contributions  }
     it { should have_attached_file :image }
