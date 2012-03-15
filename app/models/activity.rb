@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
 
-  set_table_name "top_items"
+  self.table_name = 'top_items'
 
   belongs_to :item, polymorphic: true
   belongs_to :person

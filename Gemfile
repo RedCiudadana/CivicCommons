@@ -13,7 +13,7 @@ gem 'haml', '< 3.1' # WARNING: updating to 3.1 seems to break our HAML templates
 gem 'highline'
 gem 'hominid'
 gem 'hoptoad_notifier'
-gem 'mysql2', '~> 0.2.7' # WARNING: needs this requirement for ActiveRecord < 3.1
+gem 'mysql2', '~> 0.2.7' # needs this requirement for ActiveRecord < 3.1
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -35,6 +35,7 @@ group :development do
   gem 'rails3-generators'
   gem 'ruby_parser'
   gem 'ruby-debug19'
+  gem 'query_trace'
 end
 
 group :test do
@@ -54,7 +55,7 @@ group :test do
   gem 'steak'
   gem 'timecop'
   gem 'webrat'
-  gem 'webmock', '~> 1.8.2' # WARNING: needs explicit version or it defaulted to 1.6.2 which was broken in our app
+  gem 'webmock'#, '~> 1.8.2' # WARNING: needs explicit version or it defaulted to 1.6.2 which was broken in our app
 end
 
 
