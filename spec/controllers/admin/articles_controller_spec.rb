@@ -55,7 +55,7 @@ describe Admin::ArticlesController do
       it "redirects to the created article" do
         Article.stub(:new) { mock_article(:save => true) }
         post :create, :article => {}
-        response.should redirect_to(admin_article_url(mock_article))
+        response.should redirect_to(admin_article_path(mock_article))
       end
     end
 
@@ -93,7 +93,7 @@ describe Admin::ArticlesController do
       it "redirects to the article" do
         Article.stub(:find) { mock_article(:update_attributes => true) }
         put :update, :id => "1"
-        response.should redirect_to(admin_article_url(mock_article))
+        response.should redirect_to(admin_article_path(mock_article))
       end
     end
 
@@ -123,7 +123,7 @@ describe Admin::ArticlesController do
     it "redirects to the articles list" do
       Article.stub(:find) { mock_article }
       delete :destroy, :id => "1"
-      response.should redirect_to(admin_articles_url)
+      response.should redirect_to(admin_articles_path)
     end
   end
 

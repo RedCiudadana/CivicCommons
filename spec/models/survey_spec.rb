@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Survey do
+  context "Factories" do
+    it "should produce valid factories" do
+      Factory.build(:survey).should be_valid
+      Factory.create(:survey).should be_valid
+    end
+  end
+
   context "Associations" do
     context "has_many :options" do
       it "should have many options" do

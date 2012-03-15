@@ -6,4 +6,5 @@ Factory.define :survey do |f|
   f.description  'Description here'
   f.options []
   f.max_selected_options 3
+  f.type 'Vote'
 end

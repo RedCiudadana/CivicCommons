@@ -32,57 +32,52 @@ describe Admin::SurveysController do
 
   describe "GET new" do
     it "assigns a new survey as @survey" do
-      Survey.stub(:new) { mock_survey }
       get :new
-      assigns(:survey).should be(mock_survey)
+      assigns(:survey).new_record?.should be_true
     end
     it "should defult to Vote, as a Survey STI" do
-      @survey = mock_survey
-      Survey.stub(:new).and_return(@survey)
-      @survey.should_receive('type=').and_return('Vote')
       get :new
+      assigns(:survey).type.should == 'Vote'
     end
   end
 
   describe "GET edit" do
     it "assigns the requested survey as @survey" do
-      Survey.stub(:find).with("37") { mock_survey }
-      get :edit, :id => "37"
-      assigns(:survey).should be(mock_survey)
+      survey = Factory.create(:survey)
+      get :edit, :id => survey.id
+      assigns(:survey).id.should == survey.id
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
       it "assigns a newly created survey as @survey" do
-        Survey.stub(:new).with({'these' => 'params'}) { mock_survey(:save => true) }
-        post :create, :survey => {'these' => 'params'}
-        assigns(:survey).should be(mock_survey)
+        survey = Factory.build(:survey, title: 'Survey Title')
+        post :create, :survey => survey.attributes
+        assigns(:survey).title.should be(survey.title)
       end
       
       it "should create an STI model based on type" do
-        @survey = mock_survey(:save => true,:type => 'Vote')
-        Survey.stub(:new).with({'these' => 'params'}).and_return(@survey)
-        @survey.should_receive('type=').and_return('Vote')
-        post :create, :survey => {'these' => 'params'}
+        survey = Factory.build(:survey)
+        post :create, :survey => survey.attributes
+        assigns(:survey).type.should == 'Vote'
       end
 
       it "redirects to the created survey" do
-        Survey.stub(:new) { mock_survey(:save => true) }
-        post :create, :survey => {}
-        response.should redirect_to(admin_survey_url(mock_survey))
+        survey = Factory.build(:survey)
+        post :create, :survey => survey.attributes
+        response.should redirect_to(admin_survey_path(assigns(:survey).id))
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved survey as @survey" do
-        Survey.stub(:new).with({'these' => 'params'}) { mock_survey(:save => false) }
-        post :create, :survey => {'these' => 'params'}
-        assigns(:survey).should be(mock_survey)
+        survey = Factory.build(:survey, title: '')
+        post :create, :survey => survey.attributes
+        assigns(:survey).title.should == survey.title
       end
 
       it "re-renders the 'new' template" do
-        Survey.stub(:new) { mock_survey(:save => false) }
         post :create, :survey => {}
         response.should render_template("new")
       end
