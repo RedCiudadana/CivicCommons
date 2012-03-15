@@ -2,33 +2,26 @@ class ReflectionsController < ApplicationController
   layout 'opportunity'
 
   before_filter :require_user, :except => [:index, :show]
-  before_filter :find_conversation
+  #before_filter :find_conversation
 
   def index
+    @conversation = Conversation.find(params[:conversation_id])
     @reflections = Reflection.where(:conversation_id => @conversation).all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @reflections }
-    end
   end
 
   def show
+    @conversation = Conversation.find(params[:conversation_id])
     @reflection = Reflection.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @reflection }
-    end
   end
 
   def new
-    @reflection = Reflection.new
+    @conversation = Conversation.find(params[:conversation_id])
+    @reflection = Reflection.new(:conversation_id => @conversation.id, :owner => current_person.id)
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @reflection }
-    end
+    puts "*****"
+    puts @conversation.id
+    puts @reflection.inspect
+    puts "*****"
   end
 
   def edit
@@ -74,8 +67,8 @@ class ReflectionsController < ApplicationController
     end
   end
 
-  protected
-  def find_conversation
-    @conversation = Conversation.find(params[:conversation_id])
-  end
+  #protected
+  #def find_conversation
+    #@conversation = Conversation.find(params[:conversation_id])
+  #end
 end

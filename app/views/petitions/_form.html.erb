@@ -22,27 +22,36 @@
         <%= f.cktext_area :description, :class => 'short textbox', :toolbar => 'Civic', :width => 460, :height => 152 %>
       </div>
   </fieldset>
-  
+
   <fieldset class="top-align">
       <div class="form-block">
           <%= f.label :resulting_actions, 'Explain what will happen if you get enough signatures:*' %>
           <%= f.text_area :resulting_actions, :class => 'short textbox', :cols => 60, :rows => 10 %>
       </div>
   </fieldset>
-  
+
   <fieldset class="top-align">
       <div class="form-block">
           <%= f.label :signature_needed, 'Number of signatures needed:*' %>
-          <%= f.text_field :signature_needed, :class => 'textbox input-short', :size => 40 %>          
+          <%= f.text_field :signature_needed, :class => 'textbox input-short', :size => 40 %>
       </div>
   </fieldset>
-  
+
+  <fieldset class="top-align">
+      <div class="form-block">
+          <%= f.label :end_on, 'Petition Ends On:*' %>
+          <%= f.text_field :end_on, :class => 'textbox input-short', :size => 40 %>
+          <!-- <a title="Pick a date" href="#" class="date-picker">Pick a date</a> -->
+          <%# f.date_select :end_on %>
+      </div>
+  </fieldset>
+
   <p><strong>I'm ready to submit my petition. I understand that once this is submitted that I cannot make any more changes.</strong></p>
- 
+
   <fieldset>
-    <%= f.submit 'Publish', :class => 'submit' %>&nbsp; or 
+    <%= f.submit 'Publish', :class => 'submit' %>&nbsp; or
     <%= link_to 'Cancel', conversation_path(@conversation) %>
   </fieldset>
-  
+
 
 <% end %>

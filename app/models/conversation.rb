@@ -15,7 +15,7 @@ class Conversation < ActiveRecord::Base
   #       There are temporary methods in conversations_helper as well.
   alias_method :reflections, :actions
   #############################################################################
-  
+
   searchable :ignore_attribute_changes_of => [ :total_visits, :recent_visits, :last_visit_date, :updated_at, :recent_rating ] do
     text :title, :boost => 3, :default_boost => 3
     text :summary, :stored => true, :boost => 2, :default_boost => 2 do
@@ -37,8 +37,9 @@ class Conversation < ActiveRecord::Base
   has_many :participants, :through => :confirmed_contributions,
            :source => :person, :uniq => true,
            :order => "contributions.created_at ASC"
-           
+
   has_many :petitions, :dependent => :destroy
+  has_many :reflections, :dependent => :destroy
 
   has_and_belongs_to_many :issues
   has_and_belongs_to_many :content_items, uniq: true
@@ -78,7 +79,7 @@ class Conversation < ActiveRecord::Base
 
   scope :latest_updated, :order => 'updated_at DESC'
   scope :latest_created, where(:exclude_from_most_recent => false).order('created_at DESC')
-    
+
   def action_participants
     participants = self.actions.collect(&:participants).flatten.uniq
   end
