@@ -1,0 +1,9 @@
+- if standard_issues.size > 0
+  .mod
+    %h3 Issues
+    .mod-content
+      %ul.simple-list.block-link-list
+        -standard_issues.each do |issue|
+          %li.issue-list
+            =link_to(issue.name, issue_path(issue))
+

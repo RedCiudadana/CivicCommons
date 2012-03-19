@@ -17,7 +17,7 @@
           <p><%= raw(@conversation.summary) %></p>
         </div>
 
-        <%#= render :partial => '/layouts/opportunity_navigation', :locals => {
+        <%= render :partial => '/layouts/opportunity_navigation', :locals => {
           conversation: @conversation,
           participants_count: @conversation.participants.count,
           actions_count: @conversation.actions.count,

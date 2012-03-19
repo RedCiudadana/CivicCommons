@@ -45,15 +45,6 @@
               -@conversation.content_items.each do |content_item|
                 %li.issue-list
                   =link_to(content_item.title, path_to_content_item(content_item))
-
-      - if @conversation.issues.standard_issue.size > 0
-        = render :partial => '/conversations/side_issues', :object => @conversation, :as => :conversation
-      - if @conversation.issues.managed_issue.size > 0
-        .mod
-          %h3 Projects
-          .mod-content
-            %ul.link-list
-              -@conversation.issues.managed_issue.each do |issue|
-                %li.issue-list
-                  =link_to(issue.name, issue_path(issue))
+      = render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.issues.standard_issue}
+      = render :partial => '/layouts/conversation_managed_issues', :locals => {:managed_issues => @conversation.issues.managed_issue}
       = render :partial => '/conversations/side_participants', :object => @conversation, :as => :conversation

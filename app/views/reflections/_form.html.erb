@@ -1,9 +1,4 @@
-<%= @conversation.id %><br/>
-<%= @reflection.inspect %><br/>
-<%= "#{conversations_reflections_path(@conversation)}" %>
-
-
-<%= form_for [@conversation, @reflection], :url => conversation_reflections_path(@conversation) do |f| %>
+<%= form_for [@conversation, @reflection] do |f| %>
   <% if @reflection.errors.any? %>
     <div class="alert alert-error mbl">
       <h4>There were errors saving this petition.</h4>

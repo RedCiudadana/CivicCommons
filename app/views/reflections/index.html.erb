@@ -17,6 +17,7 @@
           <%= link_to 'Share a Reflection', new_conversation_reflection_path(@conversation), :class => 'button btn-large' %>
         </div>
       </div>
+      <%= render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.issues.standard_issue} %>
       <div class="mod">
         <h3>Issues</h3>
         <ul class="simple-list block-link-list">
