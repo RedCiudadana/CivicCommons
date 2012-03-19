@@ -1,0 +1,9 @@
+<div class="mod">
+  <p><strong>You participated in the following actions, would you like to reference them in your reflection?</strong></p>
+  <div class="media inset">
+    <% petitions.each do |petition| %>
+      <input for="petition-check" type="hidden" value="0"><input class="img" checked="" id="person_daily_digest" name="petition-check" type="checkbox" value="1"> <div class="bd"><strong><%= petition.title %></strong></div>
+    <% end %>
+  </div>
+</div>
+

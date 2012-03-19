@@ -1,3 +1,7 @@
+<% content_for :header do %>
+  <%= javascript_include_tag :ckeditor %>
+<% end %>
+
 <%= form_for [@conversation, @reflection] do |f| %>
   <% if @reflection.errors.any? %>
     <div class="alert alert-error mbl">
@@ -12,11 +16,26 @@
     </div>
     <div class="form-block">
       <label for="reflection_title">Your Reflection:</label>
-      <%= f.text_area :details, :class => 'short textbox', :cols => '40', :rows => '20' %>
+      <%= f.cktext_area :details, :class => 'short textbox', :cols => '40', :rows => '20' %>
     </div>
     <div class="form-block">
       <%= f.submit :class => 'submit', :value => 'Publish' %> or &nbsp;
       <%= link_to 'Cancel', [@conversation, @reflection], :id => 'cancel-reflection' %>
     </div>
+    <%= hidden_field(:reflection, :conversation_id) %>
+    <%= hidden_field(:reflection, :owner) %>
   </fieldset>
+
+
+      </div><!-- /.main-content -->
+
+    <div class='aside supplementary'>
+      <%= render partial: 'participated_actions', locals: {:petitions => current_person.signed_petitions} %>
+      <div class="mod">
+        <p><strong>You participated in the following actions, would you like to reference them in your reflection?</strong></p>
+        <div class="media inset">
+          <input for="petition-check" type="hidden" value="0"><input class="img" checked="" id="person_daily_digest" name="petition-check" type="checkbox" value="1"> <div class="bd"><strong>Petition Cedar Fair to turn Sea World into a whale breeding motel.</strong></div>
+        </div>
+      </div>
+ 
 <% end %>

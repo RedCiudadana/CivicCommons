@@ -13,7 +13,7 @@ class Conversation < ActiveRecord::Base
   #
   # TODO: Use rails generated properties once the associations are created.
   #       There are temporary methods in conversations_helper as well.
-  alias_method :reflections, :actions
+  #alias_method :reflections, :actions
   #############################################################################
 
   searchable :ignore_attribute_changes_of => [ :total_visits, :recent_visits, :last_visit_date, :updated_at, :recent_rating ] do

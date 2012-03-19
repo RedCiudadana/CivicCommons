@@ -28,13 +28,8 @@ class ReflectionsController < ApplicationController
 
   def create
     @reflection = Reflection.new(params[:reflection])
-    puts "*****"
-    puts @reflection.inspect
-    @reflection.conversation_id = @conversation if @reflection.conversation_id.blank? && @conversation
+    @reflection.conversation_id = @conversation.id if @reflection.conversation_id.blank? && @conversation
     @reflection.owner = current_person.id if @reflection.owner.blank? && current_person
-
-    puts @conversation.inspect
-    puts "*****"
 
     respond_to do |format|
       if @reflection.save

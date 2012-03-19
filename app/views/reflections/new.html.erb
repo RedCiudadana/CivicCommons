@@ -8,6 +8,7 @@
     </div><!-- /.main-content -->
 
     <div class='aside supplementary'>
+      <%= render partial: 'participated_actions', locals: {:petitions => current_person.signed_petitions} %>
       <div class="mod">
         <p><strong>You participated in the following actions, would you like to reference them in your reflection?</strong></p>
         <div class="media inset">
