@@ -18,6 +18,7 @@
         </div>
       </div>
       <%= render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.issues.standard_issue} %>
+      <%= render :partial => '/layouts/side_participants', :locals => {participants: @conversation.reflection_participants} if @conversation.reflection_participants.present? %>
         <h3>Participants</h3>
         <div class="mod-content">
           <div class="other-participants">

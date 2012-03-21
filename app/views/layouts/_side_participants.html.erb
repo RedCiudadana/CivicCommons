@@ -3,7 +3,7 @@
   <div class='mod-content'>
     <div class='guides'>
       <div class='photobank'>
-        <% @participants.each do |participant| %>
+        <% participants.each do |participant| %>
           <%= conversation_profile(participant).html_safe %>
         <% end %>
       </div>

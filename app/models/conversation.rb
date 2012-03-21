@@ -84,6 +84,10 @@ class Conversation < ActiveRecord::Base
     participants = self.actions.collect(&:participants).flatten.uniq
   end
 
+  def reflection_participants
+    participants = self.reflections.collect(&:participants).flatten.uniq
+  end
+
   def self.available_filters
     {
       :recommended => :recommended,

@@ -1,8 +1,8 @@
 <div class="wrapper">
   <div class="content-container">
-  
+
     <div class="main-content">
-      <%= render :partial => '/actions/action', :collection => @actions %>      
+      <%= render :partial => '/actions/action', :collection => @actions %>
     </div><!-- /.main-content -->
 
     <div class="aside supplementary">
@@ -18,12 +18,12 @@
               <li><%= link_to 'Write a Petition', new_conversation_petition_path(@conversation) %></li>
             </ul>
           </div>
-        </div> 
-      
+        </div>
+
       <% if @conversation.issues.standard_issue.size > 0 %>
         <%= render :partial => '/conversations/side_issues', :object => @conversation, :as => :conversation %>
       <% end %>
-      <%= render :partial => '/actions/side_participants', :object => @participants, :as => :participants if @participants.present? %>
+      <%= render :partial => '/layouts/side_participants', :locals => {participants: @participants} if @participants.present? %>
   </div>
 </div>
 

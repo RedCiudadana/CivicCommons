@@ -13,12 +13,8 @@ module AvatarHelper
   end
 
   def text_profile(person)
-    if person
-      person = Person.find(person) if person.is_a?(Numeric)
-      link_to_profile(person) do
-        person.name
-      end
-    else
+    person = Person.find(person) if person.is_a?(Numeric)
+    link_to_profile(person) do
       person.name
     end
   end
@@ -52,11 +48,8 @@ module AvatarHelper
   end
 
   def avatar_profile(person, size=20, css_class='callout')
-    if person
-      link_to_profile(person) do
-        profile_image(person, size, css_class)
-      end
-    else
+    person = Person.find(person) if person.is_a?(Numeric)
+    link_to_profile(person) do
       profile_image(person, size, css_class)
     end
   end

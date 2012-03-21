@@ -4,4 +4,6 @@ class Reflection < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :details
+
+  alias_attribute :participants, :owner
 end
