@@ -43,7 +43,7 @@ class AuthenticationController < ApplicationController
   end
 
   def update_conflicting_email
-    if !session[:other_email].blank? && current_person.update_attribute(:email, session[:other_email]) 
+    if !session[:other_email].blank? && current_person.update_attribute(:email, session[:other_email])
       session[:other_email] = nil
       render :nothing => true, :status => :ok
     else
@@ -63,7 +63,7 @@ protected
 
   def require_facebook_authenticated
     unless current_person.facebook_authenticated?
-      render :text => '<p>Your account needs to have been connected to Facebook in order to do this.</p>' 
+      render :text => '<p>Your account needs to have been connected to Facebook in order to do this.</p>'
       return false
     end
   end
