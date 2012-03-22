@@ -1,32 +1,23 @@
 require 'spec_helper'
+include ControllerMacros
 
 describe Admin::SurveysController do
-  
   before(:each) do
-    @controller.stub(:verify_admin).and_return(true)
-  end
-
-  def mock_survey(stubs={})
-    @mock_survey ||= mock_model(Survey, stubs).as_null_object
-  end
-  
-  def mock_response(stubs={})
-    @mock_response ||= mock_model(SurveyResponse, stubs).as_null_object
+    login_admin
+    @survey = Factory.create(:survey)
   end
 
   describe "GET index" do
     it "assigns all surveys as @surveys" do
-      Survey.stub(:all) { [mock_survey] }
       get :index
-      assigns(:surveys).should eq([mock_survey])
+      assigns(:surveys).first.id.should eq(@survey.id)
     end
   end
 
   describe "GET show" do
     it "assigns the requested survey as @survey" do
-      Survey.stub(:find).with("37") { mock_survey }
-      get :show, :id => "37"
-      assigns(:survey).should be(mock_survey)
+      get :show, :id => @survey.id
+      assigns(:survey).id.should be(@survey.id)
     end
   end
 
@@ -35,6 +26,7 @@ describe Admin::SurveysController do
       get :new
       assigns(:survey).new_record?.should be_true
     end
+
     it "should defult to Vote, as a Survey STI" do
       get :new
       assigns(:survey).type.should == 'Vote'
@@ -43,9 +35,8 @@ describe Admin::SurveysController do
 
   describe "GET edit" do
     it "assigns the requested survey as @survey" do
-      survey = Factory.create(:survey)
-      get :edit, :id => survey.id
-      assigns(:survey).id.should == survey.id
+      get :edit, :id => @survey.id
+      assigns(:survey).id.should == @survey.id
     end
   end
 
@@ -56,7 +47,7 @@ describe Admin::SurveysController do
         post :create, :survey => survey.attributes
         assigns(:survey).title.should be(survey.title)
       end
-      
+
       it "should create an STI model based on type" do
         survey = Factory.build(:survey)
         post :create, :survey => survey.attributes
@@ -87,34 +78,31 @@ describe Admin::SurveysController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested survey" do
-        Survey.stub(:find).with("37") { mock_survey }
-        mock_survey.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :survey => {'these' => 'params'}
+        attributes = @survey.attributes
+        attributes['title'] = 'blah blah'
+        put :update, :id => @survey.id, :survey => attributes
+        Survey.find(@survey.id).attributes == attributes
       end
 
       it "assigns the requested survey as @survey" do
-        Survey.stub(:find) { mock_survey(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:survey).should be(mock_survey)
+        put :update, :id => @survey.id
+        assigns(:survey).id.should be(@survey.id)
       end
 
       it "redirects to the survey" do
-        Survey.stub(:find) { mock_survey(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(admin_survey_url(mock_survey))
+        put :update, :id => @survey.id
+        response.should redirect_to(admin_survey_path(@survey))
       end
     end
 
     describe "with invalid params" do
       it "assigns the survey as @survey" do
-        Survey.stub(:find) { mock_survey(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:survey).should be(mock_survey)
+        put :update, :id => @survey.id, :survey => { title: '' }
+        assigns(:survey).id.should be(@survey.id)
       end
 
       it "re-renders the 'edit' template" do
-        Survey.stub(:find) { mock_survey(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => @survey.id, :survey => { title: '' }
         response.should render_template("edit")
       end
     end
@@ -122,35 +110,27 @@ describe Admin::SurveysController do
 
   describe "DELETE destroy" do
     it "destroys the requested survey" do
-      Survey.stub(:find).with("37") { mock_survey }
-      mock_survey.should_receive(:destroy)
-      delete :destroy, :id => "37"
+      delete :destroy, :id => @survey.id
+      Survey.where(id: @survey.id).length.should == 0
     end
 
     it "redirects to the admin_surveys list" do
-      Survey.stub(:find) { mock_survey }
-      delete :destroy, :id => "1"
-      response.should redirect_to(admin_surveys_url)
+      delete :destroy, :id => @survey.id
+      response.should redirect_to(admin_surveys_path)
     end
   end
-  
+
   describe "GET progress" do
     it "assigns the requested survey as @survey" do
-      Survey.stub(:find).with("37") { mock_survey }
-      get :progress, :id => "37"
-      assigns(:survey).should be(mock_survey)
+      get :progress, :id => @survey.id
+      assigns(:survey).id.should be(@survey.id)
     end
-    
+
     it "gets the survey responses based on last voted" do
-      Survey.stub(:find).with("37") { mock_survey }
-      mock_survey.stub_chain(:survey_responses, :sort_last_created_first).and_return([mock_response])
-      get :progress, :id => "37"
-      assigns(:responses).should == [mock_response]
-    end
-    it "initalizes the Vote Progress service" do
-      Survey.stub(:find).with("37") { mock_survey }
-      VoteProgressService.should_receive(:new).with(mock_survey)
-      get :progress, :id => "37"
+      survey = Factory.create(:survey_with_options)
+      survey_response = Factory.create(:survey_response, survey: survey, person: @user)
+      get :progress, :id => survey.id
+      assigns(:responses).should == [survey_response]
     end
   end
 

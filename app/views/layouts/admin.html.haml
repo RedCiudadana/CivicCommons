@@ -12,6 +12,7 @@
     =javascript_include_tag 'lib/admin/apply_tiny_mce'
     =javascript_include_tag 'vendor/jquery/jquery-ui-1.8.16.custom.min.js'
     =javascript_include_tag 'vendor/tiny_mce/jquery.tinymce.js'
+    =javascript_tag '$.fx.off = true;' if Rails.env.test?
     %title CivicCommons Admin
   %body
     .admin-header

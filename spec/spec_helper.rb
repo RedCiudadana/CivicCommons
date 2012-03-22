@@ -50,7 +50,7 @@ Spork.prefork do
   # in ./support/ and its subdirectories.
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-  Rspec.configure do |config|
+  RSpec.configure do |config|
     config.mock_with :rspec
     config.include CustomMatchers
     config.include WebMock::API
