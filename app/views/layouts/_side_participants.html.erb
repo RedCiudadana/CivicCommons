@@ -1,13 +1,11 @@
-<div class='mod'>
-  <h3>Participants</h3>
-  <div class='mod-content'>
-    <div class='guides'>
-      <div class='photobank'>
-        <% participants.each do |participant| %>
-          <%= conversation_profile(participant).html_safe %>
-        <% end %>
-      </div>
-      <br class='clear' />
+<h3>Participants</h3>
+<div class='mod-content'>
+  <div class='other-participants'>
+    <div class='photobank'>
+      <% participants.each do |participant| %>
+        <%= conversation_profile(participant).html_safe %>
+      <% end %>
     </div>
+    <p><a href="#TODO">View all participants (TODO)</a></p>
   </div>
 </div>
