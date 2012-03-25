@@ -53,6 +53,9 @@ gem 'profanity_filter'
 
 gem "ckeditor", "3.6.3"
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development do
   gem "rails3-generators"
   gem "hpricot"
