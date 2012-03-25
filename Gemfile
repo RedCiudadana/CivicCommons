@@ -53,6 +53,7 @@ gem 'profanity_filter'
 
 gem "ckeditor", "3.6.3"
 
+gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
