@@ -1,4 +1,6 @@
+require 'config/configurator'
 module S3Config
+  include Configurator
   extend self
   
   def credential_file
@@ -11,4 +13,7 @@ module S3Config
     end
     File.new(filename)
   end
+
+  load_config(:file => credential_file, :environment => Rails.env)
+  
 end
