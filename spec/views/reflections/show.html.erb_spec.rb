@@ -4,7 +4,8 @@ describe "reflections/show.html.erb" do
   before(:each) do
     @reflection = assign(:reflection, stub_model(Reflection,
       :title => "Title",
-      :details => "MyText"
+      :details => "MyText",
+      :created_at => "2012-03-17 12:34:56"
     ))
   end
 

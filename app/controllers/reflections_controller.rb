@@ -11,7 +11,7 @@ class ReflectionsController < ApplicationController
 
   public
   def index
-    @reflections = Reflection.where(:conversation_id => @conversation).all
+    @reflections = Reflection.where(:conversation_id => @conversation)
   end
 
   def show
