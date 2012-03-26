@@ -34,15 +34,10 @@ class Petition < ActiveRecord::Base
       self.signers << person
     end
   end
-<<<<<<< HEAD
-    
-=======
-
   def votable?
     !end_on.today? && end_on.future?
   end
 
->>>>>>> d7584b3... WIP - trying to fix the form action
   # Needed to create the Action model when Petition is created
   def create_or_update_action
     if self.action.present?
