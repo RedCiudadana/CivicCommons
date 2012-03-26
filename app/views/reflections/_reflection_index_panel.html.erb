@@ -1,6 +1,6 @@
 <div class="entry-container reverse">
   <div class="entry-meta">
-    <h3><a href='<%= conversation_reflection_path(conversation_id: @conversation.id, id: reflection) %>'><%= reflection.title %></a></h3>
+    <h3><a href='<%= conversation_reflection_path(conversation_id: conversation.id, id: reflection) %>'><%= reflection.title %></a></h3>
   </div>
   <div class="entry-details full">
     <p><strong>Read the <a style="color:red;" href="#">initial proposal</a> by <%= text_profile(reflection.owner) %></strong></p>

@@ -6,7 +6,7 @@
       <p class="mbl">This is a brief instruction about what reflections are all about. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec sem in lacus mattis adipiscing eget ut lorem. Proin eu quam nulla, id porta erat. Cras nec neque non nisl lobortis adipiscing eget at enim. </p>
 
       <% @reflections.each do |reflection| %>
-        <%= render :partial => '/reflections/reflection_index_panel', :locals => {:reflection => reflection} %>
+        <%= render :partial => '/reflections/reflection_index_panel', :locals => {:conversation => @conversation, :reflection => reflection} %>
       <% end %>
 
     </div><!-- /.main-content -->
@@ -17,7 +17,7 @@
           <%= link_to 'Share a Reflection', new_conversation_reflection_path(@conversation), :class => 'button btn-large' %>
         </div>
       </div>
-      <%= render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.issues.standard_issue} %>
+      <%= render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.standard_issue} if @conversation.issues.present? %>
       <%= render :partial => '/layouts/side_participants', :locals => {participants: @conversation.reflection_participants} if @conversation.reflection_participants.present? %>
     </div><!-- /.aside -->
 
