@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316020745) do
+ActiveRecord::Schema.define(:version => 20120326042613) do
 
   create_table "actions", :force => true do |t|
     t.integer  "conversation_id"
@@ -59,6 +59,22 @@ ActiveRecord::Schema.define(:version => 20120316020745) do
   add_index "authentications", ["person_id"], :name => "index_authentications_on_person_id"
   add_index "authentications", ["provider"], :name => "index_authentications_on_provider"
   add_index "authentications", ["uid"], :name => "index_authentications_on_uid"
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "content_item_descriptions", :force => true do |t|
     t.string "content_type"
