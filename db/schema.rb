@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306142027) do
+ActiveRecord::Schema.define(:version => 20120309032758) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -358,11 +358,6 @@ ActiveRecord::Schema.define(:version => 20120306142027) do
   add_index "managed_issue_pages", ["person_id"], :name => "index_managed_issue_pages_on_person_id"
   add_index "managed_issue_pages", ["slug"], :name => "index_managed_issue_pages_on_slug", :unique => true
 
-  create_table "opportunities", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "organization_details", :force => true do |t|
     t.integer  "person_id"
     t.string   "street"
@@ -430,6 +425,30 @@ ActiveRecord::Schema.define(:version => 20120306142027) do
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
   add_index "people", ["slug"], :name => "index_people_on_slug", :unique => true
+
+  create_table "petition_signatures", :force => true do |t|
+    t.integer  "petition_id"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "petition_signatures", ["petition_id", "person_id"], :name => "index_petition_signatures_on_petition_id_and_person_id"
+
+  create_table "petitions", :force => true do |t|
+    t.integer  "conversation_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "resulting_actions"
+    t.integer  "signature_needed"
+    t.date     "end_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
+
+  add_index "petitions", ["conversation_id"], :name => "index_petitions_on_conversation_id"
+  add_index "petitions", ["person_id"], :name => "index_petitions_on_person_id"
 
   create_table "rating_descriptors", :force => true do |t|
     t.string   "title"
@@ -526,8 +545,6 @@ ActiveRecord::Schema.define(:version => 20120306142027) do
   end
 
   create_table "surveys", :force => true do |t|
-    t.integer  "surveyable_id"
-    t.string   "surveyable_type"
     t.string   "title"
     t.text     "description"
     t.string   "type"
@@ -538,6 +555,8 @@ ActiveRecord::Schema.define(:version => 20120306142027) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "end_notification_email_sent"
+    t.integer  "surveyable_id"
+    t.string   "surveyable_type"
   end
 
   create_table "top_items", :force => true do |t|
