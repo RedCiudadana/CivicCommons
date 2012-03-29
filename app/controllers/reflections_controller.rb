@@ -2,6 +2,7 @@ class ReflectionsController < ApplicationController
   layout 'opportunity'
 
   before_filter :require_user, :except => [:index, :show]
+  before_filter :verify_admin, :only => [:edit, :update, :delete]
   before_filter :find_conversation
 
   protected

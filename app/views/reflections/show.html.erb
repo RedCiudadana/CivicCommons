@@ -3,6 +3,13 @@
 
     <div class="main-content">
 
+      <% if current_person.try(:admin?) %>
+      <p class="fl-right alert alert-admin">
+        <strong>Moderate:</strong>
+        <%= link_to 'Edit', edit_conversation_reflection_path(@conversation, @reflection) %> |
+        <%= link_to 'Delete', conversation_reflection_path(@conversation, @reflection), :method => :delete, :confirm => "Are you sure you want to delete this reflection? This cannot be undone." %>
+      </p>
+      <% end %>
       <h2 class="mtn"><%= @reflection.title %></h2>
       <p><strong>By: <%= text_profile(@reflection.owner) %> on <%= @reflection.created_at.strftime('%B %d, %Y') %></strong></p>
       <p><%= raw @reflection.details %></p>
