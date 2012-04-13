@@ -1,6 +1,6 @@
 class Petition < ActiveRecord::Base
   belongs_to :conversation
-  belongs_to :creator, :class_name => 'Person', :foreign_key => 'person_id'
+  belongs_to :person
   has_one :action, :as => :actionable, :dependent => :destroy
   has_many :signatures, :class_name => 'PetitionSignature', :dependent => :destroy
 

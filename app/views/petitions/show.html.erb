@@ -6,7 +6,7 @@
         <%= moderate_link_for(@petition) if signed_in? && current_person.admin? %>
         <h2 class="mtn"><%= @petition.title %></h2>
 
-        <p class="contribution-person-name"> By: <%= text_profile(@petition.creator) %> on <%= @petition.created_at.to_date.to_s(:long) %></p>
+        <p class="contribution-person-name"> By: <%= text_profile(@petition.person) %> on <%= @petition.created_at.to_date.to_s(:long) %></p>
         <%= raw sanitize @petition.description %>
         <p class="alert alert-notification">
           <strong><%= @petition.resulting_actions %></strong>
@@ -49,9 +49,9 @@
 
       <div class="recent-item">
         <div class="offset-2">
-          <%= member_profile(@petition.creator) %>
-          <p><strong><%= text_profile(@petition.creator) %></strong><br />
-          <%= link_to 'View Profile', user_path(@petition.creator) %>
+          <%= member_profile(@petition.person) %>
+          <p><strong><%= text_profile(@petition.person) %></strong><br />
+          <%= link_to 'View Profile', user_path(@petition.person) %>
         </div>
       </div>
     </div><!-- /.aside -->

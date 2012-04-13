@@ -1,0 +1,9 @@
+<div class="">
+  <div class="recent-item petition-signature">
+    <h4><%= link_to( petition_signature.petition.title, conversation_petition_path(petition_signature.petition.conversation, petition_signature.petition, :anchor => 'opportunity-nav')) %></h4>
+    <p>
+      <%= petition_signature.person.name %> signed this Petition
+    </p>
+  </div>
+</div>
+

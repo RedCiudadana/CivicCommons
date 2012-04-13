@@ -1,4 +1,4 @@
-<div class="media comment mbl" data-reflection-comment-id="<%= comment.id %>">
+<div class="media comment mbl" data-reflection-comment-id="<%= comment.id %>" id="reflection-comment-<%= comment.id %>">
   <%= link_to profile_image(comment.person,'40'), user_url(comment.person) ,:class => 'img', :title => comment.person.name %>
   <div class="bd">
     <% if signed_in? && (current_person.admin? || comment.person == current_person) %>

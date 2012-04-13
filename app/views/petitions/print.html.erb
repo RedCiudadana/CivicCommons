@@ -11,7 +11,7 @@
 
     <p class="pdf-link"><a href="http://pdfcrowd.com/url_to_pdf/?pdf_name=<%= CGI.escape @petition.title %>.pdf">Convert this page to a PDF</a></p>
     <h1><%= @petition.title %></h1>
-    <p>Written by: <%= link_to @petition.creator.name, user_url(@petition.creator) %>
+    <p>Written by: <%= link_to @petition.person.name, user_url(@petition.person) %>
       on <%= @petition.created_at.strftime('%b %d, %Y') %></p>
     <div class="description">
       <%= raw @petition.description %>

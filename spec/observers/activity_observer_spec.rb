@@ -50,7 +50,38 @@ describe ActivityObserver do
       a.item_type.should == 'SurveyResponse'
       a.activity_cache.should_not be_nil
     end
+    
+    it 'creates a new activity record when a Petition is created' do
+      petition = FactoryGirl.create(:petition)
+      a = Activity.last
+      a.item_id.should == petition.id
+      a.item_type.should == 'Petition'
+      a.activity_cache.should_not be_nil
+    end
+    
+    it 'creates a new activity record when a PetitionSignature is created' do
+      petition_signature = FactoryGirl.create(:petition_signature)
+      a = Activity.last
+      a.item_id.should == petition_signature.id
+      a.item_type.should == 'PetitionSignature'
+      a.activity_cache.should_not be_nil
+    end
 
+    it 'creates a new activity record when a Reflection is created' do
+      reflection = FactoryGirl.create(:reflection)
+      a = Activity.last
+      a.item_id.should == reflection.id
+      a.item_type.should == 'Reflection'
+      a.activity_cache.should_not be_nil
+    end
+    
+    it 'creates a new activity record when a Reflection Comment is created' do
+      reflection_comment = FactoryGirl.create(:reflection_comment)
+      a = Activity.last
+      a.item_id.should == reflection_comment.id
+      a.item_type.should == 'ReflectionComment'
+      a.activity_cache.should_not be_nil
+    end
   end
 
   context "after saving" do
@@ -124,6 +155,30 @@ describe ActivityObserver do
       Activity.where(item_id: @presenter.id, item_type: 'SurveyResponse').should_not be_empty
       @presenter.survey_response.destroy
       Activity.where(item_id: @presenter.id, item_type: 'SurveyResponse').should be_empty
+    end
+    
+    it 'removes activity records when a petition is deleted/destroyed' do
+      petition = FactoryGirl.create(:petition)
+      Petition.destroy(petition)
+      Activity.where(item_id: petition.id, item_type: 'Petition').should be_empty
+    end
+    
+    it 'removes activity records when a petition signature is deleted/destroyed' do
+      petition_signature = FactoryGirl.create(:petition_signature)
+      PetitionSignature.destroy(petition_signature)
+      Activity.where(item_id: petition_signature.id, item_type: 'PetitionSignature').should be_empty
+    end
+
+    it 'removes activity records when a reflection is deleted/destroyed' do
+      reflection = FactoryGirl.create(:reflection)
+      Reflection.destroy(reflection)
+      Activity.where(item_id: reflection.id, item_type: 'Reflection').should be_empty
+    end
+    
+    it 'removes activity records when a reflection comment is deleted/destroyed' do
+      reflection_comment = FactoryGirl.create(:reflection_comment)
+      ReflectionComment.destroy(reflection_comment)
+      Activity.where(item_id: reflection_comment.id, item_type: 'ReflectionComment').should be_empty
     end
 
   end

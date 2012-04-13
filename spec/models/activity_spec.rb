@@ -205,6 +205,10 @@ describe Activity do
     let(:comment) { FactoryGirl.create(:comment) }
     let(:rating_group) { FactoryGirl.create(:rating_group) }
     let(:vote_survey_response) {FactoryGirl.create(:vote_survey_response)}
+    let(:petition) {FactoryGirl.create(:petition)}
+    let(:petition_signature) {FactoryGirl.create(:petition_signature)}
+    let(:reflection) {FactoryGirl.create(:reflection)}
+    let(:reflection_comment) {FactoryGirl.create(:reflection_comment)}
 
     it "serializes a contribution object" do
       encoded_comment = Activity.encode(comment)
@@ -240,6 +244,39 @@ describe Activity do
       encoded_survey_response.should match(/survey/)
       encoded_survey_response.should match(/survey.+type/)
     end
+    
+    it "serialize a petition object" do
+      encoded_petition = Activity.encode(petition)
+      encoded_petition.should be_an_instance_of String
+      expect { JSON.parse(encoded_petition) }.should_not raise_exception
+      encoded_petition.should match(/conversation/)
+      encoded_petition.should match(/person/)
+    end
+
+    it "serialize a petition signature object" do
+      encoded_petition_signature = Activity.encode(petition_signature)
+      encoded_petition_signature.should be_an_instance_of String
+      expect { JSON.parse(encoded_petition_signature) }.should_not raise_exception
+      encoded_petition_signature.should match(/petition/)
+      encoded_petition_signature.should match(/person/)
+    end
+
+    it "serialize a reflection object" do
+      encoded_reflection = Activity.encode(reflection)
+      encoded_reflection.should be_an_instance_of String
+      expect { JSON.parse(encoded_reflection) }.should_not raise_exception
+      encoded_reflection.should match(/conversation/)
+      encoded_reflection.should match(/person/)
+    end
+
+    it "serialize a reflection comment object" do
+      encoded_reflection_comment = Activity.encode(reflection_comment)
+      encoded_reflection_comment.should be_an_instance_of String
+      expect { JSON.parse(encoded_reflection_comment) }.should_not raise_exception
+      encoded_reflection_comment.should match(/reflection/)
+      encoded_reflection_comment.should match(/person/)
+    end
+    
   end
 
   context "decodes cache data into ActiveRecord object" do
@@ -283,7 +320,43 @@ describe Activity do
       decoded_survey_response.survey_id.should == survey_response.survey_id
       decoded_survey_response.person_id.should == survey_response.person_id
     end
-
+    it "decodes a petition object" do
+      petition = FactoryGirl.create(:petition)
+      encoded_petition = Activity.encode(petition)
+      decoded_petition = Activity.decode(encoded_petition)
+      decoded_petition.class == GenericObject
+      decoded_petition.__class__ == 'Petition'
+      decoded_petition.person_id.should == petition.person_id
+      decoded_petition.conversation_id.should == petition.conversation_id
+    end
+    it "decodes a petition signature object" do
+      petition_signature = FactoryGirl.create(:petition_signature)
+      encoded_petition_signature = Activity.encode(petition_signature)
+      decoded_petition_signature = Activity.decode(encoded_petition_signature)
+      decoded_petition_signature.class == GenericObject
+      decoded_petition_signature.__class__ == 'Petition'
+      decoded_petition_signature.person_id.should == petition_signature.person_id
+      decoded_petition_signature.petition_id.should == petition_signature.petition_id
+    end
+    it "decodes a reflection object" do
+      reflection = FactoryGirl.create(:reflection)
+      encoded_reflection = Activity.encode(reflection)
+      decoded_reflection = Activity.decode(encoded_reflection)
+      decoded_reflection.class == GenericObject
+      decoded_reflection.__class__ == 'Reflection'
+      decoded_reflection.owner.should == reflection.owner
+      decoded_reflection.conversation_id.should == reflection.conversation_id
+    end
+    
+    it "decodes a reflection comment object" do
+      reflection_comment = FactoryGirl.create(:reflection_comment)
+      encoded_reflection_comment = Activity.encode(reflection_comment)
+      decoded_reflection_comment = Activity.decode(encoded_reflection_comment)
+      decoded_reflection_comment.class == GenericObject
+      decoded_reflection_comment.__class__ == 'ReflectionComment'
+      decoded_reflection_comment.person_id.should == reflection_comment.person_id
+      decoded_reflection_comment.reflection_id.should == reflection_comment.reflection_id
+    end
   end
 
   context "Activity#exists?" do
@@ -340,7 +413,6 @@ describe Activity do
       FactoryGirl.create(:contribution_activity, item_id: contrib.id, :item_created_at => 1.days.ago)
       FactoryGirl.create(:rating_group_activity, item_id: rating_group.id, :item_created_at => 2.days.ago)
     end
-
 
     it "retrieves all the activity items" do
       Activity.most_recent_activity_items.should == [convo, contrib, rating_group]

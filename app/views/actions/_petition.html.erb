@@ -6,7 +6,7 @@
   </div>
   <div class="entry-details full">
     <%= moderate_link_for(petition) if signed_in? && current_person.admin? %>
-    <p class="entry-tags">Proposed by: <%= text_profile(petition.creator) %> on <%= petition.created_at.to_date.to_s(:long) %>.</p>
+    <p class="entry-tags">Proposed by: <%= text_profile(petition.person) %> on <%= petition.created_at.to_date.to_s(:long) %>.</p>
     <%= raw sanitize petition.description %>
   </div>
 </div>

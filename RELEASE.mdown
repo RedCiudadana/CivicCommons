@@ -2,7 +2,9 @@
 
 ### Miscellaneous
   * [Remove Opportunity Mockups from our Rails project](https://agilezen.com/project/18091/story/494)
-
+  * [Add Opportunities(Petition, Petition Signature, Reflection, Reflection Comment) to Activity stream](https://agilezen.com/project/18091/story/456)
+  
+  
 ## 2.0
 
 ### External Changes

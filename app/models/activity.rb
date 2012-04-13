@@ -10,7 +10,8 @@ class Activity < ActiveRecord::Base
   validates :item_created_at, presence: true
   validates :person_id, presence: true
 
-  VALID_TYPES = [ Conversation, Contribution, Issue, RatingGroup, SurveyResponse ]
+  VALID_TYPES = [ Conversation, Contribution, Issue, RatingGroup, SurveyResponse,
+                  Petition, PetitionSignature, Reflection, ReflectionComment]
 
   # Accept an Active Record object of valid type
   def initialize(attributes = nil)
@@ -111,15 +112,24 @@ class Activity < ActiveRecord::Base
   def self.encode(item)
     obj = nil
     if Activity.valid_type?(item)
-      if item.is_a? Conversation
+      case item
+      when Conversation
         obj = ActiveSupport::JSON.encode(item, include: [:person])
-      elsif item.is_a? Contribution
+      when Contribution
         obj = ActiveSupport::JSON.encode(item, include: [:person, :conversation])
-      elsif item.is_a? RatingGroup
+      when RatingGroup
         # need to load rating descriptors
         obj = ActiveSupport::JSON.encode(item, include: [:person, :ratings, :conversation, :contribution])
-      elsif item.is_a? SurveyResponse
+      when SurveyResponse
         obj = ActiveSupport::JSON.encode(item, include: {person:{}, survey: {methods: :type}}) #included the STI type on surveys
+      when Petition
+        obj = ActiveSupport::JSON.encode(item, include: [:person, :conversation])
+      when PetitionSignature
+        obj = ActiveSupport::JSON.encode(item, include: [:person, :petition])
+      when Reflection
+        obj = ActiveSupport::JSON.encode(item, include: [:person, :conversation])
+      when ReflectionComment
+        obj = ActiveSupport::JSON.encode(item, include: [:person, :reflection])
       end
     end
     return obj

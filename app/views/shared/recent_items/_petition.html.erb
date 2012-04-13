@@ -1,0 +1,8 @@
+<div class="recent-item">
+  <h4><%= link_to petition.title, conversation_petition_url(petition.conversation, petition, :anchor => 'opportunity-nav') %></h4>
+  <div class="offset-2">
+    <%= avatar_profile(petition.person, 40) %>
+    <p><%= petition.person.name %> wrote this Petition</p>
+    <p><%= link_to( "View the petition", conversation_petition_url(petition.conversation, petition, :anchor => 'opportunity-nav'), :class => "read-more") %></p>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="">
+  <div class="recent-item reflection">
+    <h4><%= link_to( reflection.title, conversation_reflection_path(reflection.conversation, reflection, :anchor => 'opportunity-nav')) %></h4>
+    <p>
+      <%= truncate( Sanitize.clean( reflection.details, :remove_contents => ['script'] ).strip, :length => 225, :separator => ' ' ) %>
+    </p>
+  </div>
+</div>
+
