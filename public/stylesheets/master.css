@@ -1992,7 +1992,7 @@ a.respond.rating-button {
 }
 div:last-child.button-wrapper {border-bottom: 1px solid #ccc;}
 
-/*- Conrelativeesation Ticker ----------*/
+/*- Conversation Ticker ----------*/
 
 .conversation-ticker {
   background-color: #fff;
@@ -2395,7 +2395,26 @@ img.float {
   float: left;
   margin-right: 15px;
 }
-div.three-col-sm div.cols.call-out p {word-wrap: break-word;}
+
+div.three-col-sm div.cols.call-out p {
+  word-wrap: break-word;
+}
+
+/*- Project Banner ----------*/
+
+.project-banner {
+  position: relative;
+}
+
+p.sponsor-tag {
+  bottom: 5px;
+  color: #bbb;
+  font-weight: bold;
+  margin-bottom: 0;
+  position: absolute;
+  right: 10px;
+  text-transform: uppercase;
+}
 
 /*- Empty Section ----------*/
 

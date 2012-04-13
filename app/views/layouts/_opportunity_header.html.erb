@@ -17,6 +17,20 @@
           <p><%= raw(@conversation.summary) %></p>
         </div>
 
+        <div class="mod inset project-banner">
+          <div class="media">
+            <div class="img">
+              <img src="http://placehold.it/140x105" />
+            </div>
+            <div class="bd">
+              <h3 class="project-banner-title">Flats Forward</h3>
+              <p class="project-banner-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc.</p>
+              <p class="project-banner-link"><a href="#">Join more conversations about this project</a></p>
+            </div>
+            <p class="sponsor-tag">Sponsored</p>
+          </div>
+        </div>
+
         <%= render :partial => '/layouts/opportunity_navigation', :locals => {
           conversation: @conversation,
           participants_count: @conversation.community_user_ids.count,
