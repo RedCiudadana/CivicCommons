@@ -1349,10 +1349,14 @@ ul.profile-extras a:hover {color: #2c87b7;}
   padding: 0 0 0 35px;
   margin-bottom: 35px;
 }
-.profile .recent-item.contribution {background: url("/images/contrib-r.png") no-repeat 2px 4px;}
-.profile .recent-item.conversation {background: url("/images/conv-r.png") no-repeat 2px 4px;}
-.profile .recent-item.rating {background: url("/images/voting-icon.png") no-repeat 7px 4px;}
-.profile .recent-item.issue {background: url("/images/issues-r.png") no-repeat 2px 4px;}
+.profile .recent-item.contribution {background: url(/images/contrib-r.png) no-repeat 2px 4px;}
+.profile .recent-item.conversation {background: url(/images/conv-r.png) no-repeat 2px 4px;}
+.profile .recent-item.rating {background: url(/images/voting-icon.png) no-repeat 7px 4px;}
+.profile .recent-item.issue {background: url(/images/issues-r.png) no-repeat 2px 4px;}
+.profile .recent-item.petition {background: url(/images/petition-r.png) no-repeat 2px 0;}
+.profile .recent-item.petition-signature {background: url(/images/petition_sig-r.png) no-repeat 2px 0;}
+.profile .recent-item.reflection {background: url(/images/reflection-r.png) no-repeat 2px 0;}
+.profile .recent-item.reflection-comment {background: url(/images/reflection_comment-r.png) no-repeat 2px 2px;}
 .profile .issue p {padding-left: 0;}
 .profile h3 {margin-bottom: 1em;}
 .profile .divided {border-top: none;}
