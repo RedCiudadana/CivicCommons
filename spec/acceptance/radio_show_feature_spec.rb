@@ -28,7 +28,7 @@ feature " RadioShow Index", %q{
     page.should have_content "blog two"
     page.should have_content "blog three"
   end
-  scenario "seeing radioshow link", :pending => 'broke during rails3 upgrade' do
+  scenario "seeing radioshow link" do
     given_a_radioshow
     goto :radio_show
     page.should have_content "show one"
