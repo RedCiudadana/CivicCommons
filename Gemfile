@@ -9,7 +9,7 @@ gem 'embedly'
 gem 'fitter-happier'
 gem 'friendly_id'
 gem 'gchart'
-gem 'haml', '< 3.1' # WARNING: updating to 3.1 seems to break our HAML templates
+gem 'haml', '~>3.1' # WARNING: updating to 3.1 seems to break our HAML templates
 gem 'highline'
 gem 'hominid'
 gem 'hoptoad_notifier'

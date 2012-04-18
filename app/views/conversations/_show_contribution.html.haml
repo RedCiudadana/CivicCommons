@@ -4,7 +4,6 @@
 - else
   %div.content
     %span.contribution-person-name= person_display_name(contribution.person)
-    - if true == collapsed
     = format_comment(contribution)
     %a{href:"#", :class => (collapsed ? 'contribution-toggle' : 'contribution-toggle active')}Toggle
     - if !contribution.embedly_type && !contribution.attachment_file_name
