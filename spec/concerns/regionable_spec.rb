@@ -16,7 +16,7 @@ describe Regionable do
   context "when no region exists for its zipcode" do
     it "returns a default region" do
       @issue = FactoryGirl.create(:issue, :zip_code => '22222')
-      @issue.region.should == Region.default
+      @issue.region.attributes.should == Region.default.attributes
     end
 
   end
