@@ -20,7 +20,8 @@ class Issue < ActiveRecord::Base
   belongs_to :person
 
   has_and_belongs_to_many :conversations
-  has_and_belongs_to_many :topics, uniq: true
+  has_many :issues_topics, uniq: true
+  has_many :topics, through: :issues_topics, uniq: true
 
   # Contributions directly related to this Issue
   has_many :contributions

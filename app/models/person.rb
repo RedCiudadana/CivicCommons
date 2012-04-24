@@ -54,12 +54,16 @@ class Person < ActiveRecord::Base
   attr_protected :admin
 
   has_many :authentications, :dependent => :destroy
-  has_and_belongs_to_many :organizations, :uniq => true, :join_table => 'organization_members'
+  has_many :organization_members
+  has_many :organizations,
+    through: :organization_members,
+    uniq: true
   accepts_nested_attributes_for :authentications
 
   has_one :facebook_authentication, :class_name => 'Authentication', :conditions => {:provider => 'facebook'}, :dependent => :destroy
 
-  has_many :content_items, :foreign_key => 'person_id', :dependent => :restrict
+  has_many :content_items_people
+  has_many :content_items, :through => :content_items_people, :foreign_key => 'person_id', :dependent => :restrict
   has_many :content_templates, :foreign_key => 'person_id', :dependent => :restrict
   has_many :contributions, :foreign_key => 'owner', :uniq => true, :dependent => :restrict
   has_many :managed_issue_pages, :foreign_key => 'person_id', :dependent => :restrict

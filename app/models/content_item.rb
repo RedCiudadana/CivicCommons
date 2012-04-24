@@ -45,34 +45,38 @@ class ContentItem < ActiveRecord::Base
 
   belongs_to :author, :class_name => "Person", :foreign_key => "person_id"
 
-  has_and_belongs_to_many :topics, uniq: true
-  has_and_belongs_to_many :conversations, uniq: true
+  has_many :content_items_topics, :uniq => true
+  has_many :topics, :through => :content_items_topics, uniq: true
+
+  has_many :content_items_conversations, :uniq => true
+  has_many :conversations, :through => :content_items_conversations, uniq: true
+
   has_many :links, :class_name => 'ContentItemLink', :dependent => :destroy
 
+  has_many :content_items_people, uniq: true
+
   # Any radioshow people
-  has_and_belongs_to_many :people,
-                          :readonly => true,
-                          :uniq => true,
-                          :class_name => 'Person',
-                          :join_table => 'content_items_people'
+  has_many :people,
+    :through => :content_items_people,
+    :readonly => true,
+    :uniq => true,
+    :class_name => 'Person'
 
   #radioshow hosts
-  has_and_belongs_to_many :hosts,
-                          :uniq => true,
-                          :class_name => 'Person',
-                          :join_table => 'content_items_people',
-                          :conditions => {:content_items_people => {:role => 'Host'}},
-                          :insert_sql => 'INSERT INTO `content_items_people` (`content_item_id`, `person_id`, `role`,`created_at`,`updated_at`) VALUES (#{id}, #{record.id}, "Host","#{created_at}","#{updated_at}")',
-                          :delete_sql => 'DELETE FROM `content_items_people` WHERE `content_items_people`.`content_item_id` = #{id} AND `content_items_people`.`person_id` IN (#{record.id}) AND `content_items_people`.`role` = "Host"'
-  #radioshow guests
-  has_and_belongs_to_many :guests,
-                          :uniq => true,
-                          :class_name => 'Person',
-                          :join_table => 'content_items_people',
-                          :conditions => {:content_items_people => {:role => 'Guest'}},
-                          :insert_sql => 'INSERT INTO `content_items_people` (`content_item_id`, `person_id`, `role`,`created_at`,`updated_at`) VALUES (#{id}, #{record.id}, "Guest","#{created_at}","#{updated_at}")',
-                          :delete_sql => 'DELETE FROM `content_items_people` WHERE `content_items_people`.`content_item_id` = #{id} AND `content_items_people`.`person_id` IN (#{record.id}) AND `content_items_people`.`role` = "Guest"'
+  has_many :hosts,
+    :through => :content_items_people,
+    :uniq => true,
+    :class_name => 'Person',
+    :conditions => {:content_items_people => {:role => 'Host'}},
+    :source => :person
 
+  #radioshow guests
+  has_many :guests,
+    :through => :content_items_people,
+    :uniq => true,
+    :class_name => 'Person',
+    :conditions => {:content_items_people => {:role => 'Guest'}},
+    :source => :person
 
   delegate   :name, :to => :author, :prefix => true
 
