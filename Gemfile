@@ -5,7 +5,7 @@ gem 'devise', '1.5.2'
 gem 'omniauth', '1.0.1'
 gem 'omniauth-facebook'
 
-gem 'rails', "3.0.3"
+gem 'rails', "~> 3.0.3"
 gem 'jquery-rails', '>= 1.0.3'
 
 gem 'haml', '~> 3.1.4'
@@ -46,7 +46,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
 
-gem 'fitter-happier', '= 0.0.1'
+gem 'fitter-happier'
 
 gem 'sixarm_ruby_email_address_validation'
 
