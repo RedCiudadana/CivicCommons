@@ -3,24 +3,25 @@
     <div class="content-container">
 
       <%# The hope is that we can pull the image used in the project splash page as a background image for this section. It will give us the most flexiblity %>
-      <div class="mod project-banner" style="background-image: url(http://s3.amazonaws.com/com.theciviccommons.int/images/flats/flats-banner.jpg);">
+      <div class="mod project-banner">
+        <img class="project-banner-img" src="http://placehold.it/940x100" />
         <div class="project-banner-titlebar">
-          <p class="project-banner-title">Flats Forward <a class="project-banner-link" href="#">Explore the whole project &#10145;</a></p>
-        </div>
-      </div>
-
-      <div class="main-content">
-
-        <div class='main-content-left'>
-          <img src='<%= @conversation.image.url(:panel) %>' width='120' height='80' alt='<%= @conversation.title %>' class='featured main-img'\>
-        </div>
-        <div class='main-content-right'>
-          <h1><%= @conversation.title %></h1>
-          <p class="subtitle">Started on <%= @conversation.created_at.strftime('%b %d, %Y') %> by <%= text_profile(@conversation.owner) %></p>
-          <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
+            <p class="project-banner-title">Flats Forward <a class="project-banner-link" href="#">Explore the whole project &#10145;</a></p>
+          </div>
         </div>
 
-        <div class='convo-summary'>
+        <div class="main-content">
+
+          <div class='main-content-left'>
+            <img src='<%= @conversation.image.url(:panel) %>' width='120' height='80' alt='<%= @conversation.title %>' class='featured main-img'\>
+          </div>
+          <div class='main-content-right'>
+            <h1><%= @conversation.title %></h1>
+            <p class="subtitle">Started on <%= @conversation.created_at.strftime('%b %d, %Y') %> by <%= text_profile(@conversation.owner) %></p>
+            <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
+          </div>
+
+          <div class='convo-summary'>
           <p><%= raw(@conversation.summary) %></p>
         </div>
 
