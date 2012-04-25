@@ -4,26 +4,25 @@
 
       <% @managed_issue = @conversation.managed_issue.first %>
       <% if @managed_issue && @managed_issue.standard_banner_image.exists? %>
-        <div class="mod project-banner" style="background-image: url(<%= @managed_issue.standard_banner_image.url(:normal) %>);">
+        <div class="mod project-banner">
+          <%= image_tag @managed_issue.standard_banner_image.url(:normal), :class => 'project-banner-img' %>
           <div class="project-banner-titlebar">
             <p class="project-banner-title"><%= @managed_issue.standard_banner_image_title %><%= link_to raw("Explore the whole project &#10145;"),issue_url(@managed_issue), :class => 'project-banner-link'%></p>
           </div>
         </div>
       <% end %>
-      
+        <div class="main-content">
 
-      <div class="main-content">
+          <div class='main-content-left'>
+            <img src='<%= @conversation.image.url(:panel) %>' width='120' height='80' alt='<%= @conversation.title %>' class='featured main-img'\>
+          </div>
+          <div class='main-content-right'>
+            <h1><%= @conversation.title %></h1>
+            <p class="subtitle">Started on <%= @conversation.created_at.strftime('%b %d, %Y') %> by <%= text_profile(@conversation.owner) %></p>
+            <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
+          </div>
 
-        <div class='main-content-left'>
-          <img src='<%= @conversation.image.url(:panel) %>' width='120' height='80' alt='<%= @conversation.title %>' class='featured main-img'\>
-        </div>
-        <div class='main-content-right'>
-          <h1><%= @conversation.title %></h1>
-          <p class="subtitle">Started on <%= @conversation.created_at.strftime('%b %d, %Y') %> by <%= text_profile(@conversation.owner) %></p>
-          <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
-        </div>
-
-        <div class='convo-summary'>
+          <div class='convo-summary'>
           <p><%= raw(@conversation.summary) %></p>
         </div>
 
