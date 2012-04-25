@@ -50,13 +50,16 @@
   <fieldset class="form-field">
     <legend>Standard Banner Image</legend>
     <% if @issue.standard_banner_image.exists? %>
-      <%= image_tag @issue.standard_banner_image.url(:normal) %>
+      <%= image_tag @issue.standard_banner_image.url(:normal), :width => '100%' %>
     <% end %>
     <p>
-    <%= f.label :standard_banner_image, "Attach an Image (looks best at 3:2 ratio)" %>
+    <%= f.label :standard_banner_image, "Attach an Image (looks best with 940x100 dimension) " %>
     <br />
     <%= f.file_field :standard_banner_image %>
     </p>
+    <%= f.label :standard_banner_image_title, "Banner image title (Will be displayed if there is a banner image)" %>
+    <br />
+    <%= f.text_field :standard_banner_image_title %>
   </fieldset>
 
   <fieldset class="form-field">

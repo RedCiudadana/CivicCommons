@@ -41,6 +41,7 @@ class Conversation < ActiveRecord::Base
   belongs_to :person, :foreign_key => "owner"
   delegate :name, :to => :person, :prefix => true
   delegate :standard_issue, :to => :issues
+  delegate :managed_issue, :to => :issues
 
   has_attached_file :image,
     :styles => {

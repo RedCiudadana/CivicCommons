@@ -51,7 +51,7 @@ class Issue < ActiveRecord::Base
 
   has_attached_file(:standard_banner_image,
                     :styles => {
-                      :normal => "480x300#",
+                      :normal => '940x100#',
                       :panel => "198x130#" },
                     :storage => :s3,
                     :s3_credentials => S3Config.credential_file,

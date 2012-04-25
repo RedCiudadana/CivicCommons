@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418135757) do
+ActiveRecord::Schema.define(:version => 20120424194807) do
 
   create_table "actions", :force => true do |t|
     t.integer  "conversation_id"
@@ -366,6 +366,7 @@ ActiveRecord::Schema.define(:version => 20120418135757) do
     t.string   "standard_banner_image_content_type"
     t.integer  "standard_banner_image_file_size"
     t.datetime "standard_banner_image_updated_at"
+    t.string   "standard_banner_image_title"
   end
 
   add_index "issues", ["cached_slug"], :name => "index_issues_on_cached_slug", :unique => true

@@ -2,12 +2,15 @@
   <div class="wrapper">
     <div class="content-container">
 
-      <%# The hope is that we can pull the image used in the project splash page as a background image for this section. It will give us the most flexiblity %>
-      <div class="mod project-banner" style="background-image: url(http://s3.amazonaws.com/com.theciviccommons.int/images/flats/flats-banner.jpg);">
-        <div class="project-banner-titlebar">
-          <p class="project-banner-title">Flats Forward <a class="project-banner-link" href="#">Explore the whole project &#10145;</a></p>
+      <% @managed_issue = @conversation.managed_issue.first %>
+      <% if @managed_issue && @managed_issue.standard_banner_image.exists? %>
+        <div class="mod project-banner" style="background-image: url(<%= @managed_issue.standard_banner_image.url(:normal) %>);">
+          <div class="project-banner-titlebar">
+            <p class="project-banner-title"><%= @managed_issue.standard_banner_image_title %><%= link_to raw("Explore the whole project &#10145;"),issue_url(@managed_issue), :class => 'project-banner-link'%></p>
+          </div>
         </div>
-      </div>
+      <% end %>
+      
 
       <div class="main-content">
 
