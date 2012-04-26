@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20120424194807) do
 
   add_index "content_items_conversations", ["conversation_id", "content_item_id"], :name => "content_items_conversations_ids_index"
 
-  create_table "content_items_people", :id => false, :force => true do |t|
+  create_table "content_items_people", :force => true do |t|
     t.integer  "content_item_id"
     t.integer  "person_id"
     t.string   "role"
@@ -606,8 +606,6 @@ ActiveRecord::Schema.define(:version => 20120424194807) do
   end
 
   create_table "surveys", :force => true do |t|
-    t.integer  "surveyable_id"
-    t.string   "surveyable_type"
     t.string   "title"
     t.text     "description"
     t.string   "type"
@@ -618,6 +616,8 @@ ActiveRecord::Schema.define(:version => 20120424194807) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "end_notification_email_sent"
+    t.integer  "surveyable_id"
+    t.string   "surveyable_type"
   end
 
   create_table "top_items", :force => true do |t|

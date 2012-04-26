@@ -129,10 +129,10 @@ class ContentItem < ActiveRecord::Base
   def add_person(role, person)
     case role
     when 'guest'
-      self.guests << person
+      self.content_items_people << ContentItemsPerson.create(role: 'Guest', person: person, content_item: self)
       return true
     when 'host'
-      self.hosts << person
+      self.content_items_people << ContentItemsPerson.create(role: 'Host', person: person, content_item: self)
       return true
     else
       return false
@@ -142,10 +142,14 @@ class ContentItem < ActiveRecord::Base
   def delete_person(role, person)
     case role
     when 'guest'
-      self.guests.delete(person)
+      self.content_items_people.where(role: 'Guest', person_id: person.id, content_item_id: self.id).each do |content_item|
+        content_item.delete
+      end
       return true
     when 'host'
-      self.hosts.delete(person)
+      self.content_items_people.where(role: 'Host', person_id: person.id, content_item_id: self.id).each do |content_item|
+        content_item.delete
+      end
       return true
     else
       return false
