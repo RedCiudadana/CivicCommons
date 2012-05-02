@@ -62,7 +62,9 @@ class ContentItem < ActiveRecord::Base
     :uniq => true,
     :class_name => 'Person'
 
-  #radioshow hosts
+  #radioshow hosts 
+  # creating or deleting this doesn't work as it should, there's an open issue https://github.com/rails/rails/issues/5057
+  # use add_person method, or delete_person method, instead of content_item.hosts = [@person] and content_item.hosts.delete(@person)
   has_many :hosts,
     :through => :content_items_people,
     :uniq => true,
@@ -71,6 +73,8 @@ class ContentItem < ActiveRecord::Base
     :source => :person
 
   #radioshow guests
+  # creating or deleting this doesn't work as it should, there's an open issue https://github.com/rails/rails/issues/5057
+  # use add_person method, or delete_person method, instead of content_item.guests = [@person] and content_item.guests.delete(@person)
   has_many :guests,
     :through => :content_items_people,
     :uniq => true,
