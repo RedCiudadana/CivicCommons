@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'mysql2', '< 0.3'
+gem 'mysql2', '~> 0.3.0'
 gem 'devise', '1.5.2'
 gem 'omniauth', '1.0.1'
 gem 'omniauth-facebook'
 
-gem 'rails', "~> 3.0.3"
+gem 'rails', "3.1.1"
 gem 'jquery-rails', '>= 1.0.3'
 
 gem 'haml', '~> 3.1.4'
@@ -75,13 +75,13 @@ group :test do
   gem "capybara", '~> 1.1.2'
   gem "database_cleaner", "~>0.7.2"
   gem 'email_spec', '~>1.2.1'
-  gem "factory_girl_rails", '~>3.1'
+  gem "factory_girl_rails", '~>3.2'
   gem 'fuubar', '~>1.0.0'
   gem "jasmine", '~>1.1.2'
   gem "jasmine-headless-webkit", '~>0.8.4'
   gem 'linguistics', '~>1.0.9'
   gem 'no_peeping_toms', "~>2.1.2"
-  gem "rack-test", '~> 0.5.6'
+  gem "rack-test", '~> 0.6.1'
   gem "rspec-rails", "~> 2.9.0"
   gem 'rspec-spies', '~>2.1.0'
   gem 'simplecov', '~>0.6.2'
