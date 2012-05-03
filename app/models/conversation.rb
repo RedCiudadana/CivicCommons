@@ -137,7 +137,7 @@ class Conversation < ActiveRecord::Base
 
   def self.filtered(filter)
     raise "Undefined Filter :#{filter}" unless available_filter_names.include?(filter)
-    scoped & self.send(available_filters[filter.to_sym])
+    scoped.merge(self.send(available_filters[filter.to_sym]))
   end
 
   def self.sort
