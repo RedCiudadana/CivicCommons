@@ -60,6 +60,8 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'rails_autolink'
+
 group :development do
   gem "rails3-generators"
   gem "hpricot"

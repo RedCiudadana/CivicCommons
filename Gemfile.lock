@@ -261,6 +261,8 @@ GEM
       railties (= 3.1.1)
     rails3-generators (0.17.4)
       railties (>= 3.0.0)
+    rails_autolink (1.0.7)
+      rails (~> 3.1)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -430,6 +432,7 @@ DEPENDENCIES
   rack-test (~> 0.6.1)
   rails (= 3.1.1)
   rails3-generators
+  rails_autolink
   remotipart
   rspec-rails (~> 2.9.0)
   rspec-spies (~> 2.1.0)
