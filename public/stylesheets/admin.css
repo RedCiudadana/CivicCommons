@@ -65,6 +65,10 @@ a img {
 fieldset {
   border: 1px solid #ccc;
   margin: 15px 0; }
+fieldset.form-field {
+  margin-right:15px;
+  margin-bottom:30px;
+}
 
 .wrapper {
   width: 960px;

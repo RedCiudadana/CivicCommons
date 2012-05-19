@@ -52,7 +52,7 @@ $(document).ready(function(){
   $('a[data-colorbox]:not([data-remote])').live('click', function(e){
     $.colorbox({
       transition: 'fade', // needed to fix colorbox bug with jquery 1.4.4
-      href: $(this).attr('href') 
+      href: $(this).attr('href')
     });
     e.preventDefault();
   });
@@ -61,7 +61,72 @@ $(document).ready(function(){
   setTimeout(function(){
     $('.flash-notice').hide('blind');
   },5000);
+
+  // set defaults for CKEditor
+  if('CKEDITOR' in window) {
+    CKEDITOR.on('dialogDefinition', function(event) {
+      var dialogName = event.data.name;
+      var dialogDefinition = event.data.definition;
+
+      if(dialogName == 'link') {
+        var targetTab = dialogDefinition.getContents('target');
+        var targetField = targetTab.get('linkTargetType');
+        targetField['default'] = '_blank';
+      }
+
+      if(dialogName == 'image') {
+        var uploadPageID = 'Upload';
+        dialogDefinition.removeContents('advanced');
+        dialogDefinition.removeContents('Link');
+
+        if(ckDialogPageExists(dialogDefinition, uploadPageID)) {
+          var oldMethod = dialogDefinition.onShow;
+          var oldArguments = arguments;
+
+          dialogDefinition.onShow = function() {
+            this.selectPage(uploadPageID);
+            this.on('selectPage', ckRemoveLoadIcon);
+            if(typeof oldMethod == 'function') {
+              oldMethod.apply(this, oldArguments);
+            }
+
+            var uploadButton = this.getContentElement('Upload', 'uploadButton');
+            var $uploadButton = $('#' + uploadButton.domId);
+
+            // if the span for the button recieves 'upload-complete' it will dismiss the loading icon
+            $uploadButton.bind('upload-complete', function(event){
+              $(this).find('.loading-icon').remove();
+            });
+
+            $uploadButton.click(function(event){
+              if(event.currentTarget == this &&
+                $(this).find('.loading-icon').length === 0 &&
+                CKEDITOR.dialog.getCurrent().getContentElement('Upload', 'upload').getValue() !== '') {
+                var $spinner = $('<img class="loading-icon" src="/images/loading.gif" style="padding-left: 5px; vertical-align: middle;" />');
+                $(this).find('span').append($spinner);
+              }
+            });
+          };
+        }
+      }
+    });
+  }
 });
+
+function ckRemoveLoadIcon() {
+  var $button = $('span.cke_dialog_ui_button:contains("Send it to the Server")');
+  $button.trigger('upload-complete');
+}
+
+function ckDialogPageExists(dialogDefinition, pageID) {
+  var i = 0;
+  for(i = 0; i < dialogDefinition.contents.length; i++) {
+    if(dialogDefinition.contents[i].id === pageID) {
+      return true;
+    }
+  }
+  return false;
+}
 
 var civic = function() {
   var displayMessage = function(message, cssClass) {
@@ -69,7 +134,7 @@ var civic = function() {
       .addClass(cssClass)
       .addClass("message")
       .text(message)
-      .appendTo($("body")); 
+      .appendTo($("body"));
 
     setTimeout(function() { messageDiv.fadeOut();}, 4000);
   };

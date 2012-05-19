@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329033351) do
+ActiveRecord::Schema.define(:version => 20120510142319) do
 
   create_table "actions", :force => true do |t|
     t.integer  "conversation_id"
@@ -138,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20120329033351) do
 
   add_index "content_items_conversations", ["conversation_id", "content_item_id"], :name => "content_items_conversations_ids_index"
 
-  create_table "content_items_people", :id => false, :force => true do |t|
+  create_table "content_items_people", :force => true do |t|
     t.integer  "content_item_id"
     t.integer  "person_id"
     t.string   "role"
@@ -352,16 +353,21 @@ ActiveRecord::Schema.define(:version => 20120329033351) do
     t.string   "url"
     t.string   "url_title"
     t.string   "cached_slug"
-    t.string   "type",                  :default => "Issue", :null => false
+    t.string   "type",                               :default => "Issue", :null => false
     t.integer  "managed_issue_page_id"
     t.integer  "position"
     t.string   "sponsor_name"
-    t.boolean  "exclude_from_result",   :default => false
+    t.boolean  "exclude_from_result",                :default => false
     t.text     "index_summary"
     t.string   "page_title"
     t.text     "meta_description"
     t.text     "meta_tags"
     t.string   "slug"
+    t.string   "standard_banner_image_file_name"
+    t.string   "standard_banner_image_content_type"
+    t.integer  "standard_banner_image_file_size"
+    t.datetime "standard_banner_image_updated_at"
+    t.string   "standard_banner_image_title"
   end
 
   add_index "issues", ["cached_slug"], :name => "index_issues_on_cached_slug", :unique => true
@@ -420,13 +426,13 @@ ActiveRecord::Schema.define(:version => 20120329033351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password"
-    t.string   "email",                               :default => "",   :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "",   :null => false
-    t.string   "password_salt",                       :default => "",   :null => false
+    t.string   "email",                                  :default => "",   :null => false
+    t.string   "encrypted_password",      :limit => 128, :default => "",   :null => false
+    t.string   "password_salt",                          :default => "",   :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",                          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -440,20 +446,21 @@ ActiveRecord::Schema.define(:version => 20120329033351) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "failed_attempts",                     :default => 0
+    t.integer  "failed_attempts",                        :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.text     "bio"
-    t.boolean  "daily_digest",                        :default => true, :null => false
+    t.boolean  "daily_digest",                           :default => true, :null => false
     t.boolean  "declined_fb_auth"
     t.string   "cached_slug"
     t.string   "twitter_username"
     t.string   "website"
     t.string   "avatar_url"
-    t.boolean  "weekly_newsletter",                   :default => true
+    t.boolean  "weekly_newsletter",                      :default => true
     t.string   "type"
     t.string   "title"
     t.string   "slug"
+    t.string   "avatar_cached_image_url"
   end
 
   add_index "people", ["cached_slug"], :name => "index_people_on_cached_slug", :unique => true

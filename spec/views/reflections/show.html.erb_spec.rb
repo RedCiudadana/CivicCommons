@@ -7,6 +7,7 @@ describe "reflections/show.html.erb" do
   end
 
   it "renders attributes in <p>" do
+    @view.stub!(:signed_in?).and_return(false)
     assign(:conversation, @reflection.conversation)
     assign(:reflection, @reflection)
     assign(:comments, @reflection.comments)
@@ -39,6 +40,7 @@ describe "reflections/show.html.erb" do
   end
 
   it "does not render the moderation tools for reflection if not logged in" do
+    @view.stub!(:signed_in?).and_return(false)
     assign(:conversation, @reflection.conversation)
     assign(:reflection, @reflection)
     assign(:comments, @reflection.comments)

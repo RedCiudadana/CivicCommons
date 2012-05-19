@@ -23,7 +23,15 @@ describe ActionsController do
       get :index, :conversation_id => 123
     end
     it "should get the conversation actions" do
-      stub_conversation.should_receive(:actions)
+      actions_double = double
+      stub_conversation.should_receive(:actions).and_return(actions_double)
+      actions_double.stub(:order)
+      get :index, :conversation_id => 123
+    end
+    it "should order DESC" do
+      actions_double = double
+      stub_conversation.stub(:actions).and_return(actions_double)
+      actions_double.should_receive(:order).with('id DESC')
       get :index, :conversation_id => 123
     end
     it "should return the conversation participants" do

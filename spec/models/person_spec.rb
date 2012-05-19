@@ -27,8 +27,8 @@ describe Person do
     it "should have many survey_responses" do
       Person.reflect_on_association(:survey_responses).macro == :has_many
     end
-    it "should have and belongs to many organizations" do
-      Person.reflect_on_association(:organizations).macro.should == :has_and_belongs_to_many
+    it "should have many organizations" do
+      Person.reflect_on_association(:organizations).macro.should == :has_many
     end
     it "should be have uniqueness constraint on habtm organiazation" do
       Person.reflect_on_association(:organizations).options[:uniq].should be_true
@@ -58,12 +58,12 @@ describe Person do
       end
 
       def given_a_registered_person_without_a_zip_code
-        @person = Factory :registered_user
+        @person = FactoryGirl.build(:registered_user)
         @person.zip_code = nil
       end
 
       def given_a_registered_person_with_a_short_zip_code
-        @person = Factory :registered_user
+        @person = FactoryGirl.build(:registered_user)
         @person.zip_code = "all"
       end
 
@@ -98,6 +98,69 @@ describe Person do
         @person.valid?
         @person.errors.should have_key(:zip_code)
       end
+
+      describe "with base zip code" do
+        it "is blank if the zip code is empty" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = nil
+          person.base_zip_code.should == ''
+        end
+
+        it "gets the characters before the zip code extension" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "1234-5678"
+          person.base_zip_code.should == '1234'
+        end
+
+        it "gets the zipcode if there is no extension" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "12345678"
+          person.base_zip_code.should == '12345678'
+        end
+
+        it "gets the zipcode if there is no extension or digits" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "ALL_ZIP_CODES"
+          person.base_zip_code.should == 'ALL_ZIP_CODES'
+        end
+
+      end
+
+      describe "for mailchimp using short zip code" do
+
+        it "is blank if the base zip code is empty" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = nil
+          person.short_zip_code.should == ''
+        end
+
+        it "is blank if the base zip code is too short" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "123"
+          person.short_zip_code.should == ''
+        end
+
+        it "is blank if the base zip code is too long" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "123456678"
+          person.short_zip_code.should == ''
+        end
+
+        it "gets the first 4 numbers of a base zip code" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "1234-5678"
+          person.short_zip_code.should == '1234'
+        end
+
+        it "gets the first 5 numbers of a base zip code" do
+          person = FactoryGirl.build(:registered_user)
+          person.zip_code = "12345-6678"
+          person.short_zip_code.should == '12345'
+        end
+
+      end
+
+
     end
 
     it "strips the @ symbol from the front of the Twitter username" do
@@ -169,7 +232,7 @@ describe Person do
 
   describe "when setting the name" do
     it "should split the entry into first name and last name" do
-      person = FactoryGirl.create(:normal_person)
+      person = FactoryGirl.build(:normal_person)
       person.name = "John Doe"
       person.first_name.should == "John"
       person.last_name.should == "Doe"
@@ -569,7 +632,7 @@ describe Person do
       results[0].first_name.should == "Hyper"
       results[1].first_name.should == "Lazy"
       results[2].first_name.should == "Super"
-      
+
       results = Person.find_confirmed_order_by_most_active([@person1.id, @person2.id])
       # Check order of objects in the results
       results[0].first_name.should == "Hyper"
@@ -650,7 +713,7 @@ describe Person do
       email = 'test@example.com'
       first_name = 'First'
       last_name = 'Last'
-      merge_tags = { :FNAME => first_name, :LNAME => last_name }
+      merge_tags = { :FNAME => first_name, :LNAME => last_name, :ZIP => '44313' }
 
       user = FactoryGirl.create(:normal_person,
         email: email,
@@ -687,7 +750,6 @@ describe Person do
       email = 'test@example.com'
       first_name = nil
       last_name = 'Organization Name'
-      merge_tags = { :FNAME => first_name, :LNAME => last_name }
 
       user = FactoryGirl.create(:organization,
         email: email,
@@ -697,7 +759,7 @@ describe Person do
         Civiccommons::Config.mailer['api_token'],
         Civiccommons::Config.mailer['weekly_newsletter_list_id'],
         email,
-        { :FNAME => '', :LNAME => last_name })
+        { :FNAME => '', :LNAME => last_name, :ZIP => '44115' })
       user.weekly_newsletter = true
       user.save
       Delayed::Worker.delay_jobs = true

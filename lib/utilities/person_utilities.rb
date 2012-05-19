@@ -93,13 +93,17 @@ module Utilities
           debug_print 'updated: ' + pluralize(updated_record_count, 'record')
           debug_print 'end:     updating content_templates'
 
-          debug_print 'begin:   updating content_items'
+          debug_print 'begin:   updating authored content_items'
           updated_record_count = 0
-          from_person.content_items.map do |content_item|
+          from_person.authored_content_items.map do |content_item|
             content_item.person_id = to_person.id
             content_item.save!
             updated_record_count += 1
           end
+          
+          debug_print 'begin:   updating content_items_people'
+          to_person.content_items_people = from_person.content_items_people
+          
           debug_print 'updated: ' + pluralize(updated_record_count, 'record')
           debug_print 'end:     updating content_items'
 

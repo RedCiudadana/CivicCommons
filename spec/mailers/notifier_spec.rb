@@ -21,7 +21,7 @@ describe Notifier do
   context "survey_confirmation" do
     def given_sending_a_survey_confirmation
       @survey_response = FactoryGirl.create(:vote_survey_response)
-      @notification = Notifier.survey_confirmation(@survey_response.person, @survey_response.survey).deliver
+      @notification = Notifier.survey_confirmation(@survey_response).deliver
     end
     it "should send it correctly" do
       given_sending_a_survey_confirmation

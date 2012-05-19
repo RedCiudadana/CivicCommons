@@ -4,7 +4,7 @@
     <div class="main-content">
       <h2 class="mtn"><%= @reflection.title %></h2>
       <p><strong>By: <%= text_profile(@reflection.owner) %> on <%= @reflection.created_at.strftime('%B %d, %Y') %></strong></p>
-      <p><%= raw @reflection.details %></p>
+      <div class="wysiwyg-formatted"><%= raw @reflection.details %></div>
 
       <div class="comment-section mtl">
         <h3 class="mbl" id="comments">Edit Comment</h3>

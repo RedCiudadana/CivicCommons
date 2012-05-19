@@ -17,7 +17,7 @@ describe '/petitions/print.html.erb' do
   end
 
   it "should show the message when there are no signers" do
-    assign :petition, Factory.create(:unsigned_petition)
+    assign :petition, FactoryGirl.create(:unsigned_petition)
     render
     rendered.should contain 'There have been no signatures so far.'
   end

@@ -23,7 +23,8 @@ describe ReflectionsController do
 
   describe "GET index" do
     it "assigns all reflections as @reflections" do
-      Reflection.stub(:where) { [mock_reflection] }
+      Reflection.stub(:where) { mock_reflection }
+      mock_reflection.stub(:order) {[mock_reflection]}
       get :index, :controller => "reflections", :conversation_id => 7
       assigns(:conversation).should eq(mock_conversation)
       assigns(:reflections).should eq([mock_reflection])

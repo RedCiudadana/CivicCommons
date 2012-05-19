@@ -79,7 +79,7 @@ feature "Voting Admin", %q{
     admin_new_survey_page.click_create_survey
         
     # Then the survey should be successfully created
-    page.should contain 'Survey was successfully created.'
+    page.should have_content 'Survey was successfully created.'
   end
   
   scenario "Create the survey options" do
@@ -121,8 +121,8 @@ feature "Voting Admin", %q{
     admin_new_survey_page.click_create_survey
     
     # Then I should be redirected to the survey information page in the admin section
-    page.should contain 'Survey was successfully created.'
-    page.should contain 'Title here'
+    page.should have_content 'Survey was successfully created.'
+    page.should have_content 'Title here'
   end
   
   scenario "Getting to a survey page and editing it" do
@@ -137,7 +137,7 @@ feature "Voting Admin", %q{
     admin_surveys_page.click_edit_on_a_survey(Survey.last)
     
     # Then I can get to the survey page and edit it
-    page.should contain 'Editing survey'
+    page.should have_content 'Editing survey'
     page.should have_selector("form", :action => admin_survey_path(Survey.last), :method => "post") do |form|
       form.should have_selector("input#survey_title", :name => "survey[title]")
       form.should have_selector("input#survey_options_attributes_0_title", :name => "survey[options_attributes][0][title]")
@@ -164,16 +164,16 @@ feature "Voting Admin", %q{
     page.current_path.should == progress_admin_survey_path(@survey)
     
     # And I should see the survey info
-    admin_survey_progress_page.should contain 'Showing survey progress'
-    admin_survey_progress_page.should contain 'Title: This is a title'
+    admin_survey_progress_page.should have_content 'Showing survey progress'
+    admin_survey_progress_page.should have_content 'Title: This is a title'
     
     # And I should see the survey progress chart
-    admin_survey_progress_page.should contain 'Progress Bar'
+    admin_survey_progress_page.should have_content 'Progress Bar'
     admin_survey_progress_page.should have_selector 'div.survey-options ul.survey_results'
     
     # And I should see the respondents of the survey
-    admin_survey_progress_page.should contain 'Respondents'
-    admin_survey_progress_page.should contain(/Respondents\s*John\sDoe/)
+    admin_survey_progress_page.should have_content 'Respondents'
+    admin_survey_progress_page.should have_xpath("//h1[contains(.,'Respondents')]/following-sibling::*[contains(.,'John Doe')]", :count => 1)
   end
   
   scenario  do

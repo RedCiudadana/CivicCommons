@@ -65,7 +65,7 @@ CKEDITOR.editorConfig = function( config )
   config.toolbar_Easy =
     [
         ['Source','-','Preview'],
-        ['Cut','Copy','Paste','PasteText','PasteFromWord',],
+        ['Cut','Copy','Paste','PasteText','PasteFromWord'],
         ['Undo','Redo','-','SelectAll','RemoveFormat'],
         ['Styles','Format'], ['Subscript', 'Superscript', 'TextColor'], ['Maximize','-','About'], '/',
         ['Bold','Italic','Underline','Strike'], ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
@@ -78,7 +78,7 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar = 'Civic';
     config.toolbar_Civic = [
       [
-        'Bold','Italic','Underline','Strike','-',
+        'Bold','Italic','Underline','-',
         'Image','Link','Unlink','-',
         'NumberedList','BulletedList','-',
         'Undo','Redo','-',

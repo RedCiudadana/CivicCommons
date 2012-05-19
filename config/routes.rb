@@ -158,12 +158,6 @@ Civiccommons::Application.routes.draw do
     resources :actions, :only => [:index]
   end
 
-  # Created by Jonathan Penn (February 17, 2012)
-  controller 'opportunities', path: 'opportunities' do
-    get '/', action: 'index'
-    get ':action'
-  end
-
   resources :contributions, only: [:destroy]
 
   resources :votes, controller: :surveys, :only => :show do

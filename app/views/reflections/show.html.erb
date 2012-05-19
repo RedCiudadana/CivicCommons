@@ -3,7 +3,7 @@
 
     <div class="main-content">
       
-      <% if current_person.try(:admin?) %>
+      <% if signed_in? && current_person.try(:admin?) %>
       <p class="fl-right alert alert-admin">
         <strong>Moderate:</strong>
         <%= link_to 'Edit', edit_conversation_reflection_path(@conversation, @reflection) %> |
@@ -12,7 +12,9 @@
       <% end %>
       <h2 class="mtn"><%= @reflection.title %></h2>
       <p><strong>By: <%= text_profile(@reflection.owner) %> on <%= @reflection.created_at.strftime('%B %d, %Y') %></strong></p>
-      <p><%= raw @reflection.details %></p>
+      <div class = "wysiwyg-formatted">
+      <%= raw @reflection.details %>
+      </div>
 
       <div class="comment-section mtl">
         <h3 class="mbl" id="comments">Comments</h3>

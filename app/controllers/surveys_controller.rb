@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   before_filter :require_user
   before_filter :find_survey, :only => [:show, :create_response]
   before_filter :allow_active_survey, :only => [:show]
-  
+
   def show
     @survey_response_presenter = VoteResponsePresenter.new(:person_id => current_person.id, :survey_id => @survey.id)
     if @survey_response_presenter.allowed?
@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
       end
     end
   end
-  
+
   def create_response
     @survey_response_presenter = VoteResponsePresenter.new({:person_id => current_person.id, :survey_id => @survey.id}.merge!(params[:survey_response_presenter]))
     # if it has been confirmed, then it can be saved
@@ -37,22 +37,22 @@ class SurveysController < ApplicationController
       end
     end
   end
-  
+
   # vote_successful modal dialog
   def vote_successful
     render :layout => nil
   end
-  
+
 protected
 
   def find_survey
       @survey = Survey.find(params[:id])
   end
-  
+
   def allow_active_survey
-    unless @survey.active? 
+    unless @survey.active?
       render :template => "surveys/show_#{@survey.class.name.underscore}_inactive"
     end
   end
-  
+
 end

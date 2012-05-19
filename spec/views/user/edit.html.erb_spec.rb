@@ -4,7 +4,8 @@ describe '/user/edit.html.erb' do
     stub_model(Person,
       { :name => 'john doe',
         :bio => 'biohere',
-        :zip_code => 1234
+        :zip_code => 1234,
+        :avatar_cached_image_url => 'http://www.example.com/some_image.jpg'
       }.merge(stubs)
     )
   end

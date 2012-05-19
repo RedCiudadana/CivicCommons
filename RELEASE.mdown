@@ -1,3 +1,60 @@
+## 2.3
+
+### External Changes
+
+### Bug Fixes
+
+### Chores
+  * [Cache Avatar Image Url](https://agilezen.com/project/18091/story/537)
+
+## 2.2.1
+
+### Bug Fixes
+  * [Fixed - fitter happier gem error on production](https://agilezen.com/project/18091/story/536)
+
+## 2.2
+
+### External Changes
+  * [Add ZipCode to Mailchimp Feed](https://agilezen.com/project/18091/story/516)
+
+### Bug Fixes
+  * [Widget 1 comment error - 464 Redux](https://agilezen.com/project/18091/story/510)
+  * [Issue and Project Index pages are not following Staff Sort](https://agilezen.com/project/18091/story/517)
+  * [Vote Result Email incomplete](https://agilezen.com/project/18091/story/518)
+  * [Error Message Correction - Reflection](https://agilezen.com/project/18091/story/522)
+
+### Chores
+  * [Upgrade to Rails 3.0.12](https://agilezen.com/project/18091/story/514)
+  * [Update Embed.ly gem](https://agilezen.com/project/18091/story/525)
+  * [Resize Blog Index Image](https://agilezen.com/project/18091/story/530)
+
+## 2.1
+
+### Miscellaneous
+  * [Remove Opportunity Mockups from our Rails project](https://agilezen.com/project/18091/story/494)
+  * [Add Opportunities(Petition, Petition Signature, Reflection, Reflection Comment) to Activity stream](https://agilezen.com/project/18091/story/456)
+  * [Limit image size in CKEditor to fit in our frame](https://agilezen.com/project/18091/story/500)
+  * [Display Error if Topic is Missing when editing an Issue in the Admin Screen](https://agilezen.com/project/18091/story/506)
+  * [Remove NEO Regions from Conversation Index and Filter Page](https://agilezen.com/project/18091/story/507)
+  * [Project Design Carried to Conversation Page](https://agilezen.com/project/18091/story/503)
+  * [Add Option to Remove Styling from Widget](https://agilezen.com/project/18091/story/504)
+  * [Reflection Index Page in Desc order](https://agilezen.com/project/18091/story/490)
+  * [Action Index Page in Desc order](https://agilezen.com/project/18091/story/491)
+  * [CKEditor Image Dialog Displays Info and Upload Tab](https://agilezen.com/project/18091/story/483)
+  * [CKEditor Image Dialog box should default to Upload Tab](https://agilezen.com/project/18091/story/495)
+  * [CKEditor Indicator of Upload Status](https://agilezen.com/project/18091/story/508)
+  * [Remove Strikethru button on CKEditor Reflection/Action](https://agilezen.com/project/18091/story/499)
+  * [Default CKEditor linking to "open in new window" currently takes you off our site](https://agilezen.com/project/18091/story/501)
+  * [Project Design Carried to Convo - Add Title / Front End Design](https://agilezen.com/project/18091/story/511)
+
+### Bug Fixes
+  * [Allow Issues to be Edited in Admin Screen](https://agilezen.com/project/18091/story/505)
+  * [Airbrake: NoMethodError: You have a nil object when you didn't expect it!](https://agilezen.com/project/18091/story/513)
+
+### Chores
+  * [Upgrade HAML](https://agilezen.com/project/18091/story/466)
+  * [Upgrade all test related gems](https://agilezen.com/project/18091/story/509)
+
 ## 2.0
 
 ### External Changes

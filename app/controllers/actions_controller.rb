@@ -4,7 +4,7 @@ class ActionsController < ApplicationController
   before_filter :find_conversation
   
   def index
-    @actions = @conversation.actions
+    @actions = @conversation.actions.order('id DESC')
     @participants = @conversation.action_participants
   end
 

@@ -59,7 +59,7 @@ describe ContentItem do
 
   end
 
-  context "has_and_belongs_to_many conversations" do
+  context "has_many conversations" do
     def given_a_radio_show_with_conversations
       @radioshow = FactoryGirl.create(:radio_show)
       @conversation1 = FactoryGirl.create(:conversation)
@@ -67,7 +67,7 @@ describe ContentItem do
       @radioshow.conversations = [@conversation1, @conversation2]
     end
     it "should be correct" do
-      ContentItem.reflect_on_association(:conversations).macro.should == :has_and_belongs_to_many
+      ContentItem.reflect_on_association(:conversations).macro.should == :has_many
     end
 
     it "should have the correct conversations" do
@@ -76,7 +76,7 @@ describe ContentItem do
     end
   end
 
-  context "has_and_belongs_to_many topics" do
+  context "has_many topics" do
     describe "on blog posts" do
       def given_a_blog_post_with_topics
         @topic1 = FactoryGirl.create(:topic)
@@ -85,7 +85,7 @@ describe ContentItem do
         @blog.topics = [@topic1, @topic2]
       end
       it "should be correct" do
-        ContentItem.reflect_on_association(:topics).macro.should == :has_and_belongs_to_many
+        ContentItem.reflect_on_association(:topics).macro.should == :has_many
       end
       it "should correctly count the number of topics" do
         given_a_blog_post_with_topics
@@ -101,14 +101,14 @@ describe ContentItem do
         @radio_show.topics = [@topic1, @topic2]
       end
       it "should be correct" do
-        ContentItem.reflect_on_association(:topics).macro.should == :has_and_belongs_to_many
+        ContentItem.reflect_on_association(:topics).macro.should == :has_many
       end
       it "should correctly count the number of topics" do
         given_a_radio_show_with_topics
         @radio_show.topics.count.should == 2
       end
     end
-    
+
     describe "has_many links" do
       it "should be correct" do
         ContentItem.reflect_on_association(:links).macro.should == :has_many
@@ -212,22 +212,22 @@ describe ContentItem do
     def given_a_radio_show_with_a_host_and_guest
       @radio_show = FactoryGirl.create(:radio_show)
       @user1 = FactoryGirl.create(:registered_user)
-      @radio_show.hosts << @user1
-      @radio_show.guests << @user1
+      @radio_show.add_person('host', @user1)
+      @radio_show.add_person('guest', @user1)
     end
     context "has and belongs to many hosts" do
       it "should be allow to be associated and unique" do
         given_a_radio_show
         @radio_show.should be_valid
-        @radio_show.hosts = [@user1]
+        @radio_show.add_person('host', @user1)
         @radio_show.hosts.count.should == 1
-        @radio_show.hosts << @user1
+        @radio_show.add_person('host', @user1)
         @radio_show.hosts.count.should == 1
       end
       it "can be correctly deleted" do
         given_a_radio_show_with_a_host_and_guest
         @radio_show.hosts.first.should == @user1
-        @radio_show.hosts.delete(@user1)
+        @radio_show.delete_person('host', @user1)
         @radio_show.reload.hosts.count.should == 0
         @radio_show.reload.guests.count.should == 1
       end
@@ -236,15 +236,15 @@ describe ContentItem do
       it "should be allow to be associated and unique" do
         given_a_radio_show
         @radio_show.should be_valid
-        @radio_show.guests = [@user1]
+        @radio_show.add_person('guest', @user1)
         @radio_show.guests.count.should == 1
-        @radio_show.guests << @user1
+        @radio_show.add_person('guest', @user1)
         @radio_show.guests.count.should == 1
       end
       it "can be correctly deleted" do
         given_a_radio_show_with_a_host_and_guest
         @radio_show.guests.first.should == @user1
-        @radio_show.guests.delete(@user1)
+        @radio_show.delete_person('guest', @user1)
         @radio_show.reload.guests.count.should == 0
         @radio_show.reload.hosts.count.should == 1
       end
@@ -261,15 +261,15 @@ describe ContentItem do
         @radio_show = FactoryGirl.create(:radio_show)
         @user1 = FactoryGirl.create(:registered_user)
         @user2 = FactoryGirl.create(:registered_user)
-        @radio_show.hosts << @user1
-        @radio_show.guests << @user2
+        @radio_show.add_person('host', @user1)
+        @radio_show.add_person('guest', @user2)
         @radio_show.people.count.should == 2
       end
       it "should return all people uniquely" do
-        @radio_show = FactoryGirl.create(:radio_show)
+        @radio_show = FactoryGirl.create(:radio_show) 
         @user1 = FactoryGirl.create(:registered_user)
-        @radio_show.hosts << @user1
-        @radio_show.guests << @user1
+        @radio_show.add_person('host', @user1)
+        @radio_show.add_person('guest', @user1)
         @radio_show.people.count.should == 1
       end
     end

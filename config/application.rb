@@ -10,7 +10,7 @@ module Civiccommons
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     require 'fitter_happier' #this is required until fitter-happier 0.0.2
-
+    
     # Add additional load paths for your own custom dirs
     config.autoload_paths += %W(#{config.root}/app/concerns/**/*.rb)
     config.autoload_paths += %W(#{config.root}/app/observers/**/*.rb)

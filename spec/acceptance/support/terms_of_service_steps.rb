@@ -1,5 +1,5 @@
 def given_i_am_on_a_conversation_page_with_a_contribution
-  contribution = Factory :contribution
+  contribution = FactoryGirl.create :contribution
   conversation_page = ConversationsPage.new(page)
   conversation_page.visit_conversations(contribution.conversation)
 end

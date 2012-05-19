@@ -5,10 +5,10 @@ gem 'devise', '1.5.2'
 gem 'omniauth', '1.0.1'
 gem 'omniauth-facebook'
 
-gem 'rails', "3.0.3"
+gem 'rails', "~> 3.0.3"
 gem 'jquery-rails', '>= 1.0.3'
 
-gem 'haml', "<3.1"
+gem 'haml', '~> 3.1.4'
 gem 'date_validator'
 gem "will_paginate", "~> 3.0.3"
 
@@ -19,12 +19,13 @@ gem 'geokit'
 gem "friendly_id", "~> 4.0.1"
 gem 'acts_as_revisionable'
 gem 'awesome_nested_set'
-gem 'embedly', '<0.4'
+gem 'embedly', '1.5.2'
 
 gem 'gibbon'
 gem 'hominid', "~>3.0.2"
 gem 'delayed_job', ">= 2.1.2"
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 gem 'airbrake'
 
@@ -69,27 +70,27 @@ group :development do
 end
 
 group :test do
-  gem "rack-test"
-  gem "factory_girl_rails", '~>1.3'
-  gem 'no_peeping_toms'
-  gem 'webmock', '1.6.2' #, :git => 'git://github.com/CivicCommons/webmock.git', :branch => '1.6.2'
-  # Required by WebMock but breaks everything at 2.2.5
+  # Addressable Required by WebMock but breaks everything at 2.2.5
   # Can use latest addressable when pull request is accepted: https://github.com/sporkmonger/addressable/pull/33
-  gem 'addressable', :git => 'git://github.com/gkellogg/addressable.git', :branch => 'frozen-uri'
-  gem 'linguistics'
-  gem 'fuubar', '~>0.0.3'
-  gem "database_cleaner", "~> 0.6.0"
-  gem 'email_spec'
-  gem 'simplecov'
-  gem 'timecop'
-  gem 'rspec-spies'
-  gem 'spork'
-  gem "rspec-rails", "~> 2.5.0"
-  gem "jasmine"
-  gem 'steak'
-  gem "capybara", '1.1.2'
+  gem 'addressable'
+  gem "capybara", '~> 1.1.2'
+  gem "database_cleaner", "~>0.7.2"
+  gem 'email_spec', '~>1.2.1'
+  gem "factory_girl_rails", '~>3.1'
+  gem 'fuubar', '~>1.0.0'
+  gem "jasmine", '~>1.1.2'
+  gem "jasmine-headless-webkit", '~>0.8.4'
+  gem 'linguistics', '~>1.0.9'
+  gem 'no_peeping_toms', "~>2.1.2"
+  gem "rack-test", '~> 0.5.6'
+  gem "rspec-rails", "~> 2.9.0"
+  gem 'rspec-spies', '~>2.1.0'
+  gem 'simplecov', '~>0.6.2'
+  gem 'spork', '~>0.9.0'
+  gem 'steak', '~>2.0.0'
+  gem 'timecop', '~>0.3.5'
+  gem 'webmock', '~>1.6.2' #, :git => 'git://github.com/CivicCommons/webmock.git', :branch => '1.6.2'
   gem 'webrat', "~> 0.7.3"
-  gem "jasmine-headless-webkit"
 end
 
 

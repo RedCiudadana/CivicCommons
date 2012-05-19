@@ -318,11 +318,18 @@ describe ConversationsController do
         assigns(:next_page).should be_false
       end
     end
+    
     it "should pop the latest recent_item on the array if there is another page" do
       Activity.stub!(:most_recent_activity_items_for_conversation).and_return([mock_activity, mock_activity, mock_activity, mock_activity, mock_activity, mock_activity])
       get :activities, :id => 1
       assigns(:recent_items).should == [mock_activity, mock_activity, mock_activity, mock_activity, mock_activity]
     end
+
+    it "should not pop the latest recent_item on the array when there is no next page" do
+      get :activities, :id => 1
+      assigns(:recent_items).should == [mock_activity]
+    end
+    
     it "should call render_widget" do
       controller.should_receive(:render_widget)
       get :activities, :id => 1, :format => :embed

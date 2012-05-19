@@ -13,7 +13,7 @@ Webrat.configure do |config|
   config.mode = :rack
 end
 
-Rspec.configure do |config|
+RSpec.configure do |config|
   config.include Webrat::Methods
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

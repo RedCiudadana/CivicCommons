@@ -1,0 +1,9 @@
+<div class="">
+  <div class="recent-item reflection-comment">
+    <h4><%= link_to( reflection_comment.reflection.title, conversation_reflection_path(reflection_comment.reflection.conversation, reflection_comment.reflection, :anchor => "reflection-comment-#{reflection_comment.id}")) %></h4>
+    <p>
+      <%= truncate( Sanitize.clean( reflection_comment.reflection.details, :remove_contents => ['script'] ).strip, :length => 225, :separator => ' ' ) %>
+    </p>
+  </div>
+</div>
+

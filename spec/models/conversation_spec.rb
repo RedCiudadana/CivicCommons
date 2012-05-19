@@ -13,7 +13,7 @@ describe Conversation do
         Conversation.reflect_on_association(:survey).options[:as].should == :surveyable
       end
     end
-    context "has_and_belongs_to_many content_items" do
+    context "has_many content_items" do
       def given_a_radio_show_with_conversations
         @radioshow = FactoryGirl.create(:radio_show)
         @conversation1 = FactoryGirl.create(:conversation)
@@ -21,7 +21,7 @@ describe Conversation do
         @radioshow.conversations = [@conversation1, @conversation2]
       end
       it "should be correct" do
-        Conversation.reflect_on_association(:content_items).macro.should == :has_and_belongs_to_many
+        Conversation.reflect_on_association(:content_items).macro.should == :has_many
       end
 
       it "should have the correct conversations" do

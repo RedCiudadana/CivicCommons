@@ -129,27 +129,48 @@ module Utilities
         Visit.where('person_id = ?', @person.id).length.should == 1
       end
 
-      it "will associate content_items to the person being merged into" do
+      it "will associate authored content_items to the person being merged into" do
         @topic = FactoryGirl.create(:topic)
         @attr = FactoryGirl.attributes_for(:content_item, topics: [@topic])
         @attr[:author] = @person_to_merge
         content_item = ContentItem.new(@attr)
         content_item.should be_valid
         content_item.save
-
-        # create an array of the content_item IDs attributed to person_to_merge
-        content_item_ids = @person_to_merge.content_items.collect do |content_item|
+        
+        # create an array of the authored content_item IDs attributed to person_to_merge
+        authored_content_item_ids = @person_to_merge.authored_content_items.collect do |content_item|
           content_item.id
         end
-        content_item_ids.length.should == 1
+        authored_content_item_ids.length.should == 1
+        
+        # create an array of the content_item IDs attributed to person_to_merge
 
         PersonUtilities.merge_account(@person, @person_to_merge)
 
         # check the original content_items to see if the owner was updated correctly
-        ContentItem.find(content_item_ids).each do |content_item|
+        ContentItem.find(authored_content_item_ids).each do |content_item|
           content_item.person_id.should == @person.id
         end
 
+        ContentItem.delete_all
+      end
+      
+      it "will associate content_items_people to the person being merged into" do
+        @content_item = FactoryGirl.create(:content_item)
+        @content_item.add_person('host', @person_to_merge)
+        # @content_item.save
+        
+        @person_to_merge.reload
+        
+        @content_item.reload
+        
+        @content_item.hosts.should == [@person_to_merge]
+        @content_item.hosts.should_not == [@person]
+        PersonUtilities.merge_account(@person, @person_to_merge)
+        
+        @content_item.reload
+        @content_item.hosts.should == [@person]
+        
         ContentItem.delete_all
       end
 

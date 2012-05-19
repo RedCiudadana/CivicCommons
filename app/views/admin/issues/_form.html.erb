@@ -14,7 +14,7 @@
     <%= f.check_box :exclude_from_result %>
   </p>
 
-  <fieldset>
+  <fieldset class="form-field">
     <legend>Topics</legend>
     <table class="topics">
     <% @topics.each_slice(2) do |slice| %>
@@ -32,8 +32,11 @@
 
   <p>
     <%= f.label :type %>
-    <br />
-    <%= f.select :type, Issue::ALL_TYPES %>
+    <% if @issue.id.present? %>
+      <i><%= @issue.type %></i>
+    <% else %>
+      <%= f.select :type, Issue::ALL_TYPES %>
+    <% end %>
   </p>
 
   <% if @issue.type == 'ManagedIssue' %>
@@ -44,14 +47,32 @@
     </p>
   <% end %>
 
-  <% if @issue.image.exists? %>
-    <%= image_tag @issue.image.url(:normal) %>
-  <% end %>
-  <p>
+  <fieldset class="form-field">
+    <legend>Standard Banner Image</legend>
+    <% if @issue.standard_banner_image.exists? %>
+      <%= image_tag @issue.standard_banner_image.url(:normal), :width => '100%' %>
+    <% end %>
+    <p>
+    <%= f.label :standard_banner_image, "Attach an Image (looks best with 940x100 dimension) " %>
+    <br />
+    <%= f.file_field :standard_banner_image %>
+    </p>
+    <%= f.label :standard_banner_image_title, "Banner image title (Will be displayed if there is a banner image)" %>
+    <br />
+    <%= f.text_field :standard_banner_image_title %>
+  </fieldset>
+
+  <fieldset class="form-field">
+    <legend>Panel Image</legend>
+    <% if @issue.image.exists? %>
+      <%= image_tag @issue.image.url(:normal) %>
+    <% end %>
+    <p>
     <%= f.label :image, "Attach an Image (looks best at 3:2 ratio)" %>
     <br />
     <%= f.file_field :image %>
-  </p>
+    </p>
+  </fieldset>
 
   <p>
     <%= f.label :index_summary %>

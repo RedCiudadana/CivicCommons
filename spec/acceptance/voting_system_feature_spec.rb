@@ -98,7 +98,7 @@ feature "Voting system", %q{
     # And an activity stream should be shown that I have voted here
     user_profile_page.visit_user(logged_in_user)
 
-    user_profile_page.should contain("#{logged_in_user.name} has participated in this Vote")
+    user_profile_page.should have_content("#{logged_in_user.name} has participated in this Vote")
   end
 
   scenario "An active vote" do
@@ -249,7 +249,7 @@ feature "Voting system", %q{
     # Then I should not be able to vote
     vote_page.visit_a_vote(@survey)
 
-    vote_page.should_not contain(VotePage::SUBMIT_BUTTON_TITLE)
+    vote_page.should_not have_content(VotePage::SUBMIT_BUTTON_TITLE)
 
   end
 end

@@ -1,8 +1,9 @@
-<div class='feature group'> 
+<div class='feature group'>
   <%= image_tag 'cc_radio_show.jpg', :alt => 'The Civic Commons Radio Show and Podcast', :class => 'float featured main-img', :height => 200, :width => 300 %>
-  <p>
-    <%= raw @radioshow_description.description_long unless @radioshow_description.blank? %>
-  </p>
-  <%= render partial: 'media_buttons' %>
-  <p>&nbsp;</p>
+  <div class="bd">
+    <p>
+      <%= raw @radioshow_description.description_long unless @radioshow_description.blank? %>
+    </p>
+    <%= render partial: 'media_buttons' %>
+  </div>
 </div>

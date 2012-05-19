@@ -1,0 +1,8 @@
+<div class="recent-item">
+  <h4><%= petition_signature.petition.title %></h4>
+  <div class="offset-2">
+    <%= avatar_profile(petition_signature.person, 40) %>
+    <p><%= petition_signature.person.name %> signed this Petition</p>
+    <p><%= link_to( "View the petition", conversation_petition_url(petition_signature.petition.conversation, petition_signature.petition, :anchor => 'opportunity-nav'), :class => "read-more") %></p>
+  </div>
+</div>

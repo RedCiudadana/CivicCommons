@@ -11,7 +11,7 @@ describe Topic do
     end
   end
   describe "Associations" do
-    context "has_and_belongs_to_many issues" do
+    context "has_many issues" do
       def given_a_topic_with_issues
         @topic = FactoryGirl.create(:topic)
         @issue1 = FactoryGirl.create(:issue)
@@ -19,7 +19,7 @@ describe Topic do
         @topic.issues = [@issue1, @issue2]
       end
       it "should be correct" do
-        Topic.reflect_on_association(:issues).macro.should == :has_and_belongs_to_many
+        Topic.reflect_on_association(:issues).macro.should == :has_many
       end
       it "should correctly count the number of topics" do
         given_a_topic_with_issues
@@ -27,7 +27,7 @@ describe Topic do
       end
     end
 
-    context "has_and_belongs_to_many radioshows" do
+    context "has_many radioshows" do
       def given_a_topic_with_radioshows
         @topic = FactoryGirl.create(:topic)
         @radioshow1 = FactoryGirl.create(:radio_show)
@@ -35,7 +35,7 @@ describe Topic do
         @topic.radioshows = [@radioshow1, @radioshow2]
       end
       it "should be correct" do
-        Topic.reflect_on_association(:radioshows).macro.should == :has_and_belongs_to_many
+        Topic.reflect_on_association(:radioshows).macro.should == :has_many
       end
       it "should correctly count the number of topics" do
         given_a_topic_with_radioshows
@@ -43,7 +43,7 @@ describe Topic do
       end
     end
 
-    context "has_and_belongs_to_many blogs" do
+    context "has_many blogs" do
       def given_a_topic_with_blogs
         @topic = FactoryGirl.create(:topic)
         @blog1 = FactoryGirl.create(:blog_post)
@@ -51,14 +51,14 @@ describe Topic do
         @topic.blogposts = [@blog1, @blog2]
       end
       it "should be correct" do
-        Topic.reflect_on_association(:blogposts).macro.should == :has_and_belongs_to_many
+        Topic.reflect_on_association(:blogposts).macro.should == :has_many
       end
       it "should correctly count the number of blogs" do
         given_a_topic_with_blogs
         @topic.blogposts.count.should == 2
       end
     end
-    
+
   end
 
   describe 'adding multiple topics' do
@@ -178,6 +178,6 @@ describe Topic do
       end
     end
 
-    
+
   end
 end

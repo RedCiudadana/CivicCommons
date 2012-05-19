@@ -54,7 +54,7 @@ feature "8457517 link local account with facebook", %q{
       sleep 3
       page.should have_link "Unlink from Facebook"
     end
-    
+
     context "and I am an organization" do
       scenario "I should not see the modal dialog to 'link the account to facebook'", :js => true do
         login_as :newly_confirmed_organization, email: 'info@testorg.com'
@@ -100,7 +100,7 @@ feature "8457517 link local account with facebook", %q{
   context "Facebook profile picture" do
 
     scenario "I should my facebook profile picture if I've connected to Facebook", :js=>true do
-      login_as :registered_user, email: 'johnd@test.com'
+      login_as :registered_user, email: 'johnd@test.com', avatar_cached_image_url: '', avatar_url: ''
       connect_account_to_facebook
       page_header.user_profile_picture.should eq "https://graph.facebook.com/12345/picture"
     end

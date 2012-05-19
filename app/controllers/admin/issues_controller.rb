@@ -1,10 +1,10 @@
 class Admin::IssuesController < Admin::DashboardController
-  
+
   #GET admin/issues/
   def index
     @issues = Issue.custom_order
   end
-  
+
   #GET admin/issues/new
   def new
     @issue = Issue.new(params[:issue])
@@ -14,11 +14,11 @@ class Admin::IssuesController < Admin::DashboardController
   #POST admin/issues
   def create
     @issue = Issue.new(params[:issue])
-    
+
     params[:issue][:topic_ids] ||= []
     @issue.attributes = params[:issue]
     @issue.type = params[:issue][:type] if Issue::ALL_TYPES.include?(params[:issue][:type])
-    
+
     if @issue.save
       redirect_to admin_issues_path
       flash[:notice] = "Thank you for submitting an issue"
@@ -33,19 +33,22 @@ class Admin::IssuesController < Admin::DashboardController
     @issue = Issue.find(params[:id]).becomes(Issue)
     @topics = Topic.all
   end
-  
+
   #PUT admin/issues/:id
   def update
     @issue = Issue.find(params[:id])
-    
+
     params[:issue][:topic_ids] ||= []
     @issue.attributes = params[:issue]
+
     @issue.type = params[:issue][:type] if Issue::ALL_TYPES.include?(params[:issue][:type])
-    
+
     if @issue.save
       redirect_to admin_issues_path
       flash[:notice] = "Thank you for updating the issue"
     else
+      flash[:error] = @issue.errors[:base].join("<br/>")
+
       @issue = @issue.becomes(Issue)
       @topics = Topic.all
       render :edit
@@ -83,7 +86,7 @@ class Admin::IssuesController < Admin::DashboardController
   def show
     @issue = Issue.find(params[:id])
   end
-  
+
   #DELETE admin/issues/:id
   def destroy
     @issue = Issue.find(params[:id])

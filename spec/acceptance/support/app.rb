@@ -122,4 +122,4 @@ module CivicCommonsDriver
 end
 
 
-Rspec.configuration.include CivicCommonsDriver, :type => :acceptance
+RSpec.configuration.include CivicCommonsDriver, :type => :acceptance

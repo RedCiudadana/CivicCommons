@@ -4,7 +4,9 @@
   </div>
   <div class="entry-details full">
     <p><strong>Posted by: <%= text_profile(reflection.owner) %></strong> on <%= reflection.created_at.to_date.to_s(:long) %></p>
-    <p><%= raw reflection.details %></p>
+    <div class="wysiwyg-formatted">
+      <%= raw reflection.details %>
+    </div>
     <p>
       <%= link_to pluralize(reflection.comments.count, 'comment'), conversation_reflection_path(conversation_id: conversation.id, id: reflection, anchor: 'comments') %> | <%= link_to "Leave a comment", conversation_reflection_path(conversation_id: conversation.id, id: reflection, anchor: 'new_comment') %>
     </p>

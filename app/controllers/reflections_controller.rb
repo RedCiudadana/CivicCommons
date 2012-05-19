@@ -12,7 +12,7 @@ class ReflectionsController < ApplicationController
 
   public
   def index
-    @reflections = Reflection.where(:conversation_id => @conversation)
+    @reflections = Reflection.where(:conversation_id => @conversation).order('id DESC')
   end
 
   def show

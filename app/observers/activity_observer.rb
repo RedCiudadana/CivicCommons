@@ -1,6 +1,7 @@
 class ActivityObserver < ActiveRecord::Observer
 
-  observe :contribution, :conversation, :rating_group, :survey_response
+  observe :contribution, :conversation, :rating_group, :survey_response, 
+          :petition, :petition_signature, :reflection, :reflection_comment
 
   def after_create(model)
     unless model.is_a?(Contribution) && !model.top_level_contribution?

@@ -1,12 +1,14 @@
 <div class="entry-container reverse" data-petition-id="<%= petition.id %>">
   <div class="entry-meta">
-    
+
     <h3><%= link_to petition.title, [@conversation, petition] %></h3>
     <p class="entry-contrib" title="<%= pluralize(petition.signers.count,'signer') %>"><%= petition.signers.count %></p>
   </div>
   <div class="entry-details full">
     <%= moderate_link_for(petition) if signed_in? && current_person.admin? %>
-    <p class="entry-tags">Proposed by: <%= text_profile(petition.creator) %> on <%= petition.created_at.to_date.to_s(:long) %>.</p>
-    <%= raw sanitize petition.description %>
+    <p class="entry-tags">Proposed by: <%= text_profile(petition.person) %> on <%= petition.created_at.to_date.to_s(:long) %>.</p>
+    <div class="wysiwyg-formatted">
+      <%= raw petition.description %>
+    </div>
   </div>
 </div>

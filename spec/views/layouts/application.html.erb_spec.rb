@@ -5,10 +5,11 @@ require 'devise/test_helpers'
 describe 'layouts/application.html.erb' do
   def stub_devise
     @person = stub_model(Person,
-      :facebook_authenticated? => true
+      :facebook_authenticated? => true,
+      :avatar_cached_image_url => 'http://www.example.com/some_image.jpg'
     )
     @view.stub(:facebook_profile_image).and_return('facebook-profile-image-here')
-    @view.stub(:current_person).and_return(@person)  
+    @view.stub(:current_person).and_return(@person)
     @view.stub(:resource).and_return(@person)
     @view.stub(:resource_name).and_return('person')
     @view.stub(:devise_mapping).and_return(Devise.mappings[:person])
@@ -42,7 +43,7 @@ describe 'layouts/application.html.erb' do
       render
       rendered.should_not contain('rendering suggest_facebook_auth.js')
     end
-    
+
     it "should not be displayed when user not logged in" do
       @view.stub(:signed_in?).and_return(false)
       render

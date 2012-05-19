@@ -177,7 +177,7 @@ module ConversationsHelper
     # remove double paragraph tags which ocurr since TinyMCE creates paragraph tags by default and so does simple_format. Since old contribitions
     # do not have the paragraph tags for all text and we don't want to update them so that they do, we remove double p tags from output
     stripped_extra_paragraphs = simple_format(text).gsub(/\<p\>\<p\>/, '<p>').gsub(/\<\/p\>\<\/p\>/, '</p>')
-    auto_link stripped_extra_paragraphs
+    sanitize(auto_link(stripped_extra_paragraphs))
   end
 
   def respond_button_text(contribution)

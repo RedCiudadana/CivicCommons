@@ -1,14 +1,21 @@
 class Topic < ActiveRecord::Base
-  has_and_belongs_to_many :issues, uniq: true
+  has_many :issues, through: :issues_topics, uniq: true
+  has_many :issues_topics, uniq: true
 
-  has_and_belongs_to_many :radioshows,
+  has_many :content_items_topics, :uniq => true
+
+  has_many :radioshows,
+    through: :content_items_topics,
     class_name: 'ContentItem',
     conditions: 'content_type = "RadioShow"',
+    source: :content_item,
     uniq: true
 
-  has_and_belongs_to_many :blogposts,
+  has_many :blogposts,
+    through: :content_items_topics,
     class_name: 'ContentItem',
     conditions: 'content_type = "BlogPost"',
+    source: :content_item,
     uniq: true
 
   validates_presence_of :name
@@ -29,7 +36,7 @@ class Topic < ActiveRecord::Base
   #     select('topics.*, count(content_items_topics.topic_id) AS radioshow_count').
   #     group('content_items_topics.topic_id')
   #
-  
+
   scope :including_public_content_items, lambda {|content_type|
     case content_type
     when :blogpost
@@ -42,14 +49,14 @@ class Topic < ActiveRecord::Base
       select('topics.*, count(content_items_topics.topic_id) AS content_item_count').
       where(['content_items.content_type = ?', content_type_criteria]).
       group('content_items_topics.topic_id')
-  }  
-  
+  }
+
   scope :including_public_radioshows, lambda {
       including_public_content_items(:radioshow)
   }
-      
+
   scope :including_public_blogposts, lambda {
     including_public_content_items(:blogpost)
   }
-  
+
 end

@@ -15,7 +15,7 @@ module Admin
 
       before(:each) do
         @content_items = {}
-        (1..5).each do 
+        (1..5).each do
           content_item = FactoryGirl.create(:content_item)
           @content_items[content_item.id] = content_item
         end
@@ -67,11 +67,12 @@ module Admin
       let(:params) do
         topic = FactoryGirl.create(:topic)
         attributes = FactoryGirl.attributes_for(:content_item)
+        #attributes = FactoryGirl.create(:content_item).attributes
         attributes.delete(:topics)
         attributes[:topic_ids]=[topic.id]
         attributes
       end
-      
+
       describe "with valid params" do
 
         let(:author) do
@@ -82,6 +83,7 @@ module Admin
         before(:each) do
           params[:author] = author
           params.delete(:published)
+
           post :create, :content_item => params
         end
 

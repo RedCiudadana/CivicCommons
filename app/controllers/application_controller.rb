@@ -29,7 +29,7 @@ protected
     end
     json = results.to_json
     callback = params[:callback]
-    jsonp = callback + "(" + json + ")" #REQUIRED
+    jsonp = callback.to_s + "(" + json + ")" #REQUIRED
     render :text => jsonp,  :content_type => "text/javascript"
   end
 

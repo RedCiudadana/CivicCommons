@@ -5,6 +5,7 @@ FactoryGirl.define do |f|
     u.zip_code '44313'
     u.password 'password'
     u.email ''
+    u.avatar_cached_image_url '/images/avatar.jpg'
   end
 
   factory :normal_person, :class=>Person do |u|
@@ -16,6 +17,7 @@ FactoryGirl.define do |f|
     u.sequence(:email) {|n| "test.account#{n}@mysite.com" }
     u.daily_digest false
     u.avatar_url '/images/avatar_70.gif'
+    u.avatar_cached_image_url '/images/avatar.jpg'
   end
 
   factory :proxy_person, :parent => :normal_person do |u|

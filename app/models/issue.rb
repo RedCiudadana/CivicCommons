@@ -20,7 +20,8 @@ class Issue < ActiveRecord::Base
   belongs_to :person
 
   has_and_belongs_to_many :conversations
-  has_and_belongs_to_many :topics, uniq: true
+  has_many :issues_topics, uniq: true
+  has_many :topics, through: :issues_topics, uniq: true
 
   # Contributions directly related to this Issue
   has_many :contributions
@@ -46,6 +47,17 @@ class Issue < ActiveRecord::Base
                     :s3_credentials => S3Config.credential_file,
                     :path => IMAGE_ATTACHMENT_PATH)
   validates_attachment_content_type :image,
+                                    :content_type => /image\/*/,
+                                    :message => "Not a valid image file."
+
+  has_attached_file(:standard_banner_image,
+                    :styles => {
+                      :normal => '940x100#',
+                      :panel => "198x130#" },
+                    :storage => :s3,
+                    :s3_credentials => S3Config.credential_file,
+                    :path => IMAGE_ATTACHMENT_PATH)
+  validates_attachment_content_type :standard_banner_image,
                                     :content_type => /image\/*/,
                                     :message => "Not a valid image file."
 
@@ -168,6 +180,7 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  # Determine the user ids for participants of this issue.
   def community_user_ids
     person_ids = Array.new
     person_ids += participant_ids

@@ -80,7 +80,7 @@ feature "Voting results", %q{
     vote_page.should_not have_selector(VotePage::VOTE_RESULTS)
     
     # and I should be able to see a link to return to the associated Issue or Conversation
-    vote_page.should contain "Back to: #{Survey.last.surveyable.name}"
+    vote_page.should have_content "Back to: #{Survey.last.surveyable.name}"
     vote_page.should have_link(Survey.last.surveyable.name,:href => issue_path(@issue))
   end
   

@@ -30,6 +30,7 @@ form#comment-form textarea {
   text-align: left;
   width: 620px;
 }
+
 .top-align input.checkbox, 
 .top-align button.cancel, 
 .top-align input.submit, 

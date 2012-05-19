@@ -4,7 +4,7 @@
       <h5><%= option.title %></h5>
     </div>
     <div class='description'>
-      <p><%= auto_link(sanitize option.description, :tags => %w(img a strong br p))  %></p>
+      <p><%= sanitize auto_link(option.description, :tags => %w(img a strong br p))  %></p>
     </div>
   </div>
   <div class="select" title="Select this option">

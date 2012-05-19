@@ -37,22 +37,22 @@
     <script type='text/javascript'>
       //<![CDATA[
         $(document).ready(function(){
-        
+
           $("input.datetime").datetimepicker({
             ampm: true,
             stepMinute: 15
           });
-        
-          
-        
+
+
+
         });
-        
+
         /* Google Analytics */
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-19685339-1']);
         _gaq.push(['_setDomainName', '.theciviccommons.com']);
         _gaq.push(['_trackPageview']);
-        
+
         (function() {
           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -60,7 +60,7 @@
         })();
       //]]>
     </script>
-    
+
     <link href="http://feeds.theciviccommons.com/civiccommons_new_conversations" rel="alternate" title="The Civic Commons: Conversations" type="application/rss+xml" />
     <link href="http://feeds.theciviccommons.com/civiccommonsblog" rel="alternate" title="The Civic Commons: Common Blog" type="application/rss+xml" />
     <link href="http://feeds.theciviccommons.com/civiccommonsradio" rel="alternate" title="The Civic Commons Radio Show" type="application/rss+xml" />
@@ -155,6 +155,7 @@
               <input class="submit" id="Search" type="submit" value="Search">
             </form>
           </div>
+          <h3>Styled Widget</h3>
           <div class="mod">
             <script src="/widgets/cc_widget.js?src=/conversations/akron-beacon-journal-seeks-citizen-views--2&dom=civic-commons-widget" type="text/javascript"></script>
             <div class="cleanslate civic-commons-widget-container" id="civic-commons-widget"></div>
@@ -273,12 +274,12 @@
           </div>
         </div>
         <div id="cc-footer">
-        	<p>
-        	<img alt="Cc_by-nc-sa" src="/images/cc_by-nc-sa.png?1303596124" style="float: left; margin-right: 10px;" />
-        	Conversation text and related responses copyright &copy; The Civic Commons and are available under the
-        	<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>;
-        	additional terms may apply.
-        	</p>
+          <p>
+          <img alt="Cc_by-nc-sa" src="/images/cc_by-nc-sa.png?1303596124" style="float: left; margin-right: 10px;" />
+          Conversation text and related responses copyright &copy; The Civic Commons and are available under the
+          <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>;
+          additional terms may apply.
+          </p>
         </div>
       </div>
     </div>
@@ -295,7 +296,7 @@
 <script type="text/javascript" charset="utf-8">
   var feedback_widget_options = {};
 
-  feedback_widget_options.display = "overlay";  
+  feedback_widget_options.display = "overlay";
   feedback_widget_options.company = "theciviccommons";
   feedback_widget_options.placement = "left";
   feedback_widget_options.color = "#51778E";

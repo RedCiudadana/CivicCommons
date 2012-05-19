@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :petition do |f|
     f.association :conversation
-    f.association :creator, :factory => :person
+    f.association :person
     f.title 'Title here'
     f.description 'Description here'
     f.resulting_actions 'Resulting Actions here'

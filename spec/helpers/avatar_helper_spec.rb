@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AvatarHelper do
 
   before(:each) do
-    @me = FactoryGirl.build(:normal_person, :first_name => "My", :last_name => "Self", :avatar_url => "http://avatar_url")
+    @me = FactoryGirl.build(:normal_person, :first_name => "My", :last_name => "Self", :avatar_url => "http://avatar_url", :avatar_cached_image_url => '')
     @me.id = 1
     @registered_user = FactoryGirl.build(:registered_user_with_avatar, :first_name => "Someone", :last_name => "Else", :id => 13, :avatar_url => '/images/avatar_70.gif')
     @registered_user.id = 13

@@ -11,7 +11,7 @@ class AvatarService
     else
       base_url = nil
     end
-    # Image displayed by order of priority    
+    # Image displayed by order of priority
     # 1. image uploaded
     return person.avatar.url(:standard) if person.avatar?
     # 2. facebook
@@ -34,7 +34,6 @@ class AvatarService
   end
 
   def self.gravatar_available?(person)
-
     gravatar_response = Net::HTTP.get_response(URI.parse(gravatar_image_url(person)))
 
     unless gravatar_response.class == Net::HTTPNotFound
@@ -42,7 +41,6 @@ class AvatarService
     else
       false
     end
-
   end
 
   def self.gravatar_image_url(person)
@@ -54,8 +52,10 @@ class AvatarService
     Digest::MD5.hexdigest(person.email)
   end
 
+  # Update an entities avatar url
   def self.update_avatar_url_for(person)
-    Person.update_all({avatar_url: avatar_image_url(person)}, {id: person.id})
+    avatar_image = avatar_image_url(person)
+    Person.update_all({avatar_url: avatar_image, avatar_cached_image_url: avatar_image}, {id: person.id})
   end
 
 end

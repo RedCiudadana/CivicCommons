@@ -11,7 +11,7 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
     jQuery = window.jQuery;
     //pass this jQuery to CivicCommonsLoadedJquery to be used by our other js
     window.CivicCommonsLoadedJquery = jQuery;
-    
+
     main();
 }
 
@@ -55,6 +55,7 @@ function main() {
         var base_url = '<%= request.protocol + request.host_with_port %>';
         var jsonp_url = base_url + "<%= @data_source %>.embed?callback=?";
         $.getJSON(jsonp_url, function(data) {
+          <% if @styled # load in the widget css %>
           // load css
           if(data.css != null){
             for(var i = 0; i < data.css.length; i++) {
@@ -66,7 +67,7 @@ function main() {
               css_link.appendTo('head');
             }
           }
-
+          <% end %>
 
           //load content
           $('#<%= @dom_id %>').html(data.html);

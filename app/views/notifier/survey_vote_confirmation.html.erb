@@ -3,7 +3,7 @@
   Thank for your vote on "<%= link_to @survey.title, send("#{@survey.type.underscore}_url".to_sym,@survey.id) %>"
 </p>
 <p>
-   You selected <%= @vote_response_presenter.selected_survey_option_titles.collect{|title| "\"#{title}\""}.to_sentence %>, and your ballot has been cast.
+   You selected <%= @selected_survey_option_titles.collect{|title| "\"#{title}\""}.to_sentence %>, and your ballot has been cast.
 </p>
 <p>
   Please check back on <%= @survey.end_date && @survey.end_date.to_s(:long) %> to see the final results.

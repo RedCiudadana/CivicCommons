@@ -10,7 +10,7 @@ feature "Authorization Threats", %q{
 
     # Given an admin user exists
     let :admin do
-      Factory :admin_person
+      FactoryGirl.create(:admin_person)
     end
 
     background do
@@ -35,7 +35,7 @@ feature "Authorization Threats", %q{
 
     # Given an admin user exists
     let :admin do
-      Factory :admin_person
+      FactoryGirl.create(:admin_person)
     end
 
 

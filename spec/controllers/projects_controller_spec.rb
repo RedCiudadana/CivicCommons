@@ -3,6 +3,10 @@ require 'spec_helper'
 describe ProjectsController do
 
   describe "GET index" do
+    
+    def mock_issue
+      @mock_issue ||= mock_model(Issue).as_null_object
+    end
 
     before(:each) do
 
@@ -32,6 +36,13 @@ describe ProjectsController do
       get :index
 
       assigns(:recent_items).should == [item]
+    end
+    
+    it "should get receive custom_sort on it" do
+      Issue.should_receive(:managed_issue).and_return(mock_issue)
+      mock_issue.should_receive(:custom_order).and_return(mock_issue)
+      get :index
+      response.should be_success
     end
 
   end

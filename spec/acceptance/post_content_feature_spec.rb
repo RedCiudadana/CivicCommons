@@ -9,7 +9,7 @@ feature "Post Content Item", %q{
     let :content do
       FactoryGirl.create(:content_item)
     end
-    
+
     def given_a_topic
       @topic = FactoryGirl.create(:topic, :name => 'TopicNameHere')
     end
@@ -49,7 +49,7 @@ feature "Post Content Item", %q{
     end
 
     scenario "External link is not a required field for a BlogPost", :js => true do
-      
+
       visit new_admin_content_item_path
       select('BlogPost', :from => 'content_item_content_type')
       fill_in('content_item_title', :with => 'First Blog Post')
@@ -85,7 +85,7 @@ feature "Post Content Item", %q{
     end
 
     scenario "New content item is associated with the selected author", :js => true do
-      second_admin = Factory :admin_person
+      second_admin = FactoryGirl.create :admin_person
       visit new_admin_content_item_path
       select('BlogPost', :from => 'content_item_content_type')
       select(second_admin.first_name + " " + second_admin.last_name, :from => 'content_item_person_id')

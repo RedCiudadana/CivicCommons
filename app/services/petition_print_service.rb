@@ -42,7 +42,7 @@ class PetitionPrintService
     pdf.move_down 5
     pdf.formatted_text [
       { text: "Written by: ", color: text_color },
-      { text: petition.creator.name, color: link_color, link: context.user_url(petition.creator) },
+      { text: petition.person.name, color: link_color, link: context.user_url(petition.person) },
       { text: " on #{ date_string(petition.created_at) }", color: text_color }
     ]
 

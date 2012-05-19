@@ -4,7 +4,7 @@ module BlogHelper
     date = date.published if date.is_a? ContentItem
     return date.strftime('%A, %B %d, %Y')
   end
-  
+
   def blog_filter_by_author_link(author,current_author)
     if author == current_author
       path = blog_index_path(request.parameters.merge({:author_id => nil, :page => nil}))

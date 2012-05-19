@@ -17,9 +17,9 @@ feature "Unlink Account From Facebook", %q{
     unlink_from_facebook email: "johnd-new-email@example.com"
     unlink_success_modal.should be_visible
     Notifier.deliveries.length.should == 1
-    Notifier.deliveries.first.to.should contain 'johnd@example.com'
-    Notifier.deliveries.first.to.should contain 'johnd-new-email@example.com'
-    Notifier.deliveries.first.subject.should contain "You've recently changed your email with The Civic Commons"
+    Notifier.deliveries.first.to.should have_content 'johnd@example.com'
+    Notifier.deliveries.first.to.should have_content 'johnd-new-email@example.com'
+    Notifier.deliveries.first.subject.should have_content "You've recently changed your email with The Civic Commons"
   end
 
   scenario "Should throw validation error when user does not enter password", :js=>true do

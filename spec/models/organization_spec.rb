@@ -36,8 +36,8 @@ describe Organization do
     it "should have organization details" do
       Organization.reflect_on_association(:organization_detail).macro == :has_one
     end
-    it "should have and belongs to many people" do
-      Organization.reflect_on_association(:members).macro.should == :has_and_belongs_to_many
+    it "should have many people" do
+      Organization.reflect_on_association(:members).macro.should == :has_many
     end
     it "should be have uniqueness constraint on habtm members" do
       Organization.reflect_on_association(:members).options[:uniq].should be_true
@@ -49,18 +49,18 @@ describe Organization do
       Organization.new.allow_facebook_connect?.should be_false
     end
   end
-  
+
   context "organization members" do
     before(:each) do
       @organization = FactoryGirl.create(:organization)
       @person = FactoryGirl.create(:person)
     end
-    
+
     context "has_member?" do
       it "should have the proper member" do
         @organization.has_member?(@person).should_not be_true
         @organization.join_as_member(@person)
-        
+
         @organization.reload
         @organization.has_member?(@person).should be_true
       end
