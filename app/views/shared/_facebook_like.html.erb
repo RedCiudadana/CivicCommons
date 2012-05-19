@@ -9,7 +9,7 @@
     fb.src = (document.location.protocol + '//connect.facebook.net/en_US/all.js#xfbml=1');
     document.getElementsByTagName('head')[0].appendChild(fb);
 
-    $('#facebook-like').replaceWith('<fb:like href="<%= request.url %>" show_faces="false" width="450" send="false" font="arial"></fb:like>');
+    $('#facebook-like').replaceWith('<fb:like send="false" layout="button_count" width="200" show_faces="false" font="arial"></fb:like>');
   });
 })(jQuery);
 </script>
