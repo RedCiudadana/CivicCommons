@@ -1164,6 +1164,26 @@ div.three-col-sm div.photobank img {margin: 0 0 6px 6px;}
   width: 300px;
 }
 
+/* Home page search */
+
+.t-col-span {
+  float: left;
+  margin-right: 20px;
+  width: 460px;
+}
+
+.t-col-span .t-img {
+  float: left;
+  margin-right: 20px;
+}
+
+.t-search {
+  background-color: #e3e3e3;
+  height: 160px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
 
 /*- ENTRY STYLES
     Adding the class of entry to the these containers to eventually
@@ -2273,6 +2293,11 @@ div#search.main-search-bar form input.textbox {
   padding: 8px;
   width: 400px;
 }
+
+div#search.main-search-bar.t-search-bar form input.textbox {
+  width: 300px;
+}
+
 div#search.main-search-bar input.submit {
   float: none;
   font-size: 1.2em;
