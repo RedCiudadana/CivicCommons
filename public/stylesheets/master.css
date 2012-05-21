@@ -222,7 +222,7 @@ h1 span {
 }
 
 h2 {
-  color: #555
+  color: #555;
   border-bottom: none;
   font-size: 1.6em;
   line-height: 1em;
@@ -1234,11 +1234,11 @@ div.three-col-sm div.photobank img {margin: 0 0 6px 6px;}
 
 .t-col.three .sm.one,
 .t-col.three .sm.two {
-  width: 140px;i
+  width: 140px;
 }
 
 .t-col.three .sm.one {
-  float: left;i
+  float: left;
 }
 
 .t-col.three .sm.two {
@@ -2586,6 +2586,10 @@ div.call-out {
           border-radius: 4px;
 }
 
+.call-out-lrg {
+  padding: 20px;
+}
+
 div.three-col-sm div.call-out .photobank {
   background: #e6e6e6;
   border-top: 1px solid #ccc;
@@ -3363,5 +3367,5 @@ input.textbox.input-short {
 
 /*- IE7 ----------*/
 
-*:first-child+html #wrapper, *:first-child+html #header, *:first-child+html .feature, *:first-child+html div.tab-strip ul, *:first-child+html div.tab-area, *:first-child+html #nav, #header-wrapper, *:first-child+html .section, *:first-child+html .content-container, *:first-child+html .photobank, *:first-child+html div.three-col, *:first-child+html div.three-col-sm, *:first-child+html .form-block, *:first-child+html .offset-1, *:first-child+html .offset-2, *:first-child+html form, *:first-child+html .convo-utility, *:first-child+html ul.social-media, *:first-child+html div.two-col, *:first-child+html div.two-col-sm, *:first-child+html .conversations, *:first-child+html div.convo-popup, *:first-child+html .pagination p, *:first-child+html #header-utility, *:first-child+html .convo-create, *:first-child+html p.fb-cnct-links, *:first-child+html div.four-col, *:first-child+html div#search, .t-grid {zoom: 1;} {zoom: 1;}
+*:first-child+html #wrapper, *:first-child+html #header, *:first-child+html .feature, *:first-child+html div.tab-strip ul, *:first-child+html div.tab-area, *:first-child+html #nav, #header-wrapper, *:first-child+html .section, *:first-child+html .content-container, *:first-child+html .photobank, *:first-child+html div.three-col, *:first-child+html div.three-col-sm, *:first-child+html .form-block, *:first-child+html .offset-1, *:first-child+html .offset-2, *:first-child+html form, *:first-child+html .convo-utility, *:first-child+html ul.social-media, *:first-child+html div.two-col, *:first-child+html div.two-col-sm, *:first-child+html .conversations, *:first-child+html div.convo-popup, *:first-child+html .pagination p, *:first-child+html #header-utility, *:first-child+html .convo-create, *:first-child+html p.fb-cnct-links, *:first-child+html div.four-col, *:first-child+html div#search, .t-grid {zoom: 1;}
 *:first-child+html .group {zoom: 1;}
