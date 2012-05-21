@@ -1178,7 +1178,7 @@ div.three-col-sm div.photobank img {margin: 0 0 6px 6px;}
 }
 
 .t-search {
-  background-color: #e3e3e3;
+  background-color: #e9e9e9;
   height: 160px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -2242,8 +2242,8 @@ div.conversation-input-container {margin-bottom: 25px;}
 
 /*- Search Form Styles ----------*/
 
-div#search {margin-bottom: 20px;}
-div#search form input.textbox {
+#search {margin-bottom: 20px;}
+#search form input.textbox {
   background: transparent;
   border: 1px solid #b4b4b5;
   float: left;
@@ -2262,43 +2262,43 @@ div#search form input.textbox {
   -o-box-shadow: 0 0 1px rgba(255,255,255,1), inset 1px 1px 1px rgba(0,0,0,.1);
   box-shadow: 0 0 1px rgba(255,255,255,1), inset 1px 1px 1px rgba(0,0,0,.1);
 }
-div#search.errors form input.textbox {border-color: #a33333;}
-div#search.errors .error {font-weight: bold;}
-div#search form input.textbox:focus {outline: 0 none;}
-div#search input.submit {
+#search.errors form input.textbox {border-color: #a33333;}
+#search.errors .error {font-weight: bold;}
+#search form input.textbox:focus {outline: 0 none;}
+#search input.submit {
   float: right;
   margin: 0;
 }
 
 /*- Search Input in Footer ----------*/
 
-#footer div#search {
+#footer #search {
   border-bottom: none;
   border-top: 1px solid #cdcdcd;
   margin: 20px 0 0 0;
   padding: 20px 0 0 0;
 }
-#footer div#search form input.textbox {margin-bottom: 5px;}
-#footer div#search input.submit {float: left;}
+#footer #search form input.textbox {margin-bottom: 5px;}
+#footer #search input.submit {float: left;}
 
 /*- Search Input on Main Search Page ----------*/
 
-div#search.main-search-bar {
+#search.main-search-bar {
   border-bottom: none;
   margin-bottom: 20px;
 }
-div#search.main-search-bar form input.textbox {
+#search.main-search-bar form input.textbox {
   float: none;
   font-size: 1.2em;
   padding: 8px;
   width: 400px;
 }
 
-div#search.main-search-bar.t-search-bar form input.textbox {
+#search.main-search-bar.t-search-bar form input.textbox {
   width: 300px;
 }
 
-div#search.main-search-bar input.submit {
+#search.main-search-bar input.submit {
   float: none;
   font-size: 1.2em;
   margin: 0 0 0 10px;
@@ -2381,12 +2381,12 @@ color: #51778e;
 
 /*- Search Overrides for 404 Page ----------*/
 
-.error404 div#search {
+.error404 #search {
   border-bottom: none;
   padding-bottom: 0;
 }
-.error404 div#search form input.textbox {margin-right: 10px;}
-.error404 div#search input.submit {float: left;}
+.error404 #search form input.textbox {margin-right: 10px;}
+.error404 #search input.submit {float: left;}
 
 /*- Browse List ----------*/
 
