@@ -1,3 +1,17 @@
 /* Styles for the hero section of the homepage */
 
+.feature-mast-hero .mod {
+  width: 300px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
 
+.feature-mast-hero h2 {
+  margin-top: 0;
+}
+
+.feature-mast-hero div.call-out {
+  min-height: 0;
+  height: auto !important;
+  height: 0;
+}
