@@ -22,3 +22,27 @@
   height: 300px;
   position: relative;
 }
+
+/* Slideshow Navigation Settings */
+
+.slideshow-nav {
+  margin: 0 auto 20px;
+  overflow: hidden;
+  text-align: center;
+  width: auto;
+}
+
+.slideshow-nav a {
+  background: url(/images/slideshow_bullets.png) no-repeat 0 0;
+  display: inline-block;
+  height: 20px;
+  text-indent: -9999px;
+  width: 22px;
+  zoom: 1;
+  *display: inline; /* Targets IE7 and tricks it to display as if it were inline-block */
+}
+
+.slideshow-nav .activeSlide,
+.slideshow-nav a:hover {
+  background-position: 0 -22px;
+}
