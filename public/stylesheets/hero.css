@@ -9,10 +9,21 @@
   margin-top: 0;
 }
 
-.feature-mast-hero div.call-out {
-  min-height: 0;
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  min-height: 280px;
+  padding: 20px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+       -o-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.feature-mast-hero .card {
+  min-height: 258px;
   height: auto !important;
-  height: 0;
+  height: 258px;
   width: 258px;
 }
 
@@ -45,4 +56,19 @@
 .slideshow-nav .activeSlide,
 .slideshow-nav a:hover {
   background-position: 0 -22px;
+}
+
+.feature-mast-hero .recent-item {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.feature-mast-hero .recent-item .bd {
+  background-color: #eee;
+  border-color: #ccc;
+  padding-bottom: 10px;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+       -o-border-radius: 0;
+          border-radius: 0;
 }
