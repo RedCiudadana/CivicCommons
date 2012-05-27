@@ -1652,6 +1652,11 @@ div.three-col-sm div.cols.call-out {
   -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+div.three-col-sm div.cols.tmp-title {
+  margin-left: 20px;
+  padding: 0 6px;
+  width: 180px;
+}
 div.three-col-sm div.cols.call-out img {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -2515,7 +2520,7 @@ color: #51778e;
   height: 180px;
 }
 
-/*- ￼404 Page Styles
+/*- 404 Page Styles
 ----------------------------------------------------------------------*/
 
 /*- Search Overrides for 404 Page ----------*/

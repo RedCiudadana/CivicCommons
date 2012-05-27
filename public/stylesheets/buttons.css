@@ -253,6 +253,7 @@ a.button:active span.stitcher {
 	width: 150px;
 }
 
+/* TODO: Need to refactor and make large buttons indepenedent of button group (BD) */
 .btn-group-large .text-left {
 	text-align: left;
 }

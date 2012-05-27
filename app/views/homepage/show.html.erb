@@ -30,9 +30,11 @@
         <div class="mod fl-left">
           <div class="card fl-left">
             <h2>2. Take Action</h2>
-            <h4>Congress Should Intervene&hellip; Stop the Fracking!</h4>
+            <h4 class="mbm">Congress Should Intervene&hellip; Stop the Fracking!</h4>
             <p>This petition will be mailed to Mayor Jackson at Cleveland City Hall with all the signatures attached on February 2, 2012.</p>
-            <a href="test.html" class="button">Sign the Petition</a> or <a href="#">Read the Full Petition</a>
+            <div class="mtl">
+              <a href="#" class="button">Sign the Petition</a> or <a href="#">Read the Full Petition</a>
+            </div>
           </div>
         </div>
         <div class="mod fl-left mrn">
@@ -108,8 +110,64 @@
   <div class="content-container">
     <div class="main-content">
       <%= render :partial => 'layouts/create_conversation' %>
-      <h3>Current Active Conversations</h3>
-      <%= render :partial => '/conversations/conversation_pager' %>
+      <%# render :partial => '/conversations/conversation_pager' %>
+      <div class="three-col-sm mbs">
+        <div class="cols tmp-title">
+          <h4>Most Recent</h4>
+        </div>
+        <div class="cols tmp-title">
+          <h4>Most Active</h4>
+        </div>
+        <div class="cols tmp-title">
+          <h4>Most Popular</h4>
+        </div>
+      </div>
+      <div class="three-col-sm">
+        <div class="cols call-out">
+          <a href="/conversations/it-s-ok-to-fail-how-can-we-celebrate-failure-as-part-of-innovation">
+            <img class="main-img" src="http://s3.amazonaws.com/appname_development/images/433/panel/fail_hash_tag_tshirt-p235143185819982172z8nqd_400.jpeg" alt="It's OK to FAIL: How can we celebrate failure as part of innovation?" width="180" height="120">
+            <h4>It's OK to FAIL: How can we celebrate...</h4>
+            <p>Woody Allen once said, "If you're not failing now and again, it's a sign you're not doing anything very innovative." So...</p>
+          </a>
+          <div class="photobank">
+              <a href="http://localhost:3000/user/claire-nelson" title="Claire Nelson"><img alt="Claire Nelson" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/2320/standard/ClaireNelson.jpeg?1332786447" title="Claire Nelson" width="40"></a>
+              <a href="http://localhost:3000/user/tunde-wey" title="Tunde Wey"><img alt="Tunde Wey" class="callout" height="40" src="https://graph.facebook.com/755088032/picture" title="Tunde Wey" width="40"></a>
+              <a href="http://localhost:3000/user/emily-doerr" title="Emily Doerr"><img alt="Emily Doerr" class="callout" height="40" src="https://graph.facebook.com/21707961/picture" title="Emily Doerr" width="40"></a>
+              <a href="http://localhost:3000/user/bradford-frost" title="Bradford Frost"><img alt="Bradford Frost" class="callout" height="40" src="https://graph.facebook.com/26002854/picture" title="Bradford Frost" width="40"></a>
+          </div>
+          </div>
+          <div class="cols call-out">
+          <a href="/conversations/we-re-looking-at-a-new-way-to-engage-the-community">
+            <img class="main-img" src="http://s3.amazonaws.com/appname_development/images/431/panel/slider1.png" alt="We're Looking at a New Way to Engage the Community" width="180" height="120">
+            <h4>We're Looking at a New Way to Engage the...</h4>
+            <p>Invite ideas for on-road bikeable solutions and opportunities.</p>
+          </a>
+          <div class="photobank">
+              <a href="http://localhost:3000/user/amats" title="AMATS"><img alt="AMATS" class="callout" height="40" src="/images/avatar_70.gif?1337653197" title="AMATS" width="40"></a>
+              <a href="http://localhost:3000/user/taryn-gress" title="Taryn Gress"><img alt="Taryn Gress" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/744/standard/IMG_7944.JPG?1331325627" title="Taryn Gress" width="40"></a>
+          </div>
+          </div>
+          <div class="cols call-out">
+          <a href="/conversations/social-media-trading-a-real-community-for-a-virtual-one">
+            <img class="main-img" src="http://s3.amazonaws.com/appname_development/images/429/panel/RatRanch_Crackberry Thumbs.jpg" alt="Social Media:  Trading a real community for a virtual one?" width="180" height="120">
+            <h4>Social Media:  Trading a real community...</h4>
+            <p>In her blog, "Engaged...Or Addicted?" Jill Miller Zimon wonders about whether her social media engagement is really an...</p>
+          </a>
+          <div class="photobank">
+              <a href="http://localhost:3000/user/nancy-reeves" title="Nancy Reeves"><img alt="Nancy Reeves" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/893/standard/MS150.jpg?1304999301" title="Nancy Reeves" width="40"></a>
+              <a href="http://localhost:3000/user/jill-miller-zimon--2" title="Jill Miller Zimon"><img alt="Jill Miller Zimon" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/100/standard/IMG_7864.JPG?1332879967" title="Jill Miller Zimon" width="40"></a>
+              <a href="http://localhost:3000/user/dan-moulthrop" title="Dan Moulthrop"><img alt="Dan Moulthrop" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/9/standard/moulthrop3.jpg?1321371530" title="Dan Moulthrop" width="40"></a>
+              <a href="http://localhost:3000/user/taryn-gress" title="Taryn Gress"><img alt="Taryn Gress" class="callout" height="40" src="http://s3.amazonaws.com/appname_development/avatars/744/standard/IMG_7944.JPG?1331325627" title="Taryn Gress" width="40"></a>
+          </div>
+        </div>
+      </div>
+      <div class="media">
+        <img class="img mrl" src="http://placehold.it/220x165" />
+        <div class="bd">
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+          <p><a href="#">Continue reading</a> or <a href="#">Read past posts</a></p>
+        </div>
+      </div>
     </div><!-- /.main-content -->
     <div class="aside supplementary">
       <%= render :partial => '/search/search' %>
