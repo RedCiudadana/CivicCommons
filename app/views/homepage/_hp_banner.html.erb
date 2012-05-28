@@ -4,13 +4,18 @@
     <%= render partial: '/homepage/hp_slot', locals: { slot_class: "med", target:@random_issues.pop } %>
   </div>
   <div class="t-col-span">
-    <div class="t-search inset">
+    <div class="t-search inset group">
       <h1>What do you care about?</h1>
       <p>Search for things you are interested in talking about, or select from popular searches.</p>
       <div id="search" class="main-search-bar t-search-bar">
-        <form>
-          <input type="text" class="textbox" placeholder="Search" />
+        <form class="dropdown">
+          <input type="text" class="js-grid-search textbox" data-toggle="dropdown" placeholder="Search" />
           <input class="submit" id="Search" type="submit" value="Search" />
+          <ul class="dropdown-menu">
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Environment</a></li>
+            <li><a href="#">Arts</a></li>
+          </ul>
         </form>
         <p class="mtm">If you'd like, you can <a href="#">Start a Conversation</a></p>
       </div>
