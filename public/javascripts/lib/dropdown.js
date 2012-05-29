@@ -4,6 +4,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  // Looking into combining these into one function
   $('.js-grid-search').focusin(function() {
     $(this).siblings('.dropdown-menu').slideDown('fast');
   });
