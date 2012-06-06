@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Civic Commons</title>
+      <meta name="title" content="The Civic Commons" />
+      <meta name="description" content="The Civic Commons is a new way to bring communities together with conversation and emerging technology. We’re focused on building conversations and connections that have the power to become informed, productive collective civic action." />
+        <link rel="image_src" href="/images/cc_podcast_small.jpg" />
+      <meta name="medium" content="blog" />
+      <meta name="medium" content="blog" />
+    <script src="/javascripts/vendor/jquery/jquery-1.4.4.min.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery-ui-1.8.16.custom.min.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery-ui-timepicker-addon-0.5.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/modernizr-1.5.min.js?1303596125" type="text/javascript"></script>
+    <script src="/javascripts/vendor/underscore.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/vendor/backbone-0.5.3.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/jquery_ujs.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.colorbox-min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.form.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.remotipart.js?1317525718" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.loadmask.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.hashchange.min.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/vendor/jquery/jquery.easytabs.js?1316999676" type="text/javascript"></script>
+    <script src="/javascripts/lib/authentication.js?1313540911" type="text/javascript"></script>
+    <script src="/javascripts/lib/conversations/rating_button.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/lib/master.js?1317525737" type="text/javascript"></script>
+    <script src="/javascripts/lib/chosen_issues.js?1303596125" type="text/javascript"></script>
+    <script src="/javascripts/lib/jquery-plugins/mask-me.js?1317525737" type="text/javascript"></script>
+    <!--[if gte IE 7]><!-->
+    <link href="/stylesheets/reset.css?1303596137" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/master.css?1317525737" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/ie.css?1317525737" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/ui-lightness/jquery-ui-1.8.16.custom.css?1317525718" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/jquery.loadmask.css?1303596137" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/colorbox.css?1313540911" media="screen, projection" rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <script type='text/javascript'>
+      //<![CDATA[
+        $(document).ready(function(){
+
+          $("input.datetime").datetimepicker({
+            ampm: true,
+            stepMinute: 15
+          });
+
+        });
+
+        /* Google Analytics */
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19685339-1']);
+        _gaq.push(['_setDomainName', '.theciviccommons.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+
+    <link href="http://feeds.theciviccommons.com/civiccommons_new_conversations" rel="alternate" title="The Civic Commons: Conversations" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsblog" rel="alternate" title="The Civic Commons: Common Blog" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsradio" rel="alternate" title="The Civic Commons Radio Show" type="application/rss+xml" />
+    <link href="http://feeds.theciviccommons.com/civiccommonsnews" rel="alternate" title="The Civic Commons In The News" type="application/rss+xml" />
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token" content="GLjeV6f0fZDyeZjS82efM0HXC11PLyqhm97kDg9PFX0="/>
+  </head>
+  <body>
+    <!--[if lte IE 6]>
+      <div class="global-warning">You are using a browser which isn't supported.  Try using <a href="http://www.firefox.com">Firefox</a>, <a href="http://www.apple.com/safari">Safari</a> or <a href="http://www.google.com/chrome">Chrome</a>.</div>
+    <![endif]-->
+    <div id='header-wrapper'>
+      <div id='header'>
+        <a href="http://localhost:3000/" id="logo" title="The Civic Commons">The Civic Commons</a>
+        <ul id='main-nav'>
+          <li class='conversations'>
+            <a href="/conversations" title="Explore Conversations"><span>Explore </span> Conversations</a>
+          </li>
+          <li class='issues'>
+            <a href="/issues" title="Find an Issue"><span>Find an </span> Issue</a>
+          </li>
+          <li class='community'>
+            <a href="/community" title="Meet the Community"><span>Meet the </span>Community</a>
+          </li>
+          <li class='commons'>
+            <a href="/build_the_commons" title="Build the Commons"><span>Build the </span>Commons</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="content-container">
+        <h1>Register</h1>
+        <form id="registration" action="submit" method="get" accept-charset="utf-8">
+          <fieldset>
+            <div class="form-block">
+              <label for="org-name">Name of Organization:</label>
+              <input type="text" class="textbox" name="org-name" value="" id="org-name" />
+            </div>
+            <div class="form-block">
+              <label for="org-email">Email Address:</label>
+              <input type="text" class="textbox" name="org-email" value="" id="org-email">
+              <p class="tip">As an organization your email address will be publicly disclosed.</p>
+            </div>
+            <div class="form-block">
+              <input class="checkbox" type="checkbox" name="org-auth" value="" id="org-auth" />
+              <label class="checkbox" for="org-auth">I am authorized to setup an account for this organization</label>
+            </div>
+            <div class="form-block">
+              <label for="password">Password</label>
+              <input type="password" class="textbox" name="password" value="" id="password">
+            </div>
+            <div class="form-block">
+              <label for="verify-pw">Password Again:</label>
+              <input type="password" class="textbox" name="verify-pw" value="" id="verify-pw">
+            </div>
+            <div class="form-block">
+              <label for="org-logo">Company Logo:</label>
+              <input class="textbox" id="org-logo" name="org-logo" type="file">
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="form-block">
+              <label for="org-bio">Tell us a little about your company:</label>
+              <textarea class="textbox" name="org-bio" value="" id="org-bio" rows="10"></textarea>
+            </div>
+            <div class="form-block">
+              <label for="zipcode">Zipcode:</label>
+              <input class="textbox" type="text" name="zipcode" value="" id="zipcode" />
+            </div>
+            <div class="form-block input-prepend">
+              <label for="person-twitter">Twitter</label>
+              <span class="add-on">@</span>
+              <input class="textbox" id="person-twitter" name="person-twitter" value="" />
+            </div>
+            <div class="form-block">
+              <label for="person-facebook">Facebook:</label>
+              <input class="textbox" id="person-facebook" name="person-facebook" value="" placeholder="http://www.facebook.com/johnnyappleseed" />
+            </div>
+            <div class="form-block">
+              <label for="person-linkedin">Linked In:</label>
+              <input class="textbox" id="person-linkedin" name="person-linkedin" value="" placeholder="http://www.linkedin.com/johnnyappleseed" />
+            </div>
+            <div class="form-block">
+              <input class="checkbox" type="checkbox" name="digest" value="" id="digest" />
+              <label class="checkbox" for="digest">Yes, please send me the digest of activity relevant to my interests</label>
+            </div>
+            <div class="form-block">
+              <input class="checkbox" type="checkbox" name="newsletter" value="" id="newsletter" />
+              <label class="checkbox" for="newsletter">Yes, please send me The Civic Commons weekly newsletter</label>
+            </div>
+          </fieldset>
+          <div class="form-block">
+            <input type="submit" class="submit" value="Continue" /> or <a href="/">Cancel</a>
+          </div>
+        </form>
+      </div><!-- /.content-container -->
+    </div><!-- /.wrapper -->
+    <div class='footer' id='footer'>
+      <div id='footer-inner'>
+        <div class='four-col'>
+          <div class='cols'>
+            <h3>About the Commons</h3>
+            <ul class='sub-nav'>
+              <li> <a href="http://localhost:3000/about">About Us</a> </li>
+              <li> <a href="http://localhost:3000/team">Team</a> </li>
+              <li> <a href="http://localhost:3000/principles">Mission &amp; Principles</a> </li>
+              <li> <a href="http://localhost:3000/faq">FAQ</a> </li>
+              <li> <a href="http://localhost:3000/jobs">Careers</a> </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>Keep Up with the Commons</h3>
+            <ul class='sub-nav'>
+              <li> <a href="http://localhost:3000/blog">Blog</a> </li>
+              <li> <a href="http://localhost:3000/press">In The News</a> </li>
+              <li> <a href="http://localhost:3000/radioshow">Radio Show</a> </li>
+              <li> <a href="http://localhost:3000/feeds">RSS Feeds</a> </li>
+              <li> <a href="http://status.theciviccommons.com/">Server Status</a> </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>Work with the Commons</h3>
+            <ul class='sub-nav'>
+              <li> <a href="http://getsatisfaction.com/theciviccommons">Help and Support</a> </li>
+              <li> <a href="http://localhost:3000/contact_us">Contact Us</a> </li>
+              <li> <a href="http://localhost:3000/partners">Partners</a> </li>
+              <li> <a href="http://localhost:3000/terms">Terms of Use</a> </li>
+              <li> <a href="http://localhost:3000/privacy">Privacy Policy</a> </li>
+            </ul>
+          </div>
+          <div class='cols'>
+            <h3>The Civic Commons Elsewhere</h3>
+            <ul class='social-media'>
+              <li> <a href='http://www.facebook.com/pages/Civic-Commons/143930632284131' class='social-media-ico facebook_ico'>Facebook</a> </li>
+              <li> <a href='http://twitter.com/civiccommons' class='social-media-ico twitter_ico'>Twitter</a> </li>
+              <li> <a href='http://www.youtube.com/user/neociviccommons' class='social-media-ico youtube_ico'>YouTube</a> </li>
+              <li> <a href='http://localhost:3000/feeds' class='social-media-ico rss_ico'>RSS</a> </li>
+            </ul>
+          </div>
+        </div>
+        <div id="cc-footer">
+          <p>
+          <img alt="Cc_by-nc-sa" src="/images/cc_by-nc-sa.png?1303596124" style="float: left; margin-right: 10px;" />
+          Conversation text and related responses copyright &copy; The Civic Commons and are available under the
+          <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>;
+          additional terms may apply.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "theciviccommons";
+  feedback_widget_options.placement = "left";
+  feedback_widget_options.color = "#51778E";
+  feedback_widget_options.style = "question";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
