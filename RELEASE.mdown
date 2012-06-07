@@ -1,3 +1,8 @@
+## 2.5
+
+### Bug Fixes
+  * [vote Insert Image -Alignment](https://agilezen.com/project/18091/story/556)
+
 ## 2.4
 
 ### External Changes

@@ -3208,7 +3208,7 @@ input.textbox.input-short {
 /*- SELF CLEARING FLOATS
 ----------------------------------------------------------------------*/
 
-#wrapper:after, #header:after, .feature:after, div.tab-strip ul:after, div.tab-area:after, #nav:after, #header-wrapper:after, .section:after, .content-container:after, .photobank:after, div.three-col:after, div.three-col-sm:after, .form-block:after, .offset-1:after, .offset-2:after, form:after, .convo-utility:after, ul.social-media:after, div.two-col:after, div.two-col-sm:after, .conversations:after, div.convo-popup:after, .pagination p:after, .convo-create:after, p.fb-cnct-links:after, div.four-col:after, div#search:after, .t-grid:after {
+#wrapper:after, #header:after, .feature:after, div.tab-strip ul:after, div.tab-area:after, #nav:after, #header-wrapper:after, .section:after, .content-container:after, .photobank:after, div.three-col:after, div.three-col-sm:after, .form-block:after, .offset-1:after, .offset-2:after, form:after, .convo-utility:after, ul.social-media:after, div.two-col:after, div.two-col-sm:after, .conversations:after, div.convo-popup:after, .pagination p:after, .convo-create:after, p.fb-cnct-links:after, div.four-col:after, div#search:after, .t-grid:after, .wysiwyg-formatted:after {
   content: ".";
   display: block;
   height: 0;
