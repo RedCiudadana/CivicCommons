@@ -37,6 +37,7 @@ describe VoteProgressService do
     @vote_progress_service = VoteProgressService.new(@survey)
   end
   
+  
   describe "calculate_progress" do
     it "should return the correct number of results" do
       given_valid_vote_responses
@@ -60,6 +61,21 @@ describe VoteProgressService do
       VoteProgressService.new(@survey).calculate_progress.first.weighted_votes.to_i.should == 6
       VoteProgressService.new(@survey).calculate_progress.last.weighted_votes.to_i.should == 0
     end
+  end
+  
+  describe "setting an :voted flag, to return if that option has been voted by a particular user or not" do
+    it "should set it to true if there is a voter" do
+      given_valid_vote_responses
+      vote_progress_service = VoteProgressService.new(@survey,@person2).progress_result.collect(&:voted)
+      vote_progress_service[0].should == true
+      vote_progress_service[1].should == true
+    end
+    it "should not set the :voted if there is no voter" do
+      given_valid_vote_responses
+      vote_progress_service = VoteProgressService.new(@survey).progress_result.collect(&:voted)
+      vote_progress_service.all?{|record| record == nil}.should be_true
+    end
+    
   end
   
   describe "calculate_weighted_votes_percentage" do

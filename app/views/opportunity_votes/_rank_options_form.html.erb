@@ -1,0 +1,25 @@
+<% content_for :header do %>
+  <%= javascript_include_tag '/javascripts/lib/opportunity_votes/voting' %>
+<% end %>
+<%= form_for @vote_response_presenter, :as => :vote_response_presenter, :url => rank_options_conversation_vote_path(@conversation,@vote)  do |form|%>
+  <%= opportunity_vote_tab_nav('rank_options') %>
+  <h4 class="mtl mbl">Drag the selected options into order of importance:</h4>
+  <div class="opportunities-ballot">
+    <ol class="opportunities-ol wysiwyg-formatted">
+      <% @vote_response_presenter.selected_survey_options.each_with_index do |option,index| %>
+        <% index+=1 %>
+          <li class="opportunities-outline selected-option">
+            <%= hidden_field_tag "vote_response_presenter[selected_option_#{index}_id]", option.survey_option.id, :class => 'selected_option' %>
+            <h4><%= option.survey_option.title %></h4>
+            <p><%= sanitize option.survey_option.description %></p>
+          </li>
+      <% end %>
+    </ol>
+  </div>
+  <fieldset>
+      <%= form.submit 'Cast my Vote', :class => "continue button opportunity-button" %> or
+      <%= link_to 'Cancel', conversation_actions_path(@conversation), :id => 'cancel-contribution' %>
+  </fieldset>
+
+<% end %>
+

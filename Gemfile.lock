@@ -204,6 +204,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.1.4)
+    newrelic_rpm (3.3.4.1)
     no_peeping_toms (2.1.2)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -414,6 +415,7 @@ DEPENDENCIES
   linguistics (~> 1.0.9)
   mini_magick
   mysql2 (< 0.3)
+  newrelic_rpm
   no_peeping_toms (~> 2.1.2)
   nokogiri
   omniauth (= 1.0.1)

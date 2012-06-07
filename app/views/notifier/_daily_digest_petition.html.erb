@@ -1,0 +1,14 @@
+<%
+petition = item
+contributor = (@person == petition.person ? 'You' : petition.creator_name)
+%>
+<p>
+  <%= "#{contributor}" %> created a petition:
+  <blockquote>
+    <%= petition.title.html_safe %><br/>
+    <%= petition.description.html_safe %><br/>
+    <%= petition.resulting_actions.html_safe %>
+  </blockquote>
+  <%= link_to 'Check it out', conversation_petition_url(conversation.first, petition) %>
+</p>
+

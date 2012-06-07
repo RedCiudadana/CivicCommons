@@ -1,0 +1,3 @@
+<%= form.fields_for :options, option_form, :child_index => 'index_to_replace_with_js' do |option| %>
+  <%= render :partial => '/opportunity_votes/option', :locals => {:option => option} %>
+<% end %>

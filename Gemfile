@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'newrelic_rpm'
+
 gem 'mysql2', '< 0.3'
 gem 'devise', '1.5.2'
 gem 'omniauth', '1.0.1'

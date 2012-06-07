@@ -1,0 +1,11 @@
+<% survey_response = item %>
+<% contributor = (@person == survey_response.person ? 'You' : survey_response.person.name)  %>
+
+<p>
+  <%= "#{contributor}" %> voted on:
+  <blockquote>
+    <%= survey_response.survey.title.html_safe %><br/>
+    <%= survey_response.survey.description.html_safe %>
+  </blockquote>
+  <%= link_to 'Check it out', conversation_vote_url(conversation.first, survey_response.survey) %>
+</p>

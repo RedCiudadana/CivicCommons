@@ -1,0 +1,9 @@
+<div class="">
+  <div class="recent-item petition">
+    <h4><%= link_to( vote.title, conversation_vote_path(vote.surveyable, vote, :anchor => 'opportunity-nav')) %></h4>
+    <p>
+      <%= vote.person.name %> wrote this Vote
+    </p>
+  </div>
+</div>
+

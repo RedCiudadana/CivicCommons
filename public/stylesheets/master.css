@@ -309,7 +309,8 @@ button.cancel {
 input.submit.no-tab {margin-left: 0;}
 input#contribution_submit,
 input#petition_submit,
-input#reflection_comment_submit
+input#reflection_comment_submit,
+input#vote_submit
  {
   margin-left: 0;
   margin-right: 0;
@@ -904,7 +905,14 @@ div.three-col-sm div.photobank img {margin: 0 0 6px 6px;}
   background-image: url(/images/voting-icon-closed.png);
   color: #777;
 }
-
+/* Opportunity Votes -------
+*/
+.survey-option .sort-option{
+  cursor: move;
+}
+#options{
+  min-height:300px;
+}
 /*- Surveys/Votes ----------*/
 
 .voting-container ::selection {
@@ -3011,6 +3019,13 @@ ol.opportunities-ol {
 	font-size: 16px;
 	font-weight: bold;
 	margin-left: 1.4em;
+	list-style-type: none;
+}
+
+.opportunities-ballot div.number{
+  font-size: 16px;
+	font-weight: bold;
+	margin-left: 1.4em;
 }
 
 .opportunities-ol p,
@@ -3162,11 +3177,14 @@ input.textbox.input-short {
 /*  max-width:588px;*/
   max-width:100%;
 }
+.button.opportunity-button{
+  width:143px;
+}
 
 /*- SELF CLEARING FLOATS
 ----------------------------------------------------------------------*/
 
-#wrapper:after, #header:after, .feature:after, div.tab-strip ul:after, div.tab-area:after, #nav:after, #header-wrapper:after, .section:after, .content-container:after, .photobank:after, div.three-col:after, div.three-col-sm:after, .form-block:after, .offset-1:after, .offset-2:after, form:after, .convo-utility:after, ul.social-media:after, div.two-col:after, div.two-col-sm:after, .conversations:after, div.convo-popup:after, .pagination p:after, .convo-create:after, p.fb-cnct-links:after, div.four-col:after, div#search:after, .t-grid:after {
+#wrapper:after, #header:after, .feature:after, div.tab-strip ul:after, div.tab-area:after, #nav:after, #header-wrapper:after, .section:after, .content-container:after, .photobank:after, div.three-col:after, div.three-col-sm:after, .form-block:after, .offset-1:after, .offset-2:after, form:after, .convo-utility:after, ul.social-media:after, div.two-col:after, div.two-col-sm:after, .conversations:after, div.convo-popup:after, .pagination p:after, .convo-create:after, p.fb-cnct-links:after, div.four-col:after, div#search:after, .t-grid:after, .wysiwyg-formatted:after {
   content: ".";
   display: block;
   height: 0;

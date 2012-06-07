@@ -1,8 +1,47 @@
+## 2.5
+
+### Bug Fixes
+  * [vote Insert Image -Alignment](https://agilezen.com/project/18091/story/556)
+
+## 2.4
+
+### External Changes
+  * [Each Step of Vote process - take you down page (focus) to where you left.](https://agilezen.com/project/18091/story/543)
+  * [Vote Add Warning before Publish.](https://agilezen.com/project/18091/story/545)
+  * [Recent Activity for the Petition gets added to the Daily Digest](https://agilezen.com/project/18091/story/546)
+  * [Recent Activity for the Vote gets added to the Daily Digest](https://agilezen.com/project/18091/story/547)
+  * [When Dragging Voting options - floating numbers](https://agilezen.com/project/18091/story/548)
+  * [Login for Vote AFTER they read the vote](https://agilezen.com/project/18091/story/553)
+  * [Add Reflection to the Daily Digest](https://agilezen.com/project/18091/story/554)
+  * [Add Recent Activity stream to Conversation Permalink](https://agilezen.com/project/18091/story/557)
+
+### Chores
+  * [Commonize Blog and Radio Show Description Partial](https://agilezen.com/project/18091/story/555)
+
+## 2.3.1
+
+### Bug Fixes
+  * [Airbrake: ActiveRecord::RecordInvalid: Validation failed: Last name can't be blank](https://agilezen.com/project/18091/story/552)
+  * [Adjust Activity stream backend so that all opportunity related items are viewable in conversation permalink.](https://agilezen.com/project/18091/story/562)
+  
 ## 2.3
 
 ### External Changes
 
+#### Opportunity Votes
+  * [Ability to Create and View a Vote](https://agilezen.com/project/18091/story/415)
+  * [Ability to Select Vote Options and Rank them and Cast the Vote](https://agilezen.com/project/18091/story/417)
+  * [Ability to View Vote Results](https://agilezen.com/project/18091/story/418)
+  * [Ability to sort vote options during create vote form](https://agilezen.com/project/18091/story/528)
+  * [Ability to add or delete vote options on create vote form](https://agilezen.com/project/18091/story/529)
+  * [Ability to display a list of actions for votes.](https://agilezen.com/project/18091/story/531)
+  * [Ability to create a vote from an opportunity actions page](https://agilezen.com/project/18091/story/532)
+  * [Vote time for the End of the Day not beginning](https://agilezen.com/project/18091/story/551)
+  * [Change Suggest Action Button Text to: Create a Vote](https://agilezen.com/project/18091/story/549)
+
 ### Bug Fixes
+  * [Widget of Recent Activity Displays Top Contribution](https://agilezen.com/project/18091/story/539)
+  * [Settings for User without Biography Displays Link](https://agilezen.com/project/18091/story/544)
 
 ### Chores
   * [Cache Avatar Image Url](https://agilezen.com/project/18091/story/537)

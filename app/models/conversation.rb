@@ -39,7 +39,7 @@ class Conversation < ActiveRecord::Base
   has_many :content_items_conversations, :uniq => true
   has_many :content_items, :through => :content_items_conversations, uniq: true
 
-  has_one :survey, :as => :surveyable
+  has_many :surveys, :as => :surveyable
   belongs_to :person, :foreign_key => "owner"
   delegate :name, :to => :person, :prefix => true
   delegate :standard_issue, :to => :issues

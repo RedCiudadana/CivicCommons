@@ -1,0 +1,8 @@
+<div class="recent-item">
+  <h4><%= link_to vote.title, conversation_vote_url(vote.surveyable, vote, :anchor => 'opportunity-nav') %></h4>
+  <div class="offset-2">
+    <%= avatar_profile(vote.person, 40) %>
+    <p><%= vote.person.name %> wrote this Vote</p>
+    <p><%= link_to( "View the vote", conversation_vote_url(vote.surveyable, vote, :anchor => 'opportunity-nav'), :class => "read-more") %></p>
+  </div>
+</div>

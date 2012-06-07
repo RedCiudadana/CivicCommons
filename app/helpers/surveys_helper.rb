@@ -20,4 +20,14 @@ module SurveysHelper
       raw "Back to: #{link_to title, surveyable}"
     end
   end
+  
+  def polymorphic_survey_response_url(survey_response)
+    surveyable_type = survey_response.try(:survey).try(:surveyable_type)
+    if surveyable_type
+      surveyable = survey_response.try(:survey).try(:surveyable)
+      send("#{surveyable_type.underscore}_#{survey_response.survey_type.underscore}_url".to_sym, surveyable, survey_response.survey_id)
+    else
+      send("#{survey_response.survey.type.underscore}_url".to_sym,survey_response.survey.id)
+    end
+  end
 end

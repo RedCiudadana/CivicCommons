@@ -17,6 +17,10 @@ class Petition < ActiveRecord::Base
 
   after_save :create_or_update_action
 
+  def creator_name
+    self.person.name
+  end
+
   def reflections
     self.action.reflections
   end

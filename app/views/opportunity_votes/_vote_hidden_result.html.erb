@@ -1,0 +1,6 @@
+<h3 class="vote-heading mtl ptm mbl"></h3>
+<% if @vote_response_presenter.expired? %>
+  <p>The Vote has ended</p>
+<% else %>
+  <p>You've already voted.</p>
+<% end %>

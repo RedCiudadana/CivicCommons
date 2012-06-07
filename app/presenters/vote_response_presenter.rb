@@ -1,7 +1,7 @@
 class VoteResponsePresenter
   attr_accessor :survey_response, :confirmed
   
-  delegate  :id, :class, :errors, :to_param, :new_record?, :selected_survey_options, :survey, :person, :persisted?, 
+  delegate  :id, :class, :errors, :to_param, :new_record?, :selected_survey_options, :selected_option_ids, :selected_option_ids=, :survey, :person, :persisted?, 
             :to => :survey_response
   delegate  :max_selected_options, :expired?,
             :to => :survey
@@ -37,7 +37,10 @@ class VoteResponsePresenter
   def available_options
     survey.options.position_sorted - selected_survey_options.collect{|record| record.survey_option}
   end
-
+  
+  def options_sorted
+    survey.options.position_sorted
+  end
   
   def define_methods_for_selected_options
     max_selected_options.times do |i|
@@ -83,6 +86,12 @@ class VoteResponsePresenter
       
       
     end
+  end
+  
+  def valid_selected_options?
+    survey_response.validate_presence_of_selected_option = true
+    survey_response.valid?
+    survey_response.errors[:selected_option_ids].blank?
   end
 
   def save

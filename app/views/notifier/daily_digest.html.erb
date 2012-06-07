@@ -3,25 +3,11 @@
   <% @conversations.each do |conversation| %>
     <% unless conversation.first == nil%>
       <h2><%= conversation.first.title %></h2>
-      <% conversation.last.each do |contribution| %>
-        <% if contribution.parent and contribution.parent.person.id != contribution.person.id %>
-          <%  contributer = (@person == contribution.person ? 'you' : contribution.person.name)  %>
-          <p><%= "In response to #{contribution.parent.person.name}, #{contributer}" %> added:
-          <blockquote>
-            <%= contribution.content.html_safe %>
-          </blockquote>
-          <%= link_to 'Check it out', "#{conversation_url(conversation.first)}#node-#{contribution.id}" %>
-          </p>
-        <% else %>
-          <%  contributer = (@person == contribution.person ? 'You' : contribution.person.name)  %>
-          <p><%= "#{contributer}" %> added:
-          <blockquote>
-            <%= contribution.content.html_safe %>
-          </blockquote>
-          <%= link_to 'Check it out', "#{conversation_url(conversation.first)}#node-#{contribution.id}" %>
-          </p>
-        <% end %>
+
+      <% conversation.last.each do |item| %>
+        <%= render :partial => "daily_digest_#{item.class.name.underscore}", :locals => {:item => item, :conversation => conversation} %>
       <% end %>
+
     <% end %>
   <% end %>
 <% end %>

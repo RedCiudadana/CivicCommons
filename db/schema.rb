@@ -619,7 +619,10 @@ ActiveRecord::Schema.define(:version => 20120510142319) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "end_notification_email_sent"
+    t.integer  "person_id"
   end
+
+  add_index "surveys", ["person_id"], :name => "index_surveys_on_person_id"
 
   create_table "top_items", :force => true do |t|
     t.integer  "item_id"
@@ -629,8 +632,8 @@ ActiveRecord::Schema.define(:version => 20120510142319) do
     t.datetime "updated_at"
     t.integer  "conversation_id"
     t.integer  "issue_id"
-    t.integer  "person_id"
     t.text     "activity_cache",  :limit => 2147483647
+    t.integer  "person_id"
   end
 
   add_index "top_items", ["conversation_id"], :name => "conversations_index"

@@ -1,0 +1,17 @@
+<div class = 'survey-option contrib_tool_container'>
+  <div class="field mbm">
+    <%= option.text_field :title, :class => 'textbox option-title', :placeholder => "Title of option", :style => 'width: 563px' %>
+  </div>
+  <div class="field mbm">
+    <%# option.cktext_area :description, :cols => '40', :rows => '10', :input_html => {:class => 'short textbox cktextarea', :style => 'width: 563px;', :placeholder => 'Description'} %>
+    <%= option.text_area :description, :cols => '40', :rows => '10', :class => 'short textbox cktextarea option-description', :style => 'width: 563px;', :placeholder => 'Description' %>
+  </div>
+
+  <a style="cursor: move;" class="sort-option button tertiary" href="#" onclick="return false;; return false;"><i class="icon-move"></i> Move Vote Option</a>
+  <a class="button tertiary" href="#" onclick="delete_option($(this)); return false;"><i class="icon-trash"></i> Delete Option</a>
+  
+  <%= option.hidden_field :position, :class => 'option-position' %> 
+  
+  <%= option.hidden_field :nested %>
+</div>
+

@@ -393,7 +393,7 @@ class Person < ActiveRecord::Base
   def avatar_image_url
     if self.avatar_cached_image_url.blank?
       self.avatar_cached_image_url = AvatarService.avatar_image_url(self)
-      save!
+      save(:validate => false)
     end
     self.avatar_cached_image_url
   end

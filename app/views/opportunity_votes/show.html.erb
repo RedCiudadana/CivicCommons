@@ -1,0 +1,14 @@
+<%= render :layout => 'vote_layout' do %>
+
+  <% if  @vote_response_presenter.allowed? %>
+    <%= render :partial => "opportunity_votes/select_options_form" %>
+  <% else %>
+    <% if @vote.show_progress? %>
+      <% @vote_progress_service = VoteProgressService.new(@vote,current_person) %>
+      <%= render :partial =>"opportunity_votes/vote_result" %>
+    <% else %>
+      <%= render :partial => "opportunity_votes/vote_hidden_result" %>
+    <% end %>
+  <% end %>
+
+<% end %>

@@ -19,6 +19,18 @@ describe Survey do
         Survey.reflect_on_association(:options).options[:dependent].should == :destroy
       end
     end
+    
+    it "should belongs to person" do
+      should belong_to(:person)
+    end
+
+    it "should has one action as actionable" do
+      should have_one(:action).dependent(:destroy)
+    end
+    
+    it "should have many respondents" do
+      should have_many(:respondents).through(:survey_responses)
+    end
 
     context "belongs_to :surveyable" do
       it "should really belongs to surveyable" do
@@ -91,6 +103,37 @@ describe Survey do
     end
   end
   
+  context "attached_to_conversation" do
+    it "should show true if surveyable exists and if it is a Conversation" do
+      @conversation = FactoryGirl.create(:conversation)
+      @vote = FactoryGirl.build(:vote, :surveyable => @conversation)
+      @vote.attached_to_conversation?.should be_true
+    end
+    it "should show false if surveyable is a Conversation" do
+      @topic = FactoryGirl.create(:topic)
+      @vote = FactoryGirl.build(:vote, :surveyable => @topic)
+      @vote.attached_to_conversation?.should be_false
+    end
+    it "should not show false if surveyable doesn't exist" do
+      @vote = FactoryGirl.build(:vote)
+      @vote.attached_to_conversation?.should be_false
+    end
+    context 'conversation_id' do
+      it "should return the right conversation id if attached is a conversation" do
+        @conversation = FactoryGirl.create(:conversation)
+        @vote = FactoryGirl.build(:vote, :surveyable => @conversation)
+        @vote.conversation_id.should == @conversation.id
+      end
+      it "should not return any id if attached is not a conversation" do
+        @issue = FactoryGirl.create(:issue)
+        @vote = FactoryGirl.build(:vote, :surveyable => @issue)
+        @vote.conversation_id.should be_nil
+      end
+    end
+    
+  end
+  
+  
   context "active?" do
     it "should be active when there is no start_date" do
       @survey = FactoryGirl.create(:survey, :show_progress => true)
@@ -119,9 +162,9 @@ describe Survey do
       @survey = FactoryGirl.create(:survey, :show_progress => true, :end_date => 1.days.ago.to_date)
       @survey.should be_expired
     end
-    it "should be expired when the start_date is today" do
+    it "should not be expired when the end_date is today" do
       @survey = FactoryGirl.create(:survey, :show_progress => true, :end_date => Date.today)
-      @survey.should be_expired
+      @survey.should_not be_expired
     end
   end
   describe "#days_until_end_date" do
@@ -183,6 +226,40 @@ describe Survey do
         given_a_survey_with_a_response
         Notifier.stub_chain(:survey_ended,:deliver)
         @survey.send_end_notification_email
+      end
+    end
+  end
+  
+  describe "after_create_or_update on action" do
+    describe "after_update" do
+      it "should not modify the action model if Survey is saved and there is an attached conversation and it has not changed" do
+        @conversation = FactoryGirl.create(:conversation)
+        @vote = FactoryGirl.create(:vote, :surveyable => @conversation)
+        @action = Action.first
+        @action.conversation.should == @conversation
+        @vote.save
+        @action.reload.conversation.should == @conversation
+      end
+      it "should modify the action model if Survey is updated and surveyable has changed" do
+        @conversation = FactoryGirl.create(:conversation)
+        @conversation2 = FactoryGirl.create(:conversation)
+        @vote = FactoryGirl.create(:vote, :surveyable => @conversation)
+        @action = Action.first
+        @action.conversation.should == @conversation
+        @vote.surveyable = @conversation2
+        @vote.save
+        @action.reload.conversation.should == @conversation2
+      end
+    end
+    describe "create_action" do
+      it "should create the action model once a survey is created and there is an attached conversation" do
+        @conversation = FactoryGirl.create(:conversation)
+        FactoryGirl.create(:vote, :surveyable => @conversation)
+        Action.first.should == Vote.first.action
+      end
+      it "should not create an action if survey is not attached to a conversation" do
+        FactoryGirl.create(:vote)
+        Action.count.should == 0
       end
     end
   end

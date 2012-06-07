@@ -1,1 +1,1 @@
-<%= render :partial => "/actions/#{action.actionable_type.underscore}", :object => action.actionable %>
+<%= render :partial => "/actions/#{action.actionable.class.name.underscore}", :object => action.actionable %>

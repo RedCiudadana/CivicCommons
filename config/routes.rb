@@ -156,6 +156,19 @@ Civiccommons::Application.routes.draw do
       get :print, :to => 'petitions#print', :on => :member
     end
     resources :actions, :only => [:index]
+    resources :votes, controller: :opportunity_votes do
+      post :create_response, :on => :member
+      get :select_options, :on => :member
+      post :create_select_options, :on => :member, :path => 'select_options'
+      get :rank_options, :on => :member
+      post :create_rank_options, :on => :member, :path => 'rank_options'
+    end
+  end
+
+  # Created by Jonathan Penn (February 17, 2012)
+  controller 'opportunities', path: 'opportunities' do
+    get '/', action: 'index'
+    get ':action'
   end
 
   resources :contributions, only: [:destroy]
