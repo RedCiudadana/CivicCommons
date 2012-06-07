@@ -710,6 +710,15 @@ a.see-more {
    up modular styles for icons)
 ---------------------------------*/
 
+.ico {
+  display: inline-block;
+  height: 17px;
+  margin-right: 4px;
+  position: relative;
+  top: 3px;
+  width: 17px;
+}
+
 .ico-sm {
   display: inline-block;
   height: 14px;
@@ -723,8 +732,16 @@ a.see-more {
 	margin-right: 2px;
 }
 
-.ico-sm.ico-person-white {
+.ico-person-white {
   background: url(../images/icons/person-ico-white.png) no-repeat;
+}
+
+.ico-facebook {
+  background: url(../images/icons/facebook-ico.png) no-repeat;
+}
+
+.ico-twitter {
+  background: url(../images/icons/twitter-ico.png) no-repeat;
 }
 
 
@@ -1786,7 +1803,6 @@ div.convo-summary {
   margin-bottom: 0.8em;
   padding-top: 15px;
 }
-.convo-mast-buttons a.button {width: 200px;}
 
 /*- Conversation Divider ----------*/
 

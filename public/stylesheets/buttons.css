@@ -24,7 +24,7 @@ a.off_button,
   padding: 4px 10px;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0 -1px 0px rgba(0,0,0,.3);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
        -o-border-radius: 4px;
@@ -47,7 +47,6 @@ a.off_button,
 a.button.answer,
 .button.answer {
   padding-top: 4px;
-  text-transform: inherit;
   vertical-align: middle;
   line-height: 15px;
   text-transform: uppercase;
@@ -87,6 +86,14 @@ a.button.active {
           box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
 }
 
+.wide-button {
+  width: 200px;
+}
+
+.button.ico-btn {
+  padding-bottom: 5px;
+  padding-top: 2px;
+}
 
 /* Alternate Colors
 ---------------------------------*/
@@ -161,6 +168,37 @@ a.button.active {
   background-image: -ms-linear-gradient(top, #ced2d2, #c9cccc);
   background-image: linear-gradient(top, #ced2d2, #c9cccc);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ced2d2', EndColorStr='#c9cccc');
+}
+
+.button.tertiary {
+  background-color: #efefef;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #f9f9f9, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #f9f9f9, #e6e6e6);
+  background-image: linear-gradient(top, #f9f9f9, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#f9f9f9', EndColorStr='#e6e6e6');
+  border-color: #bbb;
+  color: #888;
+  text-shadow: none;
+}
+
+.button.tertiary:hover {
+  background-color: #e3e5e6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ebed), to(#dee0e0));
+  background-image: -webkit-linear-gradient(top, #e8ebed, #dee0e0);
+  background-image: -moz-linear-gradient(top, #e8ebed, #dee0e0);
+  background-image: -ms-linear-gradient(top, #e8ebed, #dee0e0);
+  background-image: linear-gradient(top, #e8ebed, #dee0e0);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#e8ebed', EndColorStr='#dee0e0');
+  color: #888;
+}
+
+.button.tertiary:active,
+.button.tertiary.active {
+  background: #fff;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#ffffff');
+  color: #888;
 }
 
 

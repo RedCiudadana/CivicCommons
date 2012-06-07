@@ -19,7 +19,6 @@
           <div class='main-content-right'>
             <h1><%= @conversation.title %></h1>
             <p class="subtitle">Started on <%= @conversation.created_at.strftime('%b %d, %Y') %> by <%= text_profile(@conversation.owner) %></p>
-            <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
           </div>
 
           <div class='convo-summary'>
@@ -35,11 +34,14 @@
 
       </div><!-- /.main-content -->
 
-      <div class='aside supplementary convo-mast-buttons'>
+      <div class='aside supplementary'>
 
         <span id='subscription'>
           <%= render :partial => '/subscriptions/subscription', :locals => {:subscribable => @conversation} %>
         </span>
+        <div class="mtm">
+          <%= render :partial => '/layouts/social_links', :locals => {conversation_title: @conversation.title} %>
+        </div>
 
       </div><!-- /.aside -->
 
