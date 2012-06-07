@@ -13,6 +13,19 @@
   background-repeat: no-repeat;
 }
 
+.icon-embed {
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  background-image: url(/images/cc_embed_icon_sm.png);
+  background-position: 0 0;
+}
+
+.ico-nudge {
+  position: relative;
+  top: 2px;
+}
+
 [class^="icon-"]:last-child,
 [class*=" icon-"]:last-child {
   *margin-left: 0;
@@ -580,4 +593,12 @@
 
 .icon-fullscreen {
   background-position: -456px -144px;
+}
+
+
+/* Additional Icon Styles */
+
+.ico-cc-embed {
+  background: url(/images/cc_embed_icon.png) no-repeat 0 0;
+  padding: 5px 0 5px 30px;
 }
