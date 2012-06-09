@@ -1,9 +1,0 @@
-<div class="feature group">
-  <%= image_tag 'civic_commons_team.jpeg', :alt => 'The Civic Commons Blog', :class => 'float featured main-img', :height => 200, :width => 300 %>
-  <div class="bd">
-    <p>
-      <%= raw @blogpost_description.description_long unless @blogpost_description.blank? %>
-    </p>
-    <%= render partial: 'media_buttons' %>
-  </div>
-</div>

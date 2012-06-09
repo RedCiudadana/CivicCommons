@@ -1,0 +1,64 @@
+<% content_for :header do %>
+  <%= javascript_include_tag :ckeditor, '/javascripts/lib/opportunity_votes/create_vote' %>
+<% end %>
+
+<%= form_for [@conversation, @vote] do |form| %>
+  <% if @vote.errors.any? %>
+    <div class="alert alert-error mbl">
+      <strong>There were errors saving this vote.</strong>
+    </div>
+  <% end %>
+  <fieldset class="top-align new-vote mbl">
+    <div class="form-block">
+      <%= form.label :title, 'Title:*' %><br />
+      <%= form.text_field :title, :class => 'textbox', :size => '40' %>
+    </div>
+    <div class="form-block">
+      <%= form.label :description, 'Description:*' %><br />
+      <%= form.cktext_area :description, :cols => '60', :rows => '10', :input_html => {:class => 'textbox', :style => 'width: 563px;'} %>
+    </div>
+    
+    <div class="form-block">
+      <%= form.label :max_selected_options, 'Number of options to select:*' %><br />
+      <%= form.text_field :max_selected_options, :class => 'input-short textbox', :size => '40' %>
+    </div>
+    
+    <div class="form-block">
+      <%= form.label :end_date, 'Vote Ends On:*' %><br />
+      <%= form.text_field :end_date, :class => 'input-short textbox', :size => '40' %>
+    </div>
+  </fieldset>
+  <h3>Vote Options:</h3>
+  <div id="options">
+    <% @vote_options = form.object.options %>
+    <% @vote_options.sort!{|a,b| a.position <=> b.position } %>
+    
+    <%= form.fields_for :options, @vote_options do |option, i| %>
+      <%= render :partial => '/opportunity_votes/option', :locals => {:option => option} %>
+    <% end %>
+  </div>
+  <fieldset class="mtm mbl">
+    <%= add_object_link("Add Another Option", form, SurveyOption.new, "/opportunity_votes/option_form", "#options", :class => 'button secondary') %>
+  </fieldset>
+  
+  <p><strong>I'm ready to submit my vote. I understand that once this is submitted that I cannot make any more changes.</strong></p>
+  <fieldset class="btn-group">
+    <%= form.submit :class => 'submit', :value => 'Publish', :onclick => "reset_option_positions();" %> or &nbsp;
+    <%= link_to 'Cancel', conversation_path(@conversation), :id => 'cancel-reflection' %>
+  </fieldset>
+  <div class='aside supplementary'>
+  </div><!-- /.aside -->
+  
+<% end %>  
+
+
+<script type="text/javascript">
+  $().ready(function() {
+    $('#vote_end_date').datepicker(
+      {
+        showOn: "button",
+        dateFormat: 'MM d, yy',
+        buttonImage: false
+      });
+  });
+</script>

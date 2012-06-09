@@ -1,0 +1,31 @@
+<%= form_for @vote_response_presenter, :as => :vote_response_presenter, :url => select_options_conversation_vote_path(@conversation,@vote, :anchor => 'opportunity-nav')  do |form|%>
+  <%= opportunity_vote_tab_nav('select_options') %>
+  
+  <h4 class="mtl mbl">Please select up to <%= pluralize(@vote_response_presenter.max_selected_options,'option') %></h4>
+  
+  <% if @vote_response_presenter.errors[:selected_option_ids].present? %>
+    <div class="alert alert-error mbl">
+      <h4>
+        <%= @vote_response_presenter.errors[:selected_option_ids].first.to_s %>
+      </h4>
+      
+    </div>
+  <% end %>
+  
+  <% @vote_response_presenter.options_sorted.each do |option| %>
+    <div class="media mbl inset survey-option">
+        <!-- <input class="tab-checkbox img" type="checkbox" name="vehicle" value="#" /> -->
+        <%= check_box_tag 'vote_response_presenter[selected_option_ids][]', option.id, @vote_response_presenter.selected_option_ids.include?(option.id), :class => 'tab-checkbox img option-checkbox', :id => "option_id_#{option.id}" %>
+        <div class="bd wysiwyg-formatted">
+          <h4><%= option.title %></h4>
+          <%= sanitize option.description %>
+        </div>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= form.submit 'Continue', :class => "continue button opportunity-button" %> or
+    <%= link_to 'Cancel', conversation_actions_path(@conversation), :id => 'cancel-contribution' %>
+  </fieldset>
+  
+<% end %>

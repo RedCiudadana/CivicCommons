@@ -1,0 +1,17 @@
+<% content_for :header do %>
+  <%= javascript_include_tag :ckeditor, '/javascripts/lib/opportunity_votes/vote_result' %>
+<% end %>
+
+<div class="voting-results">
+  <% @vote_progress_service.progress_result.each_with_index do |option, index| %>
+    <div class="vote-container">
+      <p class="vote-bar">
+        <span class="vote-row <%= 'voted' if current_person && option.voted %>" style="width: <%= relative_weighted_votes_percentage(option.weighted_votes_percentage, @vote_progress_service.highest_weighted_votes_percentage, -20) %>%"><%= option.weighted_votes_percentage %>%</span>
+        <a href="#" title="Click to see more"><%= sanitize option.title %></a>
+      </p>
+      <div class="vote-summary">
+        <%=sanitize option.description %>
+      </div>
+    </div>
+  <% end %>  
+</div>

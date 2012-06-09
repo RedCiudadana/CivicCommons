@@ -5,12 +5,12 @@ describe Conversation do
   context "Associations" do
     it { should have_many :contributions  }
     it { should have_attached_file :image }
-    context "has_one survey" do
+    context "has_many surveys" do
       it "should be correct" do
-        Conversation.reflect_on_association(:survey).macro.should == :has_one
+        Conversation.reflect_on_association(:surveys).macro.should == :has_many
       end
       it "should be polymorphic as surveyable" do
-        Conversation.reflect_on_association(:survey).options[:as].should == :surveyable
+        Conversation.reflect_on_association(:surveys).options[:as].should == :surveyable
       end
     end
     context "has_many content_items" do

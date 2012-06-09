@@ -7,7 +7,7 @@
 
     <div class="content-container">
       <h1>The Civic Commons Radio Show</h1>
-      <%= render partial: 'description' %>
+      <%= render partial: 'shared/content_item/description', :locals => {content_item:@radioshow_description, content_item_image:'cc_radio_show.jpg', content_item_alt_text: 'The Civic Commons Radio Show and Podcast'}%>
     </div>
 
     <div class="content-container">

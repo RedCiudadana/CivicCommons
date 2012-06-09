@@ -96,7 +96,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
 
     # Added 1 to @per_page to see if there is a next page
-    @recent_items = Activity.most_recent_activity_items_for_conversation(@conversation, @per_page + 1, @offset)
+    @recent_items = Activity.most_recent_activity_items_for_conversation(@conversation, @per_page + 1, @offset, true)
     @next_page = @recent_items.length > @per_page
 
     # if there is a next page, pop the last item because it was temporarily used to see if there is a next page.

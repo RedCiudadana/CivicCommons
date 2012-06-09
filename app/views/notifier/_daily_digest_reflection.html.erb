@@ -1,0 +1,10 @@
+<% reflection = item %>
+<% contributor = (@person == reflection.person ? 'You' : reflection.person.name)  %>
+<p><%= "#{contributor}" %> added a reflection:
+<blockquote>
+  <%= reflection.title.html_safe %><br/>
+  <%= reflection.details.html_safe %>
+</blockquote>
+<%= link_to 'Check it out', conversation_reflection_url(conversation.first, reflection) %>
+</p>
+

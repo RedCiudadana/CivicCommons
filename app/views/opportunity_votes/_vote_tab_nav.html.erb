@@ -1,0 +1,8 @@
+<ul class="tab tab-section mtl mbl">
+  <li class="<%= 'active' if step == 'select_options' %>">
+    <%= link_to raw('<strong>Step 1:</strong> Select Options'), select_options_link %>
+  </li>
+  <li class="<%= 'active' if step == 'rank_options' %>">
+    <%= link_to_function raw('<strong>Step 2:</strong> Rank Options'), (step == 'rank_options') ? 'return false;' : "$(this).closest('form').submit();return false;" %>
+  </li>
+</ul>

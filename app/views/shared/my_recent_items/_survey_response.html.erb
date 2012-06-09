@@ -1,6 +1,6 @@
 <div class="">
   <div class="recent-item contribution">
-    <h4><%= link_to( survey_response.survey_title, send("#{survey_response.survey_type.underscore}_path".to_sym,survey_response.survey_id)) %></h4>
+    <h4><%= link_to( survey_response.survey_title, polymorphic_survey_response_url(survey_response)) %></h4>
     <p>
     <%= survey_response.person_name %> has participated in this <%= survey_response.survey_type %>
     </p>

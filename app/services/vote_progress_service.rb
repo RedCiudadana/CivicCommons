@@ -5,16 +5,27 @@ class VoteProgressService
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::TextHelper
   
-  attr_accessor :survey, :progress_result, :total_weighted_votes, :highest_weighted_votes_percentage
+  attr_accessor :survey, :progress_result, :total_weighted_votes, :highest_weighted_votes_percentage, :voter
   delegate  :max_selected_options, 
             :to => :survey
   
   DEFAULT_CHART_COLORS = %w(EFD279 95CBE9 024769 AFD775 2C5700 DE9D7F 097054 FFDE00 6599FF FF9900 FFC6A5 FFFF42 DEF3BD 00A5C6 DEBDDE)
   
-  def initialize(survey)
+  def initialize(survey, voter = nil)
     @survey = survey
     calculate_progress
     calculate_weighted_votes_percentage
+    get_voted_options_by_voter(voter) if voter
+  end
+  
+  def get_voted_options_by_voter(voter)
+    response = @survey.survey_responses.find_by_person_id(voter.id)
+    if response
+      selected_option_id = response.selected_survey_options.collect(&:survey_option_id)
+      progress_result.each_with_index do |record, index| 
+        record.voted = true if selected_option_id.include?(record.survey_option_id)
+      end
+    end
   end
     
   def render_chart

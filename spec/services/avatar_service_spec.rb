@@ -62,7 +62,7 @@ module Services
           AvatarService.stub!(:gravatar_available?).and_return(false)
 
           avatar_url = AvatarService.avatar_image_url(@person)
-          avatar_url.should match(/images/)
+          avatar_url.should match(/http:\/\/s3.amazonaws.com\/.*\/avatars\/default\/avatar_70.gif/i)
         end
       end
 
@@ -91,7 +91,7 @@ module Services
         @person.update_attributes(:twitter_username => nil)
         AvatarService.should_receive(:gravatar_available?).and_return(false)
         avatar_url = AvatarService.avatar_image_url(@person)
-        avatar_url.should match(/images/)
+        avatar_url.should match(/http:\/\/s3.amazonaws.com\/.*\/avatars\/default\/avatar_70.gif/i)
       end
 
     end

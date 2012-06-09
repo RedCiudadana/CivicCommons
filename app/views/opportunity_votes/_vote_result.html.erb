@@ -1,0 +1,7 @@
+<% if @vote.show_progress_now? %>
+    <h3 class="vote-heading mtl ptm mbl">Results <span>Your vote results are marked in blue</span></h3>
+
+    <%= render :partial => '/opportunity_votes/result_bars' %>
+<% else %>
+    <p class="vote-time"><strong>Check back at the end of the day of <%= @vote.end_date && @vote.end_date.to_s(:long) %> to see the results</strong></p>
+<% end %>

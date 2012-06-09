@@ -1,0 +1,61 @@
+<%= render :partial => 'layouts/opportunities' %>
+
+<div class="wrapper">
+  <div class="content-container">
+
+    <div class="main-content">
+      <h2 class="mtn">Title of Vote</h2>
+      <p><strong>By: <a href="#">Dan Moulthrop</a> on Jan 1, 2012</strong></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec sem in lacus mattis adipiscing eget ut lorem. Proin eu quam nulla, id porta erat. </p>
+
+      <h3 class="vote-heading mtl ptm mbl">Results <span>Your vote results are marked in blue</span></h3>
+
+      <div class="voting-results">
+        <div class="vote-container">
+          <p class="vote-bar"><span class="vote-row voted" style="width: 80%">80%</span><a href="#">This is the title of the top ranking item.</a></p>
+          <p class="vote-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+        </div>
+        <div class="vote-container">
+          <p class="vote-bar"><span class="vote-row" style="width: 60%">60%</span><a href="#">This is the title of another item.</a></p>
+          <p class="vote-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+        </div>
+        <div class="vote-container">
+          <p class="vote-bar"><span class="vote-row voted" style="width: 40%">40%</span><a href="#">This is the title of another item.</a></p>
+          <p class="vote-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+        </div>
+        <div class="vote-container">
+          <p class="vote-bar"><span class="vote-row" style="width: 20%">20%</span><a href="#">This is the title of another item.</a></p>
+          <p class="vote-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+        </div>
+        <div class="vote-container">
+          <p class="vote-bar"><span class="vote-row voted" style="width: 10%">10%</span><a href="#">This is the title of another item.</a></p>
+          <p class="vote-summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin augue nisi, fermentum vitae, imperdiet a, auctor eu, mi. Nulla imperdiet molestie purus. Duis arcu dui, pretium in, molestie id, convallis eget, orci. Praesent eget purus. Nullam sed nunc. Etiam quis orci ac metus consectetuer consequat. Sed pulvinar aliquam sem. Vestibulum convallis.</p>
+        </div>
+      </div>
+
+    </div><!-- /.main-content -->
+
+    <div class='aside supplementary'>
+      <div class="recent-item">
+        <div class="offset-2 ">
+          <a href="#" title="Jason Segedy"><img alt="Jason Segedy" class="callout" height="40" src="http://s3.amazonaws.com/com.theciviccommons.production/avatars/31/standard/jason-segedy.jpg?1289706219" title="Jason Segedy" width="40" /></a>
+          <p><strong><a href="#">Dan Moulthrop</a></strong><br />
+          <a href="#">View Profile</a></p>
+        </div>
+      </div>
+    </div><!-- /.aside -->
+
+
+  </div>
+</div>
+
+<!-- TODO: This can be refactored/relocated as needed -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('p.vote-bar a').click(function(e) {
+		  $(this).parent().siblings('p.vote-summary').slideToggle('fast');
+		  e.preventDefault();
+		});
+	});
+</script>

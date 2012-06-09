@@ -18,7 +18,7 @@
     <% else %>
       <div class="content-container">
         <h1>The Civic Commons Blog</h1>
-        <%= render partial: 'description' %>
+        <%= render partial: 'shared/content_item/description', :locals => {content_item:@blogpost_description, content_item_image:'civic_commons_team.jpeg', content_item_alt_text: 'The Civic Commons Blog'}%>
       </div>
     <% end %>
 

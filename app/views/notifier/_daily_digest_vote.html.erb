@@ -1,0 +1,24 @@
+<% vote = item %>
+<% contributor = (@person == vote.person ? 'You' : vote.person.name)  %>
+<% case vote.daily_digest_type %>
+<% when 'created' %>
+  <p>
+    <%= "#{contributor}" %> created a vote:
+    <blockquote>
+      <%= vote.title.html_safe %><br/>
+      <%= vote.description.html_safe %>
+    </blockquote>
+    <%= link_to 'Check it out', conversation_vote_url(conversation.first, vote) %>
+  </p>
+<% when 'ended' %>
+  <p>
+    A vote has ended:
+    <blockquote>
+      <%= vote.title.html_safe %><br/>
+      <%= vote.description.html_safe %>
+    </blockquote>
+    <%= link_to 'Check out the results', conversation_vote_url(conversation.first, vote) %>
+  </p>
+<% end %>
+
+

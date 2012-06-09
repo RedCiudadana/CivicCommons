@@ -48,4 +48,5 @@
       = render :partial => '/layouts/conversation_issues', :locals => {:standard_issues => @conversation.issues.standard_issue}
       = render :partial => '/layouts/conversation_managed_issues', :locals => {:managed_issues => @conversation.issues.managed_issue}
       = render :partial => '/shared/opportunity/side_participants', :locals => {participants: @conversation_participants}
+      = render_recent_items_sidebar
 

@@ -7,5 +7,6 @@ FactoryGirl.define do
     f.description  'Description here'
     f.options []
     f.max_selected_options 3
+    f.person { |s| s.association(:registered_user) }
   end
 end

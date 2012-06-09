@@ -11,7 +11,7 @@ class Activity < ActiveRecord::Base
   validates :person_id, presence: true
 
   VALID_TYPES = [ Conversation, Contribution, Issue, RatingGroup, SurveyResponse,
-                  Petition, PetitionSignature, Reflection, ReflectionComment]
+                  Petition, PetitionSignature, Reflection, ReflectionComment, Survey]
 
   # Accept an Active Record object of valid type
   def initialize(attributes = nil)
@@ -32,6 +32,9 @@ class Activity < ActiveRecord::Base
         attr[:activity_cache] = Activity.encode(attributes)
       elsif attributes.is_a?(Conversation)
         attr[:conversation_id] = attributes.id
+        attr[:activity_cache] = Activity.encode(attributes)
+      elsif attributes.is_a?(Vote)
+        attr[:conversation_id] = attributes.surveyable_id if attributes.surveyable_type == 'Conversation'
         attr[:activity_cache] = Activity.encode(attributes)
       end
 
@@ -128,6 +131,8 @@ class Activity < ActiveRecord::Base
         obj = ActiveSupport::JSON.encode(item, include: [:person, :petition])
       when Reflection
         obj = ActiveSupport::JSON.encode(item, include: [:person, :conversation])
+      when Survey, Vote
+        obj = ActiveSupport::JSON.encode(item, include: [:person, :surveyable])  
       when ReflectionComment
         obj = ActiveSupport::JSON.encode(item, include: [:person, :reflection])
       end
@@ -160,8 +165,10 @@ class Activity < ActiveRecord::Base
     activities.collect{|a| a.item}.compact
   end
 
-  def self.most_recent_activity_items_for_conversation(conversation, limit = nil, offset = 0)
-    activities = Activity.where(conversation_id: conversation.id).order('item_created_at DESC')
+  def self.most_recent_activity_items_for_conversation(conversation, limit = nil, offset = 0, exclude_conversation = false)
+    activities = Activity.where(conversation_id: conversation.id)
+    activities = activities.where('item_type != "Conversation"') if exclude_conversation
+    activities = activities.order('item_created_at DESC')
     activities = activities.offset(offset) if offset.present?
     activities = activities.limit(limit) if limit
     activities.collect{|a| a.item}.compact

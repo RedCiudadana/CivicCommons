@@ -1,0 +1,9 @@
+<div class="feature group">
+  <%= image_tag "#{content_item_image}", :alt => "#{content_item_alt_text}", :class => 'float featured main-img', :height => 200, :width => 300 %>
+  <div class="bd">
+    <p>
+      <%= raw content_item.description_long unless content_item.blank? %>
+    </p>
+    <%= render partial: 'media_buttons' %>
+  </div>
+</div>

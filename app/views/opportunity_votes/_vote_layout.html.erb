@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="content-container">
+
+    <div class="main-content">
+      <h2 class="mtn"><%= @vote.title %></h2>
+      <p><strong>By: <%= text_profile(@vote.person) %> on <%= @vote.created_at.to_date.to_s(:long) %></p>
+        <div class="wysiwyg-formatted">
+          <%= sanitize @vote.description %>
+        </div>
+        
+        <%= yield %>
+      
+    </div><!-- /.main-content -->
+
+    <div class='aside supplementary'>
+      <div class="recent-item">
+        <div class="offset-2 ">
+          <%= member_profile(@vote.person) %>
+          <p><strong><%= text_profile(@vote.person) %></strong><br />
+          <%= link_to 'View Profile', user_path(@vote.person) %>          
+        </div>
+      </div>
+    </div><!-- /.aside -->
+
+
+  </div>
+</div>
+

@@ -85,7 +85,7 @@ describe UserController do
       @person.stub(:save).and_return(true)
 
       delete :destroy_avatar, :id => "1234", :format => :js
-      response.should contain "{\"avatarUrl\":\"/images/avatar_70.gif\"}"
+      response.should contain "avatar"
     end
 
     it "should return the Avatar based on the AvatarService" do

@@ -66,7 +66,6 @@ input#contribution_submit:hover {
   background-image: linear-gradient(top, #a2af5d, #7b893b);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#a2af5d', EndColorStr='#7b893b');
   cursor: pointer;
-  color: #f3f3f3;
 }
 
 a.button:active,
@@ -74,10 +73,18 @@ a.off_button:active,
 input.submit:active,
 input#contribution_submit:active,
 a.button.active {
-  background: #fff;
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#ffffff');
-  color: #94a647;
-  text-shadow: none;
+  background-color: #a2af5d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#879642), to(#7b893b));
+  background-image: -webkit-linear-gradient(top, #879642, #7b893b);
+  background-image: -moz-linear-gradient(top, #879642, #7b893b);
+  background-image: -o-linear-gradient(top, #879642, #7b893b);
+  background-image: -ms-linear-gradient(top, #879642, #7b893b);
+  background-image: linear-gradient(top, #879642, #7b893b);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#879642', EndColorStr='#7b893b');
+  -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
+     -moz-box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
+       -o-box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
+          box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
 }
 
 
@@ -109,9 +116,51 @@ a.button.active {
 
 .button.secondary:active,
 .button.secondary.active {
-  background: #fff;
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#ffffff');
-	color: #637988;
+  background-color: #95b5ca;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#7793a6), to(#6c8595));
+  background-image: -webkit-linear-gradient(top, #7793a6, #6c8595);
+  background-image: -moz-linear-gradient(top, #7793a6, #6c8595);
+  background-image: -o-linear-gradient(top, #7793a6, #6c8595);
+  background-image: -ms-linear-gradient(top, #7793a6, #6c8595);
+  background-image: linear-gradient(top, #7793a6, #6c8595);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#7793a6', EndColorStr='#6c8595');
+}
+
+.button.tertiary {
+  background-color: #e6e6e6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#e0e0e0));
+  background-image: -webkit-linear-gradient(top, #ededed, #e0e0e0);
+  background-image: -moz-linear-gradient(top, #ededed, #e0e0e0);
+  background-image: -o-linear-gradient(top, #ededed, #e0e0e0);
+  background-image: -ms-linear-gradient(top, #ededed, #e0e0e0);
+  background-image: linear-gradient(top, #ededed, #e0e0e0);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ededed', EndColorStr='#e0e0e0');
+  border-color: #bbb;
+  color: #333;
+  text-shadow: 0 1px 0px rgba(255,255,255,.3);
+}
+
+.button.tertiary:hover {
+  background-color: #d4d7d7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0e2e2), to(#c9cccc));
+  background-image: -webkit-linear-gradient(top, #e0e2e2, #c9cccc);
+  background-image: -moz-linear-gradient(top, #e0e2e2, #c9cccc);
+  background-image: -o-linear-gradient(top, #e0e2e2, #c9cccc);
+  background-image: -ms-linear-gradient(top, #e0e2e2, #c9cccc);
+  background-image: linear-gradient(top, #e0e2e2, #c9cccc);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#e0e2e2', EndColorStr='#c9cccc');
+}
+
+.button.tertiary:active,
+.button.tertiary.active {
+  background-color: #cbcfcf;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ced2d2), to(#c9cccc));
+  background-image: -webkit-linear-gradient(top, #ced2d2, #c9cccc);
+  background-image: -moz-linear-gradient(top, #ced2d2, #c9cccc);
+  background-image: -o-linear-gradient(top, #ced2d2, #c9cccc);
+  background-image: -ms-linear-gradient(top, #ced2d2, #c9cccc);
+  background-image: linear-gradient(top, #ced2d2, #c9cccc);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ced2d2', EndColorStr='#c9cccc');
 }
 
 
@@ -159,18 +208,6 @@ a.button:active span.stitcher {
      -moz-border-radius: 2px;
        -o-border-radius: 2px;
           border-radius: 2px;
-}
-
-.button:active .number,
-.button.active .number {
-	background: #9cb050;
-	color: #fff;
-}
-
-.button.secondary:active .number,
-.button.secondary.active .number {
-	background: #637988;
-	color: #fff;
 }
 
 

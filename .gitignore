@@ -12,6 +12,7 @@ rake/**/*
 config/amazon_s3.yml
 config/civic_commons.yml
 config/database.yml
+config/newrelic.yml
 config/people_aggregator.yml
 .DS_Store
 **/.DS_Store

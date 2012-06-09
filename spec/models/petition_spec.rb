@@ -120,4 +120,13 @@ describe Petition do
       end
     end
   end
+
+  context "delegation" do
+    before(:each) do
+      @petition = FactoryGirl.build(:petition)
+    end
+    it "creator_name to a petitions creators name" do
+      @petition.creator_name.should == @petition.person.name
+    end
+  end
 end

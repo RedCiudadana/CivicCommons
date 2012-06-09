@@ -781,11 +781,8 @@ describe Person do
         rejecting('text/plain', 'text/xml')
     end
 
-    it "will have an existing default image" do
-      paperclip_default_file_exists?('original').should be_true
-      Person.attachment_definitions[:avatar][:styles].each do |style, size|
-        paperclip_default_file_exists?(style.to_s).should be_true
-      end
+    it "will have default avatar image pointing to s3 bucket" do
+      Person.attachment_definitions[:avatar][:default_url].should =~ /http:\/\/s3.amazonaws.com\/.*\/avatars\/default\/avatar_70.gif/i
     end
 
     def paperclip_default_file_exists?(style)

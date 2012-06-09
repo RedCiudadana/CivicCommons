@@ -204,6 +204,7 @@ describe Activity do
     let(:conversation) { FactoryGirl.create(:conversation) }
     let(:comment) { FactoryGirl.create(:comment) }
     let(:rating_group) { FactoryGirl.create(:rating_group) }
+    let(:vote) {FactoryGirl.create(:vote)}
     let(:vote_survey_response) {FactoryGirl.create(:vote_survey_response)}
     let(:petition) {FactoryGirl.create(:petition)}
     let(:petition_signature) {FactoryGirl.create(:petition_signature)}
@@ -234,6 +235,15 @@ describe Activity do
       encoded_rating_group.should match(/conversation/)
       encoded_rating_group.should match(/person/)
       encoded_rating_group.should match(/ratings/)
+    end
+
+    it "serializes a vote object" do
+      encoded_vote = Activity.encode(vote)
+      encoded_vote.should be_an_instance_of String
+      expect { JSON.parse(encoded_vote) }.should_not raise_exception
+      encoded_vote.should match(/person/)
+      encoded_vote.should match(/surveyable/)
+      encoded_vote.should match(/surveyable.+type/)
     end
 
     it "serializes a survey response object" do
@@ -309,6 +319,15 @@ describe Activity do
       decoded_rating_group.__class__ == 'RatingGroup'
       decoded_rating_group.conversation_id.should == rating_group.conversation_id
       decoded_rating_group.person_id.should == rating_group.person_id
+    end
+    it "decodes a vote object" do
+      vote = FactoryGirl.create(:vote)
+      encoded_vote = Activity.encode(vote)
+      encoded_vote = Activity.decode(encoded_vote)
+      encoded_vote.class == GenericObject
+      encoded_vote.__class__ == 'Vote'
+      encoded_vote.person_id.should == vote.person_id
+      encoded_vote.surveyable_id.should == vote.surveyable_id
     end
 
     it "decodes a survey repsonse object" do
