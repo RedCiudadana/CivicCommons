@@ -1210,124 +1210,12 @@ div.three-col-sm div.photobank img {margin: 0 0 6px 6px;}
   margin-right: 20px;
 }
 
-.t-img {
-  margin-bottom: 20px;
-  position: relative;
+.t-col-search {
+  width: 360px;
 }
 
-.t-img img {
-  display: block;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-       -o-border-radius: 4px;
-          border-radius: 4px;
-}
-
-.t-col.four {
-  margin-right: 0;
-}
-
-.t-col.one,
-.t-col.four {
-  width: 220px;
-}
-
-.t-col.two {
-  width: 140px;
-}
-
-.t-col.three {
-  width: 300px;
-}
-
-.t-col.three .sm.one,
-.t-col.three .sm.two {
-  width: 140px;
-}
-
-.t-col.three .sm.one {
-  float: left;
-}
-
-.t-col.three .sm.two {
-  float: right;
-}
-
-.t-img div {
-  background: rgba(0,0,0,.4);
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-       -o-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
-}
-
-.t-img p {
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 0;
-  padding: 3px 6px;
-  text-decoration: none;
-}
-
-.t-img a {
-  text-decoration: none;
-}
-
-.t-img a:hover div {
-  background: rgba(0,0,0,.6);
-}
-
-.no-rgba .t-img p {
-  background: url(/images/t_grid_bg.png) repeat;
-}
-
-.no-rgba .t-img a:hover div {
-  background: url(/images/t_grid_bg_hover.png) repeat;
-}
-
-.t-img.sm p {
-  font-size: 80%;
-}
-
-.t-img.lrg p {
-  font-size: 120%;
-}
-
-.t-img.sm img {
-  height: 90px;
-  width: 140px;
-}
-
-.t-img.med img {
-  height: 145px;
-  width: 220px;
-}
-
-.t-img.lrg img {
-  height: 200px;
-  width: 300px;
-}
-
-/* Home page search */
-
-.t-col-span {
-  float: left;
-  margin-right: 20px;
-  width: 460px;
-}
-
-.t-col-span .t-img {
-  float: left;
-  margin-right: 20px;
-}
-
-.t-search {
-  background-color: rgba(0,0,0,.03);
-  height: 158px;
-  margin-bottom: 20px;
+.t-col-conv-create {
+  width: 560px;
 }
 
 
@@ -2446,7 +2334,7 @@ div.conversation-input-container {margin-bottom: 25px;}
 }
 
 #search.main-search-bar.t-search-bar form input.textbox {
-  width: 298px;
+  width: 240px;
 }
 
 #search.main-search-bar input.submit {

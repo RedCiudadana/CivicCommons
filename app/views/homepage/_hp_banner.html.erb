@@ -1,12 +1,7 @@
 <div class="t-grid">
-  <div class="t-col one">
-    <%= render partial: '/homepage/hp_slot', locals: { slot_class: "med", target:@random_active_conversation.pop } %>
-    <%= render partial: '/homepage/hp_slot', locals: { slot_class: "med", target:@random_issues.pop } %>
-  </div>
-  <div class="t-col-span">
-    <div class="t-search inset group">
+  <div class="t-col t-col-search">
+    <div class="group">
       <h1>What do you care about?</h1>
-      <p>Search for things you are interested in talking about, or select from popular searches.</p>
       <div id="search" class="main-search-bar t-search-bar">
         <form class="dropdown">
           <input type="text" class="js-grid-search textbox" data-toggle="dropdown" placeholder="Search" />
@@ -17,15 +12,10 @@
             <li><a href="#">Arts</a></li>
           </ul>
         </form>
-        <p class="mtm">If you'd like, you can <a href="#">Start a Conversation</a></p>
       </div>
-    </div><!-- /.t-search -->
-      <%= render partial: '/homepage/hp_slot', locals: { slot_class: "sm", target:@recent_blog_post.pop } %>
-      <%= render partial: '/homepage/hp_slot', locals: { slot_class: "sm", target:@staff_selected.pop } %>
-      <%= render partial: '/homepage/hp_slot', locals: { slot_class: "sm mrn", target:@recent_radio_show.pop } %>
+    </div><!-- /.group -->
   </div><!-- /.t-col-span -->
-  <div class="t-col four">
-    <%= render partial: '/homepage/hp_slot', locals: { slot_class: "med", target:@staff_selected.pop } %>
-    <%= render partial: '/homepage/hp_slot', locals: { slot_class: "med", target:@random_most_recent_conversations.pop  } %>
+  <div class="t-col t-col-conv-create mrn">
+    <%= render :partial => 'layouts/create_conversation' %>
   </div>
 </div>

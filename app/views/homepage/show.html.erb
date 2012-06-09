@@ -109,8 +109,6 @@
 <div class="wrapper">
   <div class="content-container">
     <div class="main-content">
-      <%= render :partial => 'layouts/create_conversation' %>
-      <%# render :partial => '/conversations/conversation_pager' %>
       <div class="three-col-sm mbs">
         <div class="cols tmp-title">
           <h4><a href="#">Most Recent</a></h4>
@@ -170,7 +168,6 @@
       </div>
     </div><!-- /.main-content -->
     <div class="aside supplementary">
-      <%= render :partial => '/search/search' %>
       <%= render_recent_items_sidebar %>
       <%= render partial: 'blog/recent_blog_posts_sidebar', locals: { blog_posts: @recent_blog_posts } %>
     </div><!-- /.aside -->
