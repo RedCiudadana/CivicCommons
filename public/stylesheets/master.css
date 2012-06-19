@@ -1678,59 +1678,54 @@ div.login-actions p {
 
 /*- Main Navigation ----------*/
 
-ul#main-nav {
-  float: left;
-  margin: 0 0 0 40px;
-  overflow: hidden;
+#nav {
+  border-bottom: 1px solid #c3c6cd;
+  line-height: 1.6em;
+  margin: 0 auto;
+  text-align: left;
+  width: 940px;
 }
-ul#main-nav li {
+
+.main-nav {
+  float: left;
+  margin: 0;
+  overflow: hidden;
+  font-size: .9em;
+}
+
+.main-nav li {
   float: left;
   list-style-type: none;
+  margin-bottom: 0;
+  font-size: .9em;
 }
-ul#main-nav li a {
-  color: #565656;
+
+.main-nav li a {
+  color: #6a7280;
   display: block;
   font-weight: bold;
-  margin-right: 30px;
-  padding-top: 17px;
+  padding: 10px 12px 7px;
   text-decoration: none;
   text-transform: uppercase;
   text-shadow: 0 1px 1px rgba(255,255,255,1);
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
 }
-ul#main-nav li a {overflow: hidden;}
-ul#main-nav li a:hover {cursor: pointer;}
-ul#main-nav li a span {
-  color: #666;
-  display: block;
-  font-size: .916em;
-  line-height: 1em;
-  text-transform: none;
+
+.main-nav li a {
+  overflow: hidden;
 }
-ul#main-nav li a:hover {background: url(/images/top_arrow.png) no-repeat 50% 0;}
-ul#main-nav li.conversations {
-  background: url(../images/nav_convo.png) no-repeat 0 17px;
-  display: block;
-  padding-left: 27px;
+
+.main-nav li a:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,.065);
+  border-right: 1px solid #c3c6cd;
+  border-left: 1px solid #c3c6cd;
 }
-ul#main-nav li.issues {
-  background: url(../images/nav_issues.png) no-repeat 0 17px;
-  display: block;
-  padding-left: 23px;
-}
-ul#main-nav li.projects {
-  background: url(../images/nav_project.png) no-repeat 0 17px;
-  display: block;
-  padding-left: 23px;
-}
-ul#main-nav li.community {
-  background: url(../images/nav_comm.png) no-repeat 0 17px;
-  display: block;
-  padding-left: 32px;
-}
-ul#main-nav li.commons {
-  background: url(../images/nav_build.png) no-repeat 0 17px;
-  padding-left: 26px;
-}
+
+/* .main-nav li a:hover { */
+/*   background: url(/images/top_arrow.png) no-repeat 50% 0; */
+/* } */
 
 /*- Feature Area ----------*/
 

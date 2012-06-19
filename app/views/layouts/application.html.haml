@@ -87,15 +87,6 @@
     #header-wrapper
       #header
         = link_to 'The Civic Commons', root_url, :id => 'logo', :title => 'The Civic Commons'
-        %ul#main-nav
-          %li.conversations
-            <a href="/conversations" title="Discover Conversations"><span>Discover</span> Conversations</a>
-          %li.issues
-            <a href="/issues" title="Find an Issue"><span>Find an </span> Issue</a>
-          %li.projects
-            <a href="/projects" title="Explore Projects"><span>Explore</span> Projects</a>
-          %li.community
-            <a href="/community" title="Meet the Community"><span>Meet the </span>Community</a>
         #header-utility
           - if current_person
             #login-status
@@ -105,6 +96,16 @@
               .offset-2
                 = render :partial => 'layouts/single_column'
           .important
+    #nav
+      %ul.main-nav
+        %li
+          <a href="/" title="Home">Home</a>
+        %li
+          <a href="/issues" title="Issues">Issues</a>
+        %li
+          <a href="/projects" title="Projectes">Projects</a>
+        %li
+          <a href="/community" title="Community">Community</a>
     = yield :main_body
     #footer.footer
       #footer-inner
